@@ -1,8 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SKILLED UPLOAD
 
-## Getting Started
+**SKILLED UPLOAD** is a full stack web application that user can read find their suitable jobs & hirer can choose good emplyee for their company. This application is built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/). It is deployed on [Vercel](https://vercel.com/).
 
-First, run the development server:
+## Table of Contents
+
+- [SKILLED UPLOAD](#skilled-upload)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Live Demo](#live-demo)
+  - [Environment Variables](#environment-variables)
+  - [Contributing](#contributing)
+
+## Installation
+
+You can either clone this repository or download the source code as a ZIP file. To clone the repository, run the following command in your terminal:
+
+```bash
+git clone https://github.com/abdullahmia/ThoughtNest
+```
+
+Install the dependencies using your preferred package manager:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -10,27 +39,50 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run with the docker:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run docker:start
+# or
+yarn docker:start
+# or
+pnpm docker:start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Stop the docker:
 
-## Learn More
+```bash
+npm run docker:stop
+# or
+yarn docker:stop
+# or
+pnpm docker:stop
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Live Demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can view the live version of **TOUGHNEST** at [https://example.dev](https://example.dev).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Environment Variables
 
-## Deploy on Vercel
+The environment variables can be found and modified in the `.env` file. They come with these default values:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+NODE_ENV=development
+NEXTAUTH_SECRET="your secret"
+NEXTAUTH_URL="your url"
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+
+If you'd like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
+3. Make your changes and commit them: `git commit -m "Add your feature"`.
+4. Push to the branch: `git push origin feature/your-feature-name`.
+5. Create a pull request on GitHub.
+
+Please follow the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
