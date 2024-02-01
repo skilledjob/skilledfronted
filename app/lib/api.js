@@ -19,7 +19,7 @@ export const query = async (endpoint, cacheKey) => {
     },
     headers: {
       "Content-type": "application/json",
-      Authorization: `Bearer ${cookies().get("token").value}`,
+      Authorization: `Bearer ${cookies().get("token")?.value}`,
     },
   });
   return await response.json();
@@ -44,7 +44,7 @@ export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
     body: JSON.stringify(data),
     headers: {
       "Content-type": "application/json",
-      authorization: `Bearer ${cookies().get("token").value}`,
+      authorization: `Bearer ${cookies().get("token")?.value}`,
     },
   });
   if (revalidateCacheKey) {
