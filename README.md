@@ -83,6 +83,6 @@ If you'd like to contribute to this project, please follow these steps:
 2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
 3. Make your changes and commit them: `git commit -m "Add your feature"`.
 4. Push to the branch: `git push origin feature/your-feature-name`.
-5. Create a pull request on GitHub.
+5. Create a pull request to the development branch on GitHub. [Remembers do not send pull request to the main branch]
 
 Please follow the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
