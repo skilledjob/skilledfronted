@@ -16,8 +16,8 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div>
-      <nav className="w-full h-20 flex justify-between bg-black items-center lg:px-10 md:px-4">
+    <div className="">
+      <nav className="w-full fixed top-0 right-0 z-10 min-h-20 flex justify-between bg-black items-center lg:px-10 md:px-4">
         <div className="md:w-1/2 flex items-center">
           <Image
             height="100"

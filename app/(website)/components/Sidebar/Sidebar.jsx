@@ -1,7 +1,7 @@
 const Sidebar = ({ isOpen }) => {
   return (
     <div
-      className={`flex md:hidden absolute h-screen ${isOpen ? "sidebar-open" : "sidebar-closed"}`}
+      className={`flex z-10 md:hidden absolute h-screen ${isOpen ? "sidebar-open" : "sidebar-closed"}`}
     >
       <div
         className={`w-64 bg-black/90 p-4 transition-all duration-300 ${

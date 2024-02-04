@@ -1,3 +1,4 @@
+import HomeSlider from "./(website)/components/HomeSlider/homeSlider";
 import { getPosts } from "./lib/posts";
 
 export const metadata = {
@@ -10,13 +11,7 @@ export default async function Page() {
 
   return (
     <div className="container">
-      <div className="my-12">
-        <h1 className="text-4xl font-bold">Skilled Up</h1>
-        <p className="text-red-600">
-          This is example of how to use data fetching in Next.js. Please delete
-          this page and start building your own app!
-        </p>
-      </div>
+      <HomeSlider />
 
       <div className="my-12">
         {posts?.length > 0 ? (
