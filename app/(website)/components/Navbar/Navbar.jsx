@@ -8,8 +8,10 @@ import { useState } from "react";
 import logo from "@/public/assets/logo.jpeg";
 import Sidebar from "../Sidebar/Sidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -28,10 +30,15 @@ const Navbar = () => {
           />
           <ul className="md:flex items-center text-[#bed6f3] gap-5 text-lg lg:ml-32 md:ml-10 hidden">
             <li className="hover:text-[#FF3988] cursor-pointer">
-              <Link href="/">Home</Link>
+              <Link
+                className={`link ${pathname === "/home" ? "text-[#FF3988]" : ""}`}
+                href="/home"
+              >
+                Home
+              </Link>
             </li>
             <li className="hover:text-[#FF3988] cursor-pointer">
-              <Link href="/">Job Post</Link>
+              <Link className={`link ${pathname === "/job" ? "text-[#FF3988]" : ""}`} href="/">Job Post</Link>
             </li>
           </ul>
           {isOpen ? (

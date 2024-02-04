@@ -1,4 +1,3 @@
-import HomeSlider from "./(website)/components/HomeSlider/homeSlider";
 import { getPosts } from "./lib/posts";
 
 export const metadata = {
@@ -11,8 +10,6 @@ export default async function Page() {
 
   return (
     <div className="container">
-      <HomeSlider />
-
       <div className="my-12">
         {posts?.length > 0 ? (
           <>

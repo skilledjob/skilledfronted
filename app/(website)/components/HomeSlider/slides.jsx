@@ -3,7 +3,6 @@ import { SwiperSlide } from "swiper/react";
 import plumber from "@/public/assets/plumber.jpg";
 
 const Slides = () => {
-  console.log("bye");
   return (
     <SwiperSlide>
         <div className="w-full h-[427.5px]">
