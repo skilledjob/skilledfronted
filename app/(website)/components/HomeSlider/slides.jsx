@@ -4,7 +4,8 @@ import plumber from "@/public/assets/plumber.jpg";
 
 const Slides = () => {
   return (
-    <SwiperSlide>
+    <>
+      <SwiperSlide>
         <div className="w-full h-[427.5px]">
           <Image
             className="h-full object-cover"
@@ -14,6 +15,7 @@ const Slides = () => {
           />
         </div>
       </SwiperSlide>
+    </>
   );
 };
 
