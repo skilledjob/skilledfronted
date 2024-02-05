@@ -1,0 +1,25 @@
+.swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(40%);
+}
+
+.swiper-pagination-bullet {
+  @apply w-4 h-4;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #FF3988;
+  height: 20px;
+  width: 20px;
+}
+
+@media (max-width: 768px) {
+  .swiper-pagination {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(0%);
+  }
+}

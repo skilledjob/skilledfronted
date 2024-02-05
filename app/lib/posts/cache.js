@@ -5,8 +5,14 @@ export const postsCache = {
     all() {
       return `posts:all`;
     },
+    byId(id) {
+      return `posts:${id}`;
+    },
   },
-  revalidate() {
+  revalidateAll() {
     revalidateTag(this.tag.all());
+  },
+  revalidateById(id) {
+    revalidateTag(this.tag.byId(id));
   },
 };
