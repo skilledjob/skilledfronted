@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.custom-input {
+  @apply border border-black/30 rounded-md px-2 py-1 outline-none text-base w-full placeholder:text-black/50
+}

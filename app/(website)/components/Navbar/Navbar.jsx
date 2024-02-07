@@ -66,7 +66,7 @@ const Navbar = () => {
           </div>
           <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
             <button className="bg-[#FF3988] text-white py-2 px-4 rounded-2xl">
-              Create
+              Join
             </button>
             <CgProfile className="text-[#7B91AD] text-3xl" />
           </div>
