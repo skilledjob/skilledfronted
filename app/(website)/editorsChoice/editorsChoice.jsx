@@ -33,7 +33,7 @@ export default function EditorChoice() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Link href="/singleVideo" className="h-full text-white">
+          <Link href="/discription" className="h-full text-white">
             <Image
               className="w-full object-cover h-full rounded-lg"
               src={plumber}
