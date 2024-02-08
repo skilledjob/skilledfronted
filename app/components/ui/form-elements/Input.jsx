@@ -48,7 +48,7 @@ export const Input = ({
         onChange={onChange}
         placeholder={placeholder || ""}
         className={`
-        border border-lightGray py-3.5 px-5 rounded
+        border border-gray-800 py-3.5 px-5 rounded bg-gray-900
           ${
             width === "full"
               ? "w-full"

@@ -1,17 +1,18 @@
 "use client";
-import Image from "next/image";
-import { CiSearch } from "react-icons/ci";
-import { CgProfile } from "react-icons/cg";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { RxCross2 } from "react-icons/rx";
-import { useState } from "react";
 import logo from "@/public/assets/logo.jpeg";
-import Sidebar from "../Sidebar/Sidebar";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { CgProfile } from "react-icons/cg";
+import { CiSearch } from "react-icons/ci";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { RxCross2 } from "react-icons/rx";
+import Onboarding from "../Auth/Onboarding";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Navbar = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -38,7 +39,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="hover:text-[#FF3988] cursor-pointer">
-              <Link className={`link ${pathname === "/job" ? "text-[#FF3988]" : ""}`} href="/">Job Post</Link>
+              <Link
+                className={`link ${pathname === "/job" ? "text-[#FF3988]" : ""}`}
+                href="/"
+              >
+                Job Post
+              </Link>
             </li>
           </ul>
           {isOpen ? (
@@ -64,10 +70,9 @@ const Navbar = () => {
             />
             <CiSearch className="" />
           </div>
+
           <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
-            <button className="bg-[#FF3988] text-white py-2 px-4 rounded-2xl">
-              Create
-            </button>
+            <Onboarding />
             <CgProfile className="text-[#7B91AD] text-3xl" />
           </div>
         </div>
