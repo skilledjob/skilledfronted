@@ -4,20 +4,21 @@ import { endpoints } from "@/app/common";
 import { cookies } from "next/headers";
 import api from "../api";
 
-export const isAuthenticated = () => {
-  const cookieStore = cookies();
-  const token = cookieStore.get("token")?.value;
-  if (!token) {
-    return false;
-  }
+export const logout = () => {
+  cookies().delete("token");
   return true;
 };
 
 export const login = async data => {
   const response = await api.mutation(endpoints.auth.login, data, "POST");
   if (response?.success) {
-    console.log("Data --> ", response?.data?.token);
+    cookies().set("id", response?.data?.id, { secure: true });
     cookies().set("token", response?.data?.token, { secure: true });
   }
+  return response;
+};
+
+export const register = async data => {
+  const response = await api.mutation(endpoints.auth.register, data, "POST");
   return response;
 };

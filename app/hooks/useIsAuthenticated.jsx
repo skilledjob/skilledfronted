@@ -1,12 +1,24 @@
-"use server";
+"use client";
 
-import { cookies } from "next/headers";
+import cookies from "../utils/cookies";
 
-export const useIsAuthenticated = async () => {
-  const cookieStore = cookies();
-  const token = cookieStore.get("token");
-  if (!token) {
-    return false;
+export const useIsAuthenticated = () => {
+  if (typeof window !== "undefined") {
+    const token = cookies.get("token");
+    if (token) {
+      return true;
+    }
+    // const allCookies = document.cookie;
+    // const cookiesArray = allCookies.split("; ");
+    // for (let i = 0; i < cookiesArray.length; i++) {
+    //   const cookie = cookiesArray[i];
+    //   const [cookieName, cookieValue] = cookie.split("=");
+    //   if (cookieName.trim() === "token") {
+    //     if (cookieValue) {
+    //       return true;
+    //     }
+    //   }
+    // }
   }
-  return true;
+  return false;
 };

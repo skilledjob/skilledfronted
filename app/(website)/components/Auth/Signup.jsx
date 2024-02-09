@@ -2,13 +2,21 @@
 
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
+import { register } from "@/app/lib/auth";
+import toast from "cogo-toast";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-export default function Signup({ role }) {
+export default function Signup({ role, toggoleModal }) {
+  // LocalState
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const {
     control,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm({
     defaultValues: {
       firstName: "",
@@ -23,12 +31,47 @@ export default function Signup({ role }) {
    * HANDLERS
    */
   // handle login
-  const loginHandler = data => {};
+  const signupHandler = async data => {
+    setLoading(true);
+
+    let payload;
+    if (role === "Hirer") {
+      payload = {
+        firstName: data?.firstName,
+        lastName: data?.lastName,
+        email: data?.email,
+        password: data?.password,
+        role: "hirer",
+      };
+    } else if (role === "Job Seeker") {
+      payload = {
+        firstName: data?.firstName,
+        lastName: data?.lastName,
+        phoneNumber: data?.phoneNumber,
+        password: data?.password,
+        role: "user",
+      };
+    }
+
+    const response = await register(payload);
+    console.log("Response --> ", response);
+    if (response?.success) {
+      setLoading(false);
+      setError("");
+      toast.success(response?.message);
+      toggoleModal();
+      reset();
+    } else {
+      setLoading(false);
+      setError(response?.error);
+    }
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(loginHandler)} className="space-y-4 p-8">
+      <form onSubmit={handleSubmit(signupHandler)} className="space-y-4 p-8">
         <h2 className="text-slate-200 text-xl">Signup</h2>
+        {error && <FormElements.Error>{error}</FormElements.Error>}
 
         <div>
           <FormElements.Label withAsterisk>First name</FormElements.Label>
@@ -155,7 +198,13 @@ export default function Signup({ role }) {
         </div>
 
         <div>
-          <Button variant="primary" size="md" type="submit">
+          <Button
+            variant="primary"
+            size="md"
+            type="submit"
+            loading={loading}
+            disabled={loading}
+          >
             signup
           </Button>
         </div>

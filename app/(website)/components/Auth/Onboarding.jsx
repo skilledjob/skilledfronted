@@ -41,6 +41,8 @@ export default function Onboarding() {
   };
 
   const toggoleModal = () => {
+    setSelectedRoleChoice(null);
+    setCurrentStep(1);
     setIsOpen(!isOpen);
   };
   return (
@@ -81,7 +83,9 @@ export default function Onboarding() {
             toggoleModal={toggoleModal}
           />
         )}
-        {currentStep === 3 && <Signup role={selectedRoleChoice} />}
+        {currentStep === 3 && (
+          <Signup role={selectedRoleChoice} toggoleModal={toggoleModal} />
+        )}
         {currentStep === 4 && <ForgotPassword role={selectedRoleChoice} />}
       </Modal>
     </div>

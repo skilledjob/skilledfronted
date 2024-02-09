@@ -3,11 +3,13 @@
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
 import { login } from "@/app/lib/auth";
+import toast from "cogo-toast";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 export default function Login({ role, goForgotPassword, toggoleModal }) {
   // Local State
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const {
@@ -27,18 +29,33 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
    */
   // handle login
   const loginHandler = async data => {
+    setLoading(true);
     setError("");
 
-    const response = await login({
-      email: data?.email,
-      password: data?.password,
-    }); // TODO: Payload should be sent based on role.
+    let payload;
+    if (role === "Hirer") {
+      payload = {
+        email: data?.email,
+        password: data?.password,
+        role: "hirer",
+      };
+    } else if (role === "Job Seeker") {
+      payload = {
+        phoneNumber: data?.phoneNumber,
+        password: data?.password,
+        role: "user",
+      };
+    }
+
+    const response = await login(payload);
 
     if (!response?.success) {
+      setLoading(false);
       setError(response?.error);
     }
     if (response?.success) {
-      console.log("Login success"); // TODO: It should be a toast message.
+      setLoading(false);
+      toast.success("Login successful", { position: "top-right" });
       toggoleModal();
     }
   };
@@ -93,7 +110,7 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
               rules={{
                 required: "Please enter your phone number",
                 pattern: {
-                  value: /^(\+\d{1,3}[- ]?)?\d{10}$/,
+                  value: /^(\+\d{1,3}[- ]?)?\d{11}$/,
                   message: "Please enter a valid phone number",
                 },
               }}
@@ -143,7 +160,13 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
         </div>
 
         <div>
-          <Button variant="primary" size="md" type="submit">
+          <Button
+            variant="primary"
+            size="md"
+            type="submit"
+            loading={loading}
+            disabled={loading}
+          >
             Login
           </Button>
         </div>

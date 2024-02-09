@@ -1,6 +1,9 @@
 "use client";
+import { Button } from "@/app/components/ui/button";
 import { useIsAuthenticated } from "@/app/hooks/useIsAuthenticated";
+import { logout } from "@/app/lib/auth";
 import logo from "@/public/assets/logo.jpeg";
+import toast from "cogo-toast";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,11 +20,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const isAuthenticated = useIsAuthenticated();
-  console.log("isAuthenticated --> ", isAuthenticated);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+
+  const logoutHandler = async () => {
+    const isLoggedOut = await logout();
+    if (isLoggedOut) {
+      toast.success("Logout successful");
+    }
+  };
+
   return (
     <div className="">
       <nav className="w-full fixed top-0 right-0 z-10 min-h-20 flex justify-between bg-black items-center lg:px-10 md:px-4">
@@ -77,6 +87,11 @@ const Navbar = () => {
 
           <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
             {!isAuthenticated && <Onboarding />}
+            {isAuthenticated && (
+              <Button variant="primary" onClick={logoutHandler}>
+                Logout
+              </Button>
+            )}
             <CgProfile className="text-[#7B91AD] text-3xl" />
           </div>
         </div>
