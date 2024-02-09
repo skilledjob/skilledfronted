@@ -1,13 +1,19 @@
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <div className="px-3 mt-6">
-      <h2 className="text-xl font-semibold text-white">Contact Us</h2>
-      <div className="grid grid-cols-3 max-w-72 mt-6">
-        <FaWhatsapp className="text-white text-4xl mx-auto" />
-        <FaWhatsapp className="text-white text-4xl mx-auto" />
-        <FaWhatsapp className="text-white text-4xl mx-auto" />
+    <div className="px-3 my-12">
+      <h2 className="categoryTitle">Contact Us</h2>
+      <div className="flex justify-center items-center mt-6 gap-14">
+        <div className="w-24 h-24 bg-gray-300 flex items-center justify-center rounded-full">
+          <FaWhatsapp className="text-4xl mx-auto" />
+        </div>
+        <div className="w-24 h-24 bg-gray-300 flex items-center justify-center rounded-full">
+          <FaFacebookF className="text-4xl mx-auto" />
+        </div>
+        <div className="w-24 h-24 bg-gray-300 flex items-center justify-center rounded-full">
+          <FaLinkedinIn className="text-4xl mx-auto" />
+        </div>
       </div>
     </div>
   );
