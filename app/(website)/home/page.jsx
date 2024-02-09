@@ -7,9 +7,9 @@ const Page = () => {
   return (
     <div>
       <HomeSlider />
-      <Contact/>
+      <Contact />
       <Categories />
-      <EditorChoice/>
+      <EditorChoice />
     </div>
   );
 };

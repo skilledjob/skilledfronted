@@ -78,6 +78,7 @@ export default function Onboarding() {
           <Login
             role={selectedRoleChoice}
             goForgotPassword={goForgotPassword}
+            toggoleModal={toggoleModal}
           />
         )}
         {currentStep === 3 && <Signup role={selectedRoleChoice} />}

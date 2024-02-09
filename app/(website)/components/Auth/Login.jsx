@@ -2,9 +2,14 @@
 
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
+import { login } from "@/app/lib/auth";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-export default function Login({ role, goForgotPassword }) {
+export default function Login({ role, goForgotPassword, toggoleModal }) {
+  // Local State
+  const [error, setError] = useState("");
+
   const {
     control,
     formState: { errors },
@@ -21,12 +26,30 @@ export default function Login({ role, goForgotPassword }) {
    * HANDLERS
    */
   // handle login
-  const loginHandler = data => {};
+  const loginHandler = async data => {
+    setError("");
+
+    const response = await login({
+      email: data?.email,
+      password: data?.password,
+    }); // TODO: Payload should be sent based on role.
+
+    if (!response?.success) {
+      setError(response?.error);
+    }
+    if (response?.success) {
+      console.log("Login success"); // TODO: It should be a toast message.
+      toggoleModal();
+    }
+  };
 
   return (
     <div>
       <form onSubmit={handleSubmit(loginHandler)} className="space-y-4 p-8">
         <h2 className="text-slate-200 text-xl">Welcome back!</h2>
+
+        {error && <FormElements.Error>{error}</FormElements.Error>}
+
         {role === "Hirer" && (
           <div>
             <FormElements.Label withAsterisk>Email address</FormElements.Label>

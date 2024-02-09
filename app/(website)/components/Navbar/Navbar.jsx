@@ -1,4 +1,5 @@
 "use client";
+import { useIsAuthenticated } from "@/app/hooks/useIsAuthenticated";
 import logo from "@/public/assets/logo.jpeg";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +15,9 @@ import Sidebar from "../Sidebar/Sidebar";
 const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+
+  const isAuthenticated = useIsAuthenticated();
+  console.log("isAuthenticated --> ", isAuthenticated);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -72,7 +76,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
-            <Onboarding />
+            {!isAuthenticated && <Onboarding />}
             <CgProfile className="text-[#7B91AD] text-3xl" />
           </div>
         </div>

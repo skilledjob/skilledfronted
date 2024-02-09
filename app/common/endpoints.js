@@ -2,7 +2,7 @@ const makeApiUrl = path => `${process.env.API_URL}/${path}`;
 
 export const endpoints = {
   auth: {
-    login: makeApiUrl("auth/login"),
+    login: "http://localhost:8000/api/v1/auth/login",
     register: makeApiUrl("auth/register"),
     forgotPassword: makeApiUrl("auth/forgot-password"),
     resetPassword: makeApiUrl("auth/reset-password"),
