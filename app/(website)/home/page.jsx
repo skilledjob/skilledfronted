@@ -1,15 +1,22 @@
-import Categories from "../categories/categories";
-import HomeSlider from "../components/HomeSlider/homeSlider";
-import Contact from "../contact/contact";
-import EditorChoice from "../editorsChoice/editorsChoice";
+import Categories from "./components/categories";
+import HomeSlider from "./components/HomeSlider/homeSlider";
+import Contact from "./components/contact";
+import EditorChoice from "./components/editorsChoice";
 
+{
+  /* This is The Home Page */
+}
 const Page = () => {
   return (
     <div>
+      {/* This is Home Page slider Component */}
       <HomeSlider />
-      <Contact/>
+      {/* This is Home Page Contact Component */}
+      <Contact />
+      {/* This is Home Page Category Component */}
       <Categories />
-      <EditorChoice/>
+      {/* This is Home Page Video Component */}
+      <EditorChoice />
     </div>
   );
 };
