@@ -1,5 +1,5 @@
-import Categories from "./components/categories";
 import HomeSlider from "./components/HomeSlider/homeSlider";
+import Categories from "./components/categories";
 import Contact from "./components/contact";
 import EditorChoice from "./components/editorsChoice";
 

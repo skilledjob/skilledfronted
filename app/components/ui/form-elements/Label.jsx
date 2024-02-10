@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * @name Label
  * @description This component represents a label for a form field.
@@ -14,12 +16,16 @@
  * ```
  */
 
-export const Label = ({ withAsterisk = false, children }) => {
+export const Label = ({ children, withAsterisk = false }) => {
   return (
-    <label className={`block mb-1 text-[14px] text-primary font-light`}>
+    <label
+      className={`block mb-1 text-[14px] font-light text-slate-200
+    `}
+    >
       {children}
       {withAsterisk && (
-        <span className="text-dangerColor" title="Required">
+        <span className="text-red-600" title="Required">
+          {" "}
           *
         </span>
       )}

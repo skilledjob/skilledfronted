@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Select from "react-select";
 
 export default function SelectOption() {
@@ -15,6 +15,11 @@ export default function SelectOption() {
     { value: 10, label: "Ten" },
   ];
   return (
-    <Select options={options} isSearchable className="text-black" placeholder="Indestry" />
+    <Select
+      options={options}
+      isSearchable
+      className="text-black"
+      placeholder="Indestry"
+    />
   );
 }

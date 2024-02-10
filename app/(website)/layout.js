@@ -2,9 +2,9 @@ import Navbar from "./components/Navbar/Navbar";
 
 const layout = ({ children }) => {
   return (
-    <div className="bg-black">
+    <div className="">
       <Navbar />
-      {children}
+      <div className="mt-[80px]">{children}</div>
     </div>
   );
 };
