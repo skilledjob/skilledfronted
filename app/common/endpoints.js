@@ -5,8 +5,11 @@ export const endpoints = {
     login: makeApiUrl("auth/login"),
     register: makeApiUrl("auth/register"),
     forgotPassword: makeApiUrl("auth/forgot-password"),
-    resetPassword: makeApiUrl("auth/reset-password"),
     verifyEmail: makeApiUrl("auth/verify-email"),
+    resetPassword(token) {
+      return makeApiUrl(`auth/reset-password?token=${token}`);
+    },
+    // resetPassword: makeApiUrl("auth/reset-password"),
   },
   user: {
     userById(id) {

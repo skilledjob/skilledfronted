@@ -11,3 +11,10 @@ export const METHOD = {
   DELETE: "DELETE",
   PATCH: "PATCH",
 };
+
+export const TOKENTYPES = {
+  ACCESS: "access",
+  REFRESH: "refresh",
+  RESET_PASSWORD: "resetPassword",
+  VERIFY_EMAIL: "verifyEmail",
+};

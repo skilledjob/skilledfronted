@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <nav className="w-full fixed top-0 right-0 z-10 min-h-20 flex justify-between bg-black items-center lg:px-10 md:px-4">
+      <nav className="w-full fixed top-0 right-0 z-10 min-h-20 flex justify-between bg-black items-center border-b border-slate-800 lg:px-10 md:px-4">
         <div className="md:w-1/2 flex items-center">
           <Image
             height="100"

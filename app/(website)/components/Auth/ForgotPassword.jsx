@@ -2,9 +2,15 @@
 
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
+import { forgotPassword } from "@/app/lib/auth";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 export default function ForgotPassword({ role, goEmailVerificationRequested }) {
+  // Local State
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const {
     control,
     formState: { errors },
@@ -20,9 +26,32 @@ export default function ForgotPassword({ role, goEmailVerificationRequested }) {
    * HANDLERS
    */
   // handle login
-  const forgotPasswordHandler = data => {
-    console.log(data);
-    goEmailVerificationRequested();
+  const forgotPasswordHandler = async data => {
+    setLoading(true);
+    setError(null);
+
+    let payload;
+    if (role === "Hirer") {
+      payload = {
+        email: data.email,
+        role: "hirer",
+      };
+    } else {
+      payload = {
+        phoneNumber: data.phoneNumber,
+        role: "user",
+      };
+    }
+
+    const response = await forgotPassword(payload);
+    if (response?.success) {
+      setLoading(false);
+      goEmailVerificationRequested();
+    }
+    if (!response?.success) {
+      setLoading(false);
+      setError(response?.error);
+    }
   };
 
   return (
@@ -36,6 +65,9 @@ export default function ForgotPassword({ role, goEmailVerificationRequested }) {
           Lost your password? Please enter your username or email address. You
           will receive a link to create a new password via email.
         </p>
+
+        {error && <FormElements.Error>{error}</FormElements.Error>}
+
         {role === "Hirer" && (
           <div>
             <FormElements.Label withAsterisk>Email address</FormElements.Label>
@@ -91,7 +123,13 @@ export default function ForgotPassword({ role, goEmailVerificationRequested }) {
         )}
 
         <div>
-          <Button variant="primary" size="md" type="submit">
+          <Button
+            variant="primary"
+            size="md"
+            type="submit"
+            loading={loading}
+            disabled={loading}
+          >
             Reset password
           </Button>
         </div>

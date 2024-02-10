@@ -31,3 +31,12 @@ export const forgotPassword = async data => {
   );
   return response;
 };
+
+export const resetPassword = async (payload, token) => {
+  const response = await api.mutation(
+    endpoints.auth.resetPassword(token),
+    payload,
+    "POST"
+  );
+  return response;
+};
