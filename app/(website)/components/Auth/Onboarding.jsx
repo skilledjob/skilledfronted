@@ -5,6 +5,7 @@ import Modal from "@/app/components/ui/modal";
 import { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
+import EmailVerificationRequested from "./EmailVerificationRequested";
 import ForgotPassword from "./ForgotPassword";
 import Login from "./Login";
 import Role from "./Role";
@@ -29,6 +30,11 @@ export default function Onboarding() {
   // forgot password
   const goForgotPassword = () => {
     setCurrentStep(4);
+  };
+
+  // go email verification requested
+  const goEmailVerificationRequested = () => {
+    setCurrentStep(5);
   };
 
   // go previous
@@ -86,7 +92,15 @@ export default function Onboarding() {
         {currentStep === 3 && (
           <Signup role={selectedRoleChoice} toggoleModal={toggoleModal} />
         )}
-        {currentStep === 4 && <ForgotPassword role={selectedRoleChoice} />}
+        {currentStep === 4 && (
+          <ForgotPassword
+            role={selectedRoleChoice}
+            goEmailVerificationRequested={goEmailVerificationRequested}
+          />
+        )}
+        {currentStep === 5 && (
+          <EmailVerificationRequested goForgotPassword={goForgotPassword} />
+        )}
       </Modal>
     </div>
   );

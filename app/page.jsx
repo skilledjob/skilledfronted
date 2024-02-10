@@ -3,6 +3,7 @@ import { Avatar } from "./components/ui/avatar";
 import { DropdownElement } from "./components/ui/dropdown";
 import FormElements from "./components/ui/form-elements";
 import { getPosts } from "./lib/posts";
+import { getCurrentUser } from "./lib/user";
 
 export const metadata = {
   title: "Skilled Up",
@@ -11,6 +12,8 @@ export const metadata = {
 
 export default async function Page() {
   const posts = await getPosts(); // TODO: This is a dummy endpoint. Replace with your own. It is just for demonstration purposes.
+  const user = await getCurrentUser();
+  console.log("User -->", user);
 
   return (
     <div className="container">

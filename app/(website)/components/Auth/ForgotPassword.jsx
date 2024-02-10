@@ -4,7 +4,7 @@ import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
 import { Controller, useForm } from "react-hook-form";
 
-export default function ForgotPassword({ role }) {
+export default function ForgotPassword({ role, goEmailVerificationRequested }) {
   const {
     control,
     formState: { errors },
@@ -20,7 +20,10 @@ export default function ForgotPassword({ role }) {
    * HANDLERS
    */
   // handle login
-  const forgotPasswordHandler = data => {};
+  const forgotPasswordHandler = data => {
+    console.log(data);
+    goEmailVerificationRequested();
+  };
 
   return (
     <div>

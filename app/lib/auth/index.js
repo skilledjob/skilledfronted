@@ -12,7 +12,7 @@ export const logout = () => {
 export const login = async data => {
   const response = await api.mutation(endpoints.auth.login, data, "POST");
   if (response?.success) {
-    cookies().set("id", response?.data?.id, { secure: true });
+    cookies().set("id", response?.data?.user?.id, { secure: true });
     cookies().set("token", response?.data?.token, { secure: true });
   }
   return response;
@@ -20,5 +20,14 @@ export const login = async data => {
 
 export const register = async data => {
   const response = await api.mutation(endpoints.auth.register, data, "POST");
+  return response;
+};
+
+export const forgotPassword = async data => {
+  const response = await api.mutation(
+    endpoints.auth.forgotPassword,
+    data,
+    "POST"
+  );
   return response;
 };
