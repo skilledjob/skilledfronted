@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       container: {
         center: true,
+        screens: {
+          desktop: "1270px",
+        },
       },
     },
   },
