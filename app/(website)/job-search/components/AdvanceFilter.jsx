@@ -1,37 +1,39 @@
+import { SelectInput } from "@/app/components/ui/form-elements/Select";
 import SubHeader from "../../components/Subheader/Subheader";
 import SalaryRange from "./SalaryRange";
 import SelectOption from "./SelectOption";
+import FormElements from "@/app/components/ui/form-elements";
 
 export default function AdvanceFilter() {
   const industrialType = [
     {
       _id: 1,
-      name: "All",
+      label: "All",
       availableJob: 180,
     },
     {
       _id: 2,
-      name: "Software",
+      label: "Software",
       availableJob: 18,
     },
     {
       _id: 3,
-      name: "Finance",
+      label: "Finance",
       availableJob: 10,
     },
     {
       _id: 4,
-      name: "Recruting",
+      label: "Recruting",
       availableJob: 80,
     },
     {
       _id: 5,
-      name: "Management",
+      label: "Management",
       availableJob: 50,
     },
     {
       _id: 6,
-      name: "Advertising",
+      label: "Advertising",
       availableJob: 15,
     },
   ];
@@ -43,7 +45,14 @@ export default function AdvanceFilter() {
         <div className="text-white/70 cursor-pointer -mb-3">Reset</div>
       </div>
       <div>
-        <SelectOption />
+        {/* <SelectOption /> */}
+        <div>
+          {/* <SelectInput options={industrialType} /> */}
+          <FormElements.Select
+            defaultValue={industrialType[0]}
+            options={industrialType}
+          />
+        </div>
         <div>
           {/* <h3 className="text-3xl font-semibold">Industry</h3> */}
           <SubHeader>Industry</SubHeader>
@@ -51,17 +60,17 @@ export default function AdvanceFilter() {
             {industrialType.map(job => (
               <label
                 key={job._id}
-                htmlFor={job.name}
+                htmlFor={job.label}
                 className="flex items-center gap-3"
               >
                 <input
                   type="checkbox"
-                  id={job.name}
-                  name={job.name}
+                  id={job.label}
+                  name={job.label}
                   className="w-6 h-6"
                 />
                 <div className="flex items-center justify-between w-full">
-                  <span>{job.name}</span>
+                  <span>{job.label}</span>
                   <span>{job.availableJob}</span>
                 </div>
               </label>

@@ -1,5 +1,4 @@
 import FormElements from "@/app/components/ui/form-elements";
-import SelectOption from "./components/SelectOption";
 import AdvanceFilter from "./components/AdvanceFilter";
 import SearchResult from "./components/SearchResult";
 
@@ -41,9 +40,6 @@ export default function JobSearch() {
             <option value="Advertising">Advertising</option>
             <option value="Development">Development</option>
           </select>
-
-          {/* <SelectOption />
-          <SelectOption /> */}
           <input
             type="text"
             className="border-none bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"

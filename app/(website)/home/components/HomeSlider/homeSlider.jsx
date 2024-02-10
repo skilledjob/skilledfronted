@@ -13,7 +13,6 @@ import img2 from "@/public/assets/img2.jpg";
 // This is Home Page Slider Component. Here we use SwiperJs to make slider component
 
 const HomeSlider = () => {
-  // Swiper Slider component need fix
   return (
     <Swiper
       pagination={{

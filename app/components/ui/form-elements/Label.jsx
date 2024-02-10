@@ -20,7 +20,6 @@ export const Label = ({ withAsterisk = false, children }) => {
       {children}
       {withAsterisk && (
         <span className="text-dangerColor" title="Required">
-          {" "}
           *
         </span>
       )}
