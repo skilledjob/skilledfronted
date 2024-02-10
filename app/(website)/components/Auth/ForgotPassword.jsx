@@ -6,7 +6,11 @@ import { forgotPassword } from "@/app/lib/auth";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-export default function ForgotPassword({ role, goEmailVerificationRequested }) {
+export default function ForgotPassword({
+  role,
+  goEmailVerificationRequested,
+  goOtpVerificationResetPassword,
+}) {
   // Local State
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -29,6 +33,10 @@ export default function ForgotPassword({ role, goEmailVerificationRequested }) {
   const forgotPasswordHandler = async data => {
     setLoading(true);
     setError(null);
+
+    if (role === "Job Seeker") {
+      goOtpVerificationResetPassword();
+    }
 
     let payload;
     if (role === "Hirer") {
@@ -111,7 +119,7 @@ export default function ForgotPassword({ role, goEmailVerificationRequested }) {
               rules={{
                 required: "Please enter your phone number",
                 pattern: {
-                  value: /^(\+\d{1,3}[- ]?)?\d{10}$/,
+                  value: /^(\+\d{1,3}[- ]?)?\d{11}$/,
                   message: "Please enter a valid phone number",
                 },
               }}

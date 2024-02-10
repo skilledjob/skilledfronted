@@ -38,7 +38,6 @@ export default function ResetPasswordForm({ token }) {
       password: data.password,
     };
     const response = await resetPassword(payload, token);
-    console.log(response);
     if (response?.success) {
       setLoading(false);
       setError(null);

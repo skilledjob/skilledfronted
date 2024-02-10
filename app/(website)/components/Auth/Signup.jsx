@@ -7,7 +7,7 @@ import toast from "cogo-toast";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-export default function Signup({ role, toggoleModal }) {
+export default function Signup({ role, toggoleModal, goOtpVerification }) {
   // LocalState
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,6 +33,10 @@ export default function Signup({ role, toggoleModal }) {
   // handle login
   const signupHandler = async data => {
     setLoading(true);
+
+    if (role === "Job Seeker") {
+      goOtpVerification();
+    }
 
     let payload;
     if (role === "Hirer") {
@@ -156,7 +160,7 @@ export default function Signup({ role, toggoleModal }) {
               rules={{
                 required: "Please enter your phone number",
                 pattern: {
-                  value: /^(\+\d{1,3}[- ]?)?\d{10}$/,
+                  value: /^(\+\d{1,3}[- ]?)?\d{11}$/,
                   message: "Please enter a valid phone number",
                 },
               }}

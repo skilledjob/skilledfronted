@@ -9,7 +9,6 @@ export const endpoints = {
     resetPassword(token) {
       return makeApiUrl(`auth/reset-password?token=${token}`);
     },
-    // resetPassword: makeApiUrl("auth/reset-password"),
   },
   user: {
     userById(id) {

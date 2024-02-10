@@ -8,6 +8,8 @@ import { IoMdClose } from "react-icons/io";
 import EmailVerificationRequested from "./EmailVerificationRequested";
 import ForgotPassword from "./ForgotPassword";
 import Login from "./Login";
+import OtpVerfication from "./OtpVerification";
+import OtpVerificationResetPassword from "./OtpVerificationResetPassword";
 import Role from "./Role";
 import Signup from "./Signup";
 
@@ -35,6 +37,16 @@ export default function Onboarding() {
   // go email verification requested
   const goEmailVerificationRequested = () => {
     setCurrentStep(5);
+  };
+
+  // go otp verification
+  const goOtpVerification = () => {
+    setCurrentStep(6);
+  };
+
+  // go top verification for reset password
+  const goOtpVerificationResetPassword = () => {
+    setCurrentStep(7);
   };
 
   // go previous
@@ -90,17 +102,25 @@ export default function Onboarding() {
           />
         )}
         {currentStep === 3 && (
-          <Signup role={selectedRoleChoice} toggoleModal={toggoleModal} />
+          <Signup
+            role={selectedRoleChoice}
+            toggoleModal={toggoleModal}
+            goOtpVerification={goOtpVerification}
+          />
         )}
         {currentStep === 4 && (
           <ForgotPassword
             role={selectedRoleChoice}
             goEmailVerificationRequested={goEmailVerificationRequested}
+            goOtpVerificationResetPassword={goOtpVerificationResetPassword}
           />
         )}
         {currentStep === 5 && (
           <EmailVerificationRequested goForgotPassword={goForgotPassword} />
         )}
+
+        {currentStep === 6 && <OtpVerfication />}
+        {currentStep === 7 && <OtpVerificationResetPassword />}
       </Modal>
     </div>
   );

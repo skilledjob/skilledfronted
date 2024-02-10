@@ -12,8 +12,8 @@ import { CgProfile } from "react-icons/cg";
 import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
-import Onboarding from "../Auth/Onboarding";
 import Sidebar from "../Sidebar/Sidebar";
+import Onboarding from "../auth/Onboarding";
 
 const Navbar = () => {
   const pathname = usePathname();
