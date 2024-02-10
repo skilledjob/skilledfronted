@@ -7,7 +7,11 @@ import toast from "cogo-toast";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-export default function Signup({ role, toggoleModal, goOtpVerification }) {
+export default function Signup({
+  role,
+  goOtpVerification,
+  goEmailVerificationRequested,
+}) {
   // LocalState
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -63,8 +67,8 @@ export default function Signup({ role, toggoleModal, goOtpVerification }) {
       setLoading(false);
       setError("");
       toast.success(response?.message);
-      toggoleModal();
       reset();
+      goEmailVerificationRequested();
     } else {
       setLoading(false);
       setError(response?.error);

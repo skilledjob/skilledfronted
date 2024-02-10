@@ -40,3 +40,12 @@ export const resetPassword = async (payload, token) => {
   );
   return response;
 };
+
+export const verifyAccount = async token => {
+  const response = await api.mutation(
+    endpoints.auth.verfiyAccount(token),
+    {},
+    "POST"
+  );
+  return response;
+};

@@ -8,7 +8,7 @@ import { Controller, useForm } from "react-hook-form";
 
 export default function ForgotPassword({
   role,
-  goEmailVerificationRequested,
+  goForgotPasswordRequested,
   goOtpVerificationResetPassword,
 }) {
   // Local State
@@ -54,7 +54,7 @@ export default function ForgotPassword({
     const response = await forgotPassword(payload);
     if (response?.success) {
       setLoading(false);
-      goEmailVerificationRequested();
+      goForgotPasswordRequested();
     }
     if (!response?.success) {
       setLoading(false);

@@ -7,6 +7,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import EmailVerificationRequested from "./EmailVerificationRequested";
 import ForgotPassword from "./ForgotPassword";
+import ForgotPasswordRequested from "./ForgotPasswordRequested";
 import Login from "./Login";
 import OtpVerfication from "./OtpVerification";
 import OtpVerificationResetPassword from "./OtpVerificationResetPassword";
@@ -35,7 +36,7 @@ export default function Onboarding() {
   };
 
   // go email verification requested
-  const goEmailVerificationRequested = () => {
+  const goForgotPasswordRequested = () => {
     setCurrentStep(5);
   };
 
@@ -47,6 +48,11 @@ export default function Onboarding() {
   // go top verification for reset password
   const goOtpVerificationResetPassword = () => {
     setCurrentStep(7);
+  };
+
+  // go email verification requested
+  const goEmailVerificationRequested = () => {
+    setCurrentStep(8);
   };
 
   // go previous
@@ -106,21 +112,23 @@ export default function Onboarding() {
             role={selectedRoleChoice}
             toggoleModal={toggoleModal}
             goOtpVerification={goOtpVerification}
+            goEmailVerificationRequested={goEmailVerificationRequested}
           />
         )}
         {currentStep === 4 && (
           <ForgotPassword
             role={selectedRoleChoice}
-            goEmailVerificationRequested={goEmailVerificationRequested}
+            goForgotPasswordRequested={goForgotPasswordRequested}
             goOtpVerificationResetPassword={goOtpVerificationResetPassword}
           />
         )}
         {currentStep === 5 && (
-          <EmailVerificationRequested goForgotPassword={goForgotPassword} />
+          <ForgotPasswordRequested goForgotPassword={goForgotPassword} />
         )}
 
         {currentStep === 6 && <OtpVerfication />}
         {currentStep === 7 && <OtpVerificationResetPassword />}
+        {currentStep === 8 && <EmailVerificationRequested />}
       </Modal>
     </div>
   );
