@@ -4,11 +4,10 @@ export default function ForgotPasswordRequested({ goForgotPassword }) {
   return (
     <div>
       <h1 className="leading-2 mb-4 text-center text-lg font-semibold text-slate-200">
-        Please confirm your email address
+        Check your email
       </h1>
       <p className="text-center text-sm text-slate-300">
-        We sent an verfication email Please click the link in the email to
-        activate your account.
+        We&apos;ve sent you an email with a link to reset your password.
       </p>
       <hr className="my-4 border-slate-900" />
       <p className="text-center text-xs text-slate-400">
