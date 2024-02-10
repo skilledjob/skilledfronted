@@ -1,5 +1,5 @@
-// This is Dashboard Sidebar 
-import SidebarDashBoard from "../components/sidebar";
+// This is Dashboard Sidebar
+import SidebarDashBoard from "../components/Sidebar";
 
 export default function DashboardRootLayout({ children }) {
   return (

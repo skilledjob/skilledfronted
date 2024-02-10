@@ -4,7 +4,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css";
 import Image from "next/image";
-import "@/app/(website)/components/HomeSlider/homeSlider.css";
+import "@/app/(website)/home/components/HomeSlider/homeSlider.css";
 import Slides from "./slides";
 import plumber from "@/public/assets/plumber.jpg";
 import img1 from "@/public/assets/img1.jpg";
@@ -13,6 +13,7 @@ import img2 from "@/public/assets/img2.jpg";
 // This is Home Page Slider Component. Here we use SwiperJs to make slider component
 
 const HomeSlider = () => {
+  // Swiper Slider component need fix
   return (
     <Swiper
       pagination={{

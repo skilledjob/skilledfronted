@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 const layout = ({ children }) => {
   return (
     <div className="bg-black">
-      <Navbar/>
+      <Navbar />
       {children}
     </div>
   );

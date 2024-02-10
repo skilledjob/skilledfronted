@@ -1,7 +1,7 @@
-import Categories from "../categories/categories";
-import HomeSlider from "../components/HomeSlider/homeSlider";
-import Contact from "../contact/contact";
-import EditorChoice from "../editorsChoice/editorsChoice";
+import Categories from "./components/categories";
+import HomeSlider from "./components/HomeSlider/homeSlider";
+import Contact from "./components/contact";
+import EditorChoice from "./components/editorsChoice";
 
 {
   /* This is The Home Page */

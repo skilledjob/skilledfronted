@@ -57,7 +57,9 @@ export default function EditorChoice() {
                   alt=""
                 />
                 <div>
-                  <h2 className="font-semibold text-lg tracking-wider">Title</h2>
+                  <h2 className="font-semibold text-lg tracking-wider">
+                    Title
+                  </h2>
                   <p className="text-xs text-white/80 text-ellipsis">
                     {paragraph.length >= 80
                       ? paragraph.slice(0, 80) + "..."
@@ -81,7 +83,9 @@ export default function EditorChoice() {
                   alt=""
                 />
                 <div>
-                  <h2 className="font-semibold text-lg tracking-wider">Title</h2>
+                  <h2 className="font-semibold text-lg tracking-wider">
+                    Title
+                  </h2>
                   <p className="text-xs text-white/80 text-ellipsis">
                     {paragraph.length >= 80
                       ? paragraph.slice(0, 80) + "..."
@@ -105,7 +109,9 @@ export default function EditorChoice() {
                   alt=""
                 />
                 <div>
-                  <h2 className="font-semibold text-lg tracking-wider">Title</h2>
+                  <h2 className="font-semibold text-lg tracking-wider">
+                    Title
+                  </h2>
                   <p className="text-xs text-white/80 text-ellipsis">
                     {paragraph.length >= 80
                       ? paragraph.slice(0, 80) + "..."
@@ -129,7 +135,9 @@ export default function EditorChoice() {
                   alt=""
                 />
                 <div>
-                  <h2 className="font-semibold text-lg tracking-wider">Title</h2>
+                  <h2 className="font-semibold text-lg tracking-wider">
+                    Title
+                  </h2>
                   <p className="text-xs text-white/80 text-ellipsis">
                     {paragraph.length >= 80
                       ? paragraph.slice(0, 80) + "..."
@@ -153,7 +161,9 @@ export default function EditorChoice() {
                   alt=""
                 />
                 <div>
-                  <h2 className="font-semibold text-lg tracking-wider">Title</h2>
+                  <h2 className="font-semibold text-lg tracking-wider">
+                    Title
+                  </h2>
                   <p className="text-xs text-white/80 text-ellipsis">
                     {paragraph.length >= 80
                       ? paragraph.slice(0, 80) + "..."

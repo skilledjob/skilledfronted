@@ -8,7 +8,7 @@ import plumber from "@/public/assets/plumber.jpg";
 import img1 from "@/public/assets/img1.jpg";
 import img2 from "@/public/assets/img2.jpg";
 import { GoChevronRight, GoChevronLeft } from "react-icons/go";
-import CategoryItem from "../components/CategoryItems/CategoryItem";
+import CategoryItem from "../../components/CategoryItems/CategoryItem";
 
 const Categories = () => {
   return (
