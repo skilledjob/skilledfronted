@@ -44,7 +44,7 @@ export default function Modal({
           return "0.5rem";
       }
     })(),
-    backgroundColor: "rgb(3 7 18)",
+    backgroundColor: "#141414",
     boxShadow: "0 0 0 rgba(0,0,0,0.5)",
   };
 

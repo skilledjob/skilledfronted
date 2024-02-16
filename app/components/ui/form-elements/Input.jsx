@@ -40,15 +40,14 @@ export const Input = ({
   disabled = false,
 }) => {
   return (
-    <div>
-      <input
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder || ""}
-        className={`
-        border border-gray-800 py-3.5 px-5 rounded bg-gray-900 text-slate-50
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder || ""}
+      className={`
+        border border-gray-800 py-3.5 px-5 rounded bg-primary text-slate-50
           ${
             width === "full"
               ? "w-full"
@@ -64,8 +63,7 @@ export const Input = ({
           }
         focus:outline-none
         `}
-        disabled={disabled}
-      />
-    </div>
+      disabled={disabled}
+    />
   );
 };

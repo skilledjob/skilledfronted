@@ -7,6 +7,7 @@ import plumber from "@/public/assets/plumber.jpg";
 import "swiper/css";
 import "swiper/css/navigation";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import { Avatar } from "@/app/components/ui/avatar";
 
 export default function EditorChoice() {
   const paragraph = `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -51,11 +52,9 @@ export default function EditorChoice() {
                 alt=""
               />
               <div className="flex gap-3 items-center mt-4">
-                <Image
-                  className="w-16 h-16 object-cover rounded-full"
-                  src={plumber}
-                  alt=""
-                />
+                <div>
+                  <Avatar image={plumber} size="medium" />
+                </div>
                 <div>
                   <h2 className="font-semibold text-lg tracking-wider">
                     Title
@@ -77,11 +76,9 @@ export default function EditorChoice() {
                 alt=""
               />
               <div className="flex gap-3 items-center mt-4">
-                <Image
-                  className="w-16 h-16 object-cover rounded-full"
-                  src={plumber}
-                  alt=""
-                />
+                <div>
+                  <Avatar image={plumber} size="medium" />
+                </div>
                 <div>
                   <h2 className="font-semibold text-lg tracking-wider">
                     Title
@@ -103,11 +100,9 @@ export default function EditorChoice() {
                 alt=""
               />
               <div className="flex gap-3 items-center mt-4">
-                <Image
-                  className="w-16 h-16 object-cover rounded-full"
-                  src={plumber}
-                  alt=""
-                />
+                <div>
+                  <Avatar image={plumber} size="medium" />
+                </div>
                 <div>
                   <h2 className="font-semibold text-lg tracking-wider">
                     Title
@@ -129,11 +124,9 @@ export default function EditorChoice() {
                 alt=""
               />
               <div className="flex gap-3 items-center mt-4">
-                <Image
-                  className="w-16 h-16 object-cover rounded-full"
-                  src={plumber}
-                  alt=""
-                />
+                <div>
+                  <Avatar image={plumber} size="medium" />
+                </div>
                 <div>
                   <h2 className="font-semibold text-lg tracking-wider">
                     Title
@@ -155,11 +148,9 @@ export default function EditorChoice() {
                 alt=""
               />
               <div className="flex gap-3 items-center mt-4">
-                <Image
-                  className="w-16 h-16 object-cover rounded-full"
-                  src={plumber}
-                  alt=""
-                />
+                <div>
+                  <Avatar image={plumber} size="medium" />
+                </div>
                 <div>
                   <h2 className="font-semibold text-lg tracking-wider">
                     Title

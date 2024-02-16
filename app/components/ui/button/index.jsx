@@ -7,7 +7,7 @@ export const Button = ({
   children,
   loading,
   disabled,
-  variant = "primary",
+  variant = "btnColor",
   type = "button",
   size = "md",
   to = "/",
@@ -26,11 +26,11 @@ export const Button = ({
     cursor-pointer
     ${
       variant === "primary"
-        ? "bg-sky-500 text-white"
+        ? "bg-primary text-btnColor"
         : variant === "secondary"
-          ? "bg-slate-100 text-slate-900"
-          : variant === "danger"
-            ? "bg-red-500 text-white"
+          ? "bg-secondary text-btnColor"
+          : variant === "btnColor"
+            ? "bg-btnColor text-primary"
             : variant === "text"
               ? "text-sky-500"
               : "bg-sky-500 text-white"

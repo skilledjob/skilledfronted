@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#141414",
+        secondary: "#191919",
+        btnColor: "#ffd119",
+      },
       container: {
         center: true,
         screens: {
