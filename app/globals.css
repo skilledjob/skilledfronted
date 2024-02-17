@@ -18,3 +18,24 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 100%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3f0000;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

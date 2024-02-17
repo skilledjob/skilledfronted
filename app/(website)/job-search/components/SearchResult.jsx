@@ -152,19 +152,19 @@ export default function SearchResult() {
       </div>
       <div className="my-10">
         <ol className="flex items-center gap-3">
-          <li className="text-2xl bg-white/80 p-5 rounded-full w-16 h-16 text-black flex items-center justify-center hover:bg-white cursor-pointer">
+          <li className="text-2xl bg-btnColor/80 p-5 rounded-full w-16 h-16 text-black flex items-center justify-center hover:bg-btnColor cursor-pointer">
             <GoChevronLeft />
           </li>
-          <li className="text-2xl bg-white/70 p-5 rounded-full cursor-pointer text-black w-8 h-8 flex items-center justify-center">
+          <li className="text-2xl bg-btnColor/70 p-5 rounded-full cursor-pointer text-black w-8 h-8 flex items-center justify-center">
             1
           </li>
-          <li className="text-2xl hover:bg-white/70 cursor-pointer p-5 rounded-full hover:text-black transition duration-300 w-8 h-8 flex items-center justify-center">
+          <li className="text-2xl hover:bg-btnColor/70 cursor-pointer p-5 rounded-full hover:text-black transition duration-300 w-8 h-8 flex items-center justify-center">
             2
           </li>
-          <li className="flex items-center cursor-pointer justify-center text-2xl hover:bg-white/70 p-5 rounded-full transition duration-300 hover:text-black w-8 h-8">
+          <li className="flex items-center cursor-pointer justify-center text-2xl hover:bg-btnColor/70 p-5 rounded-full transition duration-300 hover:text-black w-8 h-8">
             3
           </li>
-          <li className="text-2xl bg-white/80 p-5 rounded-full text-black w-16 h-16 flex items-center justify-center hover:bg-white cursor-pointer">
+          <li className="text-2xl bg-btnColor/80 p-5 rounded-full text-black w-16 h-16 flex items-center justify-center hover:bg-btnColor cursor-pointer">
             <GoChevronRight />
           </li>
         </ol>

@@ -31,10 +31,14 @@ export const SelectInput = ({ defaultValue, options, onChange }) => {
       maxWidth: "500px",
       color: "white!!",
     }),
-    option: (provided, state) => ({
+    menu: provided => ({
       ...provided,
-      backgroundColor: state.isSelected ? "#4b5563" : "#2F3342",
-      color: state.isSelected ? "#fff" : "#fff",
+      backgroundColor: "#4b5563",
+    }),
+    option: (provided, isSelected) => ({
+      ...provided,
+      backgroundColor: isSelected ? "#4b5563" : "#2F3342",
+      color: isSelected ? "#fff" : "#fff",
     }),
   };
 

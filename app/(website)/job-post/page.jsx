@@ -2,7 +2,7 @@ import Card from "./components/Card";
 
 export default function JobPost() {
   return (
-    <div>
+    <div className="container">
       <div className="h-72 flex flex-col items-start justify-center ml-36">
         <h1 className="text-3xl font-semibold text-white leading-relaxed tracking-wider">
           Job Post

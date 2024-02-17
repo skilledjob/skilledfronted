@@ -1,10 +1,11 @@
 import FormElements from "@/app/components/ui/form-elements";
 import AdvanceFilter from "./components/AdvanceFilter";
 import SearchResult from "./components/SearchResult";
+import { Button } from "@/app/components/ui/button";
 
 export default function JobSearch() {
   return (
-    <div className="mt-20 text-white">
+    <div className="mt-20 text-white container">
       <div className="text-center flex flex-col items-center justify-center h-64">
         <h1 className="text-3xl font-semibold mb-4">Jobs Available Now</h1>
         <p className="text-white/80">
@@ -45,9 +46,10 @@ export default function JobSearch() {
             className="border-none bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
             placeholder="Your Keyword..."
           />
-          <button className="bg-black px-4 py-2 rounded-md text-white/75">
+          {/* <button className="bg-black px-4 py-2 rounded-md text-white/75">
             Search
-          </button>
+          </button> */}
+          <Button>Search</Button>
         </div>
       </div>
       <div className="flex gap-8 items-start">
