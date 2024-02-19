@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <nav className="w-full fixed top-0 right-0 z-10 min-h-20 flex justify-between bg-black items-center border-b border-slate-800 lg:px-10 md:px-4">
+      <nav className="w-full fixed top-0 right-0 z-10 min-h-20 flex justify-between bg-secondary items-center border-b border-slate-800 lg:px-10 md:px-4">
         <div className="md:w-1/2 flex items-center">
           <Image
             height="100"
@@ -43,19 +43,19 @@ const Navbar = () => {
             alt="logo"
             className="h-20 w-20"
           />
-          <ul className="md:flex items-center text-[#bed6f3] gap-5 text-lg lg:ml-32 md:ml-10 hidden">
-            <li className="hover:text-[#FF3988] cursor-pointer">
+          <ul className="md:flex items-center text-[#7e7e81] gap-5 text-lg lg:ml-32 md:ml-10 hidden">
+            <li className="hover:text-white cursor-pointer">
               <Link
-                className={`link ${pathname === "/home" ? "text-[#FF3988]" : ""}`}
+                className={`link ${pathname === "/home" ? "text-[#ffffff]" : ""}`}
                 href="/home"
               >
                 Home
               </Link>
             </li>
-            <li className="hover:text-[#FF3988] cursor-pointer">
+            <li className="hover:text-white cursor-pointer">
               <Link
-                className={`link ${pathname === "/job" ? "text-[#FF3988]" : ""}`}
-                href="/"
+                className={`link ${pathname === "/job-post" ? "text-[#ffffff]" : ""}`}
+                href="/job-post"
               >
                 Job Post
               </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
           <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
             {!isAuthenticated && <Onboarding />}
             {isAuthenticated && (
-              <Button variant="primary" onClick={logoutHandler}>
+              <Button variant="btnColor" onClick={logoutHandler}>
                 Logout
               </Button>
             )}

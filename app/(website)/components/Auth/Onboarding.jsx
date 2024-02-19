@@ -71,7 +71,7 @@ export default function Onboarding() {
   };
   return (
     <div>
-      <Button onClick={toggoleModal} variant="primary">
+      <Button onClick={toggoleModal} variant="btnColor">
         Join
       </Button>
 
