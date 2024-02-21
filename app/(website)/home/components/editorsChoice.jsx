@@ -14,7 +14,7 @@ export default function EditorChoice() {
   Recusandae culpa quae non ab officiis voluptates similique ad
   obcaecati? Suscipit, libero!`;
   return (
-    <div className="w-full mx-auto container mt-12">
+    <div className="w-full mx-auto container my-12">
       <h2 className="categoryTitle">Categories</h2>
       <div className="flex items-center group">
         <div className="text-white swiper-Prev-video-Btn opacity-0 group-hover:opacity-100 h-28 bg-white/10 rounded-lg flex items-center justify-center">
