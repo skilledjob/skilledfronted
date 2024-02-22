@@ -3,6 +3,7 @@ import BrowseBtn from "../../../components/ui/form-elements/FileInput";
 import Video from "./components/Video";
 import FormElements from "@/app/components/ui/form-elements";
 import Accordion from "./components/Accordion";
+import TextArea from "./components/TextArea";
 
 export default function Resume() {
   return (
@@ -31,6 +32,11 @@ export default function Resume() {
           <p className="text-lg text-white/75 mt-2">
             Upload Photo .jpg, .jpeg, .png
           </p>
+        </div>
+        <div>
+          <SubHeader className="">Intro & Overview</SubHeader>
+          <p className="text-lg font-semibold">Overview*</p>
+          <TextArea />
         </div>
         <div>
           <Video />
