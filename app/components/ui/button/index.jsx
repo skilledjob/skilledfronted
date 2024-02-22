@@ -33,7 +33,9 @@ export const Button = ({
             ? "bg-btnColor text-primary"
             : variant === "text"
               ? "text-sky-500"
-              : "bg-sky-500 text-white"
+              : variant === "outline"
+                ? "border"
+                : "bg-primary text-btnColor"
     }
     ${
       weight === "bold"

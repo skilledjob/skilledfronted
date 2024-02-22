@@ -21,4 +21,10 @@ export const endpoints = {
   post: {
     getPosts: "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5",
   }, // TODO: This is a dummy endpoint. Replace with your own. It is just for demonstration purposes.
+  jobSeeker: {
+    jobSeekerById(id) {
+      return makeApiUrl(`applicant/${id}`);
+    },
+    uplaodResume: makeApiUrl("applicant/upload-resume"),
+  },
 };

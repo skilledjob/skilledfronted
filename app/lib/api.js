@@ -38,19 +38,49 @@ export const query = async (endpoint, cacheKey) => {
 //  * @example
 //  * const data = await mutation("/api/users", { name: "John Doe" }, METHOD.POST, "users");
 //  */
+// export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
+//   const respnse = await fetch(endpoint, {
+//     method: method,
+//     body: JSON.stringify(data),
+//     headers: {
+//       "Content-type": "application/json",
+//       authorization: `Bearer ${cookies().get("token")?.value}`,
+//     },
+//   });
+//   if (revalidateCacheKey) {
+//     revalidateTag(revalidateCacheKey);
+//   }
+//   return await respnse.json();
+// };
 export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
-  const respnse = await fetch(endpoint, {
+  const contentType =
+    typeof data === "object" && data instanceof FormData
+      ? "multipart/form-data; boundary=<calculated when request is sent>"
+      : "application/json";
+
+  const options = {
     method: method,
-    body: JSON.stringify(data),
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": contentType,
       authorization: `Bearer ${cookies().get("token")?.value}`,
     },
-  });
+  };
+
+  if (typeof data === "object" && data instanceof FormData) {
+    options.body = data;
+  } else {
+    options.body = JSON.stringify(data);
+  }
+
+  console.log("options --> ", options);
+
+  const response = await fetch(endpoint, options);
+  console;
   if (revalidateCacheKey) {
     revalidateTag(revalidateCacheKey);
   }
-  return await respnse.json();
+
+  return await response.json();
 };
 
 const api = {
