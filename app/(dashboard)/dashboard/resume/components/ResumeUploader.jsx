@@ -2,6 +2,8 @@
 
 import { Button } from "@/app/components/ui/button";
 import Dropzone from "@/app/components/ui/dropzone";
+import cookies from "@/app/utils/cookies";
+import axios from "axios";
 import toast from "cogo-toast";
 import { useEffect, useState } from "react";
 
@@ -9,28 +11,47 @@ export default function ResumeUploader({ resume = null }) {
   // Local State
   const [loading, setLoading] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
+  const [resumeFile, setResumeFile] = useState(null);
 
   /**
    * HANDLERS
    */
   const handleUpload = async file => {
+    console.log("file", file);
     setLoading(true);
     try {
       // form data
       const formData = new FormData();
       formData.append("resume", file);
 
-      const response = await uplaodResume(formData);
-      if (response?.success) {
+      const res = await axios.patch(
+        `http://localhost:8000/api/v1/applicant/upload-resume`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${cookies.get("token")}`,
+          },
+        }
+      );
+
+      if (res?.data?.success) {
         toast.success("Resume uploaded successfully");
         setLoading(false);
         setShowUpload(false);
       }
 
-      if (!response?.success) {
-        toast.error("Error while uploading resume");
-        setLoading(false);
-      }
+      // const response = await uplaodResume(formData);
+      // if (response?.success) {
+      //   toast.success("Resume uploaded successfully");
+      //   setLoading(false);
+      //   setShowUpload(false);
+      // }
+
+      // if (!response?.success) {
+      //   toast.error("Error while uploading resume");
+      //   setLoading(false);
+      // }
     } catch (error) {
       console.error("Error while uploading resume --> ", error);
       setLoading(false);
@@ -52,6 +73,14 @@ export default function ResumeUploader({ resume = null }) {
     }
   }, [resume]);
 
+  useEffect(() => {
+    if (resume) {
+      setResumeFile(resume);
+    }
+  }, [resume]);
+
+  console.log("Resume file: ", resumeFile);
+
   return (
     <div>
       <div>
@@ -59,9 +88,10 @@ export default function ResumeUploader({ resume = null }) {
         {resume && (
           <div className="bg-secondary p-5 rounded mt-5">
             <h2 className="text-1xl my-5 font-semibold">Uploaded Resume</h2>
+            {resumeFile}
             <div className="flex items-center">
               <iframe
-                src={resume}
+                src={resumeFile}
                 title="Uploaded Resume"
                 width="100%"
                 height="400px" // Adjust height as needed
