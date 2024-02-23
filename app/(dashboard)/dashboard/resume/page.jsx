@@ -1,10 +1,9 @@
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
-import FormElements from "@/app/components/ui/form-elements";
 import { getJobSeekerProfileById } from "@/app/lib/jobSeeker";
 import Accordion from "./components/Accordion";
 import ResumeUploader from "./components/ResumeUploader";
 import TextArea from "./components/TextArea";
-import Video from "./components/Video";
+import VideoResume from "./components/VideoResume";
 
 export default async function Resume() {
   const { data: profile } = await getJobSeekerProfileById();
@@ -16,27 +15,25 @@ export default async function Resume() {
         </h1>
       </div>
       {/* Resume Uploader -->   */}
-      <ResumeUploader resume={profile?.resume || null} />
+      <div>
+        <ResumeUploader resume={profile?.resume || null} />
+      </div>
+
+      <div>
+        <VideoResume
+          videos={
+            profile?.videoResume?.length > 0 ? profile?.videoResume : null
+          }
+        />
+      </div>
 
       <div className="w-full bg-secondary rounded p-5 mt-5">
-        <div className="border-y border-y-white/40 pb-4">
-          <SubHeader className="text-white">CV File</SubHeader>
-          <FormElements.FileInput accept=".pdf,.doc,.docx">
-            Browse
-          </FormElements.FileInput>
-          <p className="text-lg text-white/75 mt-2">
-            Upload file .pdf, .doc, .docx
-          </p>
-        </div>
-
         <div>
           <SubHeader className="">Intro & Overview</SubHeader>
           <p className="text-lg font-semibold">Overview*</p>
           <TextArea />
         </div>
-        <div>
-          <Video />
-        </div>
+
         <div>
           <Accordion title="Education" />
           <Accordion title="Skills" />

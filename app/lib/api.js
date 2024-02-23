@@ -53,34 +53,18 @@ export const query = async (endpoint, cacheKey) => {
 //   return await respnse.json();
 // };
 export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
-  const contentType =
-    typeof data === "object" && data instanceof FormData
-      ? "multipart/form-data; boundary=<calculated when request is sent>"
-      : "application/json";
-
-  const options = {
+  const respnse = await fetch(endpoint, {
     method: method,
+    body: data ? JSON.stringify(data) : null,
     headers: {
-      "Content-Type": contentType,
+      "Content-type": "application/json",
       authorization: `Bearer ${cookies().get("token")?.value}`,
     },
-  };
-
-  if (typeof data === "object" && data instanceof FormData) {
-    options.body = data;
-  } else {
-    options.body = JSON.stringify(data);
-  }
-
-  console.log("options --> ", options);
-
-  const response = await fetch(endpoint, options);
-  console;
+  });
   if (revalidateCacheKey) {
     revalidateTag(revalidateCacheKey);
   }
-
-  return await response.json();
+  return await respnse.json();
 };
 
 const api = {

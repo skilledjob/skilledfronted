@@ -1,3 +1,5 @@
+import { revalidateTag } from "next/cache";
+
 export const jobSeekerCache = {
   tags: {
     all() {
@@ -5,6 +7,11 @@ export const jobSeekerCache = {
     },
     jobSeekerById(id) {
       return `jobSeeker:jobSeekerById:${id}`;
+    },
+  },
+  revalidate: {
+    byId(id) {
+      revalidateTag(jobSeekerCache.tags.jobSeekerById(id));
     },
   },
 };

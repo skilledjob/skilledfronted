@@ -1,6 +1,7 @@
 "use server";
 
 import { endpoints } from "@/app/common";
+import { METHODS } from "@/app/constants";
 import api from "../api";
 import { jobSeekerCache } from "./cache";
 
@@ -25,4 +26,19 @@ export const uplaodResume = async file => {
     jobSeekerCache.tags.jobSeekerById(currentUserId)
   );
   return response;
+};
+
+export const deleteVideoResume = async id => {
+  const response = await api.mutation(
+    endpoints.jobSeeker.deleteVideoResume(id),
+    null,
+    METHODS.DELETE,
+    jobSeekerCache.tags.jobSeekerById(currentUserId)
+  );
+  return response;
+};
+
+export const revalidateJobSeekerProfile = (id = null) => {
+  const userId = id || currentUserId;
+  jobSeekerCache.revalidate.byId(userId);
 };

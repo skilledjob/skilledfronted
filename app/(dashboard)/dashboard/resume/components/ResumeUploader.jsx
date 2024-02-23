@@ -1,9 +1,11 @@
 "use client";
 
+import { endpoints } from "@/app/common";
 import { Button } from "@/app/components/ui/button";
 import Dropzone from "@/app/components/ui/dropzone";
-import cookies from "@/app/utils/cookies";
-import axios from "axios";
+import { METHODS } from "@/app/constants";
+import { fileUpload } from "@/app/lib/fileUpload";
+import { revalidateJobSeekerProfile } from "@/app/lib/jobSeeker";
 import toast from "cogo-toast";
 import { useEffect, useState } from "react";
 
@@ -17,43 +19,31 @@ export default function ResumeUploader({ resume = null }) {
    * HANDLERS
    */
   const handleUpload = async file => {
-    console.log("file", file);
     setLoading(true);
     try {
       // form data
       const formData = new FormData();
       formData.append("resume", file);
 
-      const res = await axios.patch(
-        `http://localhost:8000/api/v1/applicant/upload-resume`,
+      const res = await fileUpload(
+        endpoints.jobSeeker.uplaodResume,
         formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${cookies.get("token")}`,
-          },
-        }
+        METHODS.PATCH
       );
 
       if (res?.data?.success) {
+        revalidateJobSeekerProfile();
         toast.success("Resume uploaded successfully");
         setLoading(false);
         setShowUpload(false);
       }
 
-      // const response = await uplaodResume(formData);
-      // if (response?.success) {
-      //   toast.success("Resume uploaded successfully");
-      //   setLoading(false);
-      //   setShowUpload(false);
-      // }
-
-      // if (!response?.success) {
-      //   toast.error("Error while uploading resume");
-      //   setLoading(false);
-      // }
+      if (!res?.data?.success) {
+        toast.error("Error while uploading resume");
+        setLoading(false);
+      }
     } catch (error) {
-      console.error("Error while uploading resume --> ", error);
+      console.error("Error while uploading resume: ", error);
       setLoading(false);
       toast.error("Error while uploading resume");
     }
@@ -79,16 +69,14 @@ export default function ResumeUploader({ resume = null }) {
     }
   }, [resume]);
 
-  console.log("Resume file: ", resumeFile);
-
   return (
     <div>
       <div>
         {/* Show a card for uploaded resume */}
-        {resume && (
+
+        {resumeFile && (
           <div className="bg-secondary p-5 rounded mt-5">
             <h2 className="text-1xl my-5 font-semibold">Uploaded Resume</h2>
-            {resumeFile}
             <div className="flex items-center">
               <iframe
                 src={resumeFile}

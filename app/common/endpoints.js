@@ -1,4 +1,13 @@
-const makeApiUrl = path => `${process.env.API_URL}/${path}`;
+// const makeApiUrl = path => `${process.env.API_URL}/${path}`;
+const makeApiUrl = path => {
+  let baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  if (process.env.API_URL && process.env.API_URL !== "") {
+    baseUrl = process.env.API_URL;
+  }
+
+  return `${baseUrl}/${path}`;
+};
 
 export const endpoints = {
   auth: {
@@ -26,5 +35,9 @@ export const endpoints = {
       return makeApiUrl(`applicant/${id}`);
     },
     uplaodResume: makeApiUrl("applicant/upload-resume"),
+    uploadVideoResume: makeApiUrl("applicant/upload-video-resume"),
+    deleteVideoResume(id) {
+      return makeApiUrl(`applicant/delete-video-resume/${id}`);
+    },
   },
 };
