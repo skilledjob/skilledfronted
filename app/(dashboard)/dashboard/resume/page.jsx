@@ -1,12 +1,12 @@
-import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 import { getJobSeekerProfileById } from "@/app/lib/jobSeeker";
 import Accordion from "./components/Accordion";
+import Info from "./components/Info";
 import ResumeUploader from "./components/ResumeUploader";
-import TextArea from "./components/TextArea";
 import VideoResume from "./components/VideoResume";
 
 export default async function Resume() {
   const { data: profile } = await getJobSeekerProfileById();
+  console.log(profile?.skills);
   return (
     <div className="text-white pr-10 w-full container">
       <div>
@@ -27,12 +27,16 @@ export default async function Resume() {
         />
       </div>
 
+      <div className="py-10">
+        <Info profile={profile} />
+      </div>
+
       <div className="w-full bg-secondary rounded p-5 mt-5">
-        <div>
+        {/* <div>
           <SubHeader className="">Intro & Overview</SubHeader>
           <p className="text-lg font-semibold">Overview*</p>
           <TextArea />
-        </div>
+        </div> */}
 
         <div>
           <Accordion title="Education" />
