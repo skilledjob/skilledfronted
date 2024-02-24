@@ -33,7 +33,7 @@ export default function Resume() {
             Upload Photo .jpg, .jpeg, .png
           </p>
         </div>
-        <div>
+        <div className="mb-16">
           <SubHeader className="">Intro & Overview</SubHeader>
           <p className="text-lg font-semibold">Overview*</p>
           <TextArea />
