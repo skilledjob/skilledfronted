@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Avatar } from "@/app/components/ui/avatar";
 
 export default function SidebarDashBoard() {
-  const url = [
+  const navItem = [
     {
       name: "Dashboard",
       path: "/dashboard",
@@ -21,6 +21,10 @@ export default function SidebarDashBoard() {
       name: "Task-List",
       path: "/dashboard/task-list",
     },
+    {
+      name: "Blog",
+      path: "/dashboard/blog",
+    },
   ];
   return (
     <aside className="flex sticky top-0 flex-col min-w-64 h-screen px-4 py-8 overflow-y-auto bg-secondary border-r rtl:border-r-0 rtl:border-l">
@@ -34,7 +38,7 @@ export default function SidebarDashBoard() {
       </div>
       <div className="flex flex-col justify-between flex-1 mt-6 text-white">
         <nav>
-          {url.map(namePath => (
+          {navItem.map(namePath => (
             <Link
               className="flex items-center px-4 py-2 rounded-lg"
               href={namePath.path}
