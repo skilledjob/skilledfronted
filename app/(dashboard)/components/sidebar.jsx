@@ -18,13 +18,22 @@ export default function SidebarDashBoard() {
       path: "/dashboard/resume",
     },
     {
-      name: "Task-List",
+      name: "User Profile",
       path: "/dashboard/task-list",
     },
     {
-      name: "Blog",
-      path: "/dashboard/blog",
+      name: "Home Slider",
+      path: "/dashboard/homeSlider",
     },
+    {
+      name: "Job Post",
+      path: "/dashboard/jobPost",
+    },
+    {
+      name: "Job Category",
+      path: "/dashboard/jobCategory",
+    },
+
   ];
   return (
     <aside className="flex sticky top-0 flex-col min-w-64 h-screen px-4 py-8 overflow-y-auto bg-secondary border-r rtl:border-r-0 rtl:border-l">

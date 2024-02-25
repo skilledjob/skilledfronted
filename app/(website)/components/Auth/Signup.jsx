@@ -207,7 +207,7 @@ export default function Signup({
 
         <div>
           <Button
-            variant="primary"
+            variant="btnColor"
             size="md"
             type="submit"
             loading={loading}

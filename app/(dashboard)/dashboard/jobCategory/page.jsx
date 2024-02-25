@@ -8,18 +8,9 @@ import logo from "@/public/assets/logo.jpeg";
 export default function Blog() {
   return (
     <div className="flex flex-col w-full">
-      <div className="w-full mr-5 p-5 bg-secondary rounded-md">
-        <div className="flex items-center justify-between w-full">
-          <SubHeader className="text-white">Service</SubHeader>
-          <Link href="job-category">
-            <Button>Add More</Button>
-          </Link>
-        </div>
-        <Table />
-      </div>
       <div className="mt-16 w-full mr-5 p-5 bg-secondary rounded-md">
         <div className="flex items-center justify-between w-full">
-          <SubHeader className="text-white">Service</SubHeader>
+          <SubHeader className="text-white">Blog</SubHeader>
           <Link href="add-blog">
             <Button>Add More</Button>
           </Link>

@@ -60,6 +60,14 @@ const Navbar = () => {
                 Job Post
               </Link>
             </li>
+            <li className="hover:text-white cursor-pointer">
+              <Link
+                className={`link ${pathname === "/job-search" ? "text-[#ffffff]" : ""}`}
+                href="/job-search"
+              >
+                Candidate Profile
+              </Link>
+            </li>
           </ul>
           {isOpen ? (
             <RxCross2
@@ -73,18 +81,7 @@ const Navbar = () => {
             />
           )}
         </div>
-        <div className="flex items-center gap-3 md:gap-0 justify-between md:w-1/2 w-2/3">
-          <div className="flex items-center justify-between bg-[#1B2E46] text-[#6A7482] w-full text-lg h-10 px-3 rounded-2xl">
-            <input
-              type="text"
-              name=""
-              id=""
-              className="border-none outline-none bg-transparent placeholder:text-[#6A7482] w-full"
-              placeholder="Search"
-            />
-            <CiSearch className="" />
-          </div>
-
+        <div className="flex items-center gap-3 md:gap-0 justify-end md:w-1/2 w-2/3">
           <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
             {!isAuthenticated && <Onboarding />}
             {isAuthenticated && (
@@ -92,7 +89,9 @@ const Navbar = () => {
                 Logout
               </Button>
             )}
-            <CgProfile className="text-[#7B91AD] text-3xl" />
+            <Link href="/dashboard">
+              <CgProfile className="text-[#7B91AD] text-3xl" />
+            </Link>
           </div>
         </div>
       </nav>
