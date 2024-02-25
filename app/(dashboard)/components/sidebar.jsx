@@ -1,7 +1,6 @@
-import Image from "next/image";
+import { Avatar } from "@/app/components/ui/avatar";
 import plumber from "@/public/assets/plumber.jpg";
 import Link from "next/link";
-import { Avatar } from "@/app/components/ui/avatar";
 
 export default function SidebarDashBoard() {
   const url = [

@@ -38,6 +38,17 @@ export const deleteVideoResume = async id => {
   return response;
 };
 
+export const updateProfile = async (id = null, data) => {
+  const userId = id || currentUserId;
+  const response = await api.mutation(
+    endpoints.jobSeeker.updateJobSeeker,
+    data,
+    METHODS.PATCH,
+    jobSeekerCache.tags.jobSeekerById(userId)
+  );
+  return response;
+};
+
 export const revalidateJobSeekerProfile = (id = null) => {
   const userId = id || currentUserId;
   jobSeekerCache.revalidate.byId(userId);

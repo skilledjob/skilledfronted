@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css"; // Snow theme for ReactQuill
 export default function TextEditor({
   value,
   onChange,
+  defaultValue,
   placeholder = "Write something interesting about you...",
 }) {
   const [editorHtml, setEditorHtml] = useState(value);
@@ -26,6 +27,7 @@ export default function TextEditor({
           modules={TextEditor.modules}
           formats={TextEditor.formats}
           placeholder={placeholder}
+          defaultValue={defaultValue}
         />
         <style jsx global>{`
           .rich-text-editor {

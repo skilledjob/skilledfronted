@@ -34,10 +34,21 @@ export const endpoints = {
     jobSeekerById(id) {
       return makeApiUrl(`applicant/${id}`);
     },
+    updateJobSeeker: makeApiUrl("applicant/update-my-profile"),
     uplaodResume: makeApiUrl("applicant/upload-resume"),
     uploadVideoResume: makeApiUrl("applicant/upload-video-resume"),
     deleteVideoResume(id) {
       return makeApiUrl(`applicant/delete-video-resume/${id}`);
+    },
+  },
+  jobCategories: {
+    getAllCategories: makeApiUrl("job-category"),
+    addCategory: makeApiUrl("job-category"),
+    deleteCategory(id) {
+      return makeApiUrl(`job-category/${id}`);
+    },
+    updateCategory(id) {
+      return makeApiUrl(`job-category/${id}`);
     },
   },
 };

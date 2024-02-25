@@ -35,7 +35,9 @@ export const Button = ({
               ? "text-sky-500"
               : variant === "outline"
                 ? "border"
-                : "bg-primary text-btnColor"
+                : variant === "none"
+                  ? ""
+                  : "bg-btnColor text-primary"
     }
     ${
       weight === "bold"
@@ -64,7 +66,12 @@ export const Button = ({
     ${fullWidth ? "w-full" : ""}
   `;
   return !linkButton ? (
-    <button className={classess} onClick={onClick} disabled={disabled}>
+    <button
+      type={type}
+      className={classess}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {loading && <Loader />}
       {children}
     </button>
