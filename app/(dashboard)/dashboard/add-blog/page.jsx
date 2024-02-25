@@ -1,7 +1,7 @@
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
-import TextArea from "../resume/components/TextArea";
+import TextArea from "../../user/resume/components/TextArea";
 
 export default function Add_Blog() {
   return (

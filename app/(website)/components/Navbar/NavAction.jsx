@@ -45,7 +45,7 @@ export default function NavAction({ onLogout }) {
           </div>
         }
       >
-        <DropdownElement.DropdownItem type="link" to="/dashboard/resume">
+        <DropdownElement.DropdownItem type="link" to="/user/resume">
           Resume
         </DropdownElement.DropdownItem>
         <DropdownElement.DropdownItem onClick={onLogout}>
