@@ -35,7 +35,9 @@ export const Button = ({
               ? "text-sky-500"
               : variant === "denger"
                 ? "bg-red-500 text-white"
-                : "bg-sky-500 text-white"
+                : variant === "ghost"
+                  ? "text-red-500"
+                  : "bg-sky-500 text-white"
     }
     ${
       weight === "bold"
@@ -56,7 +58,7 @@ export const Button = ({
             : size === "lg"
               ? "px-6 py-3 text-lg"
               : size === "xl"
-                ? "px-8 py-4 text-xl"
+                ? "px-8 py-2 text-xl"
                 : "px-6 py-3.5"
     }
     ${disabled ? "opacity-50 cursor-not-allowed" : ""}

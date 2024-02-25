@@ -2,6 +2,7 @@ import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
 import TextArea from "../resume/components/TextArea";
+import Dragdrop from "../../components/Dragdrop";
 
 export default function Add_Blog() {
   return (
@@ -16,9 +17,9 @@ export default function Add_Blog() {
             </div>
             <div className="w-full">
               <FormElements.Label withAsterisk>Icon</FormElements.Label>
-              <FormElements.FileInput>Choose Icon</FormElements.FileInput>
+              {/* <FormElements.FileInput>Choose Icon</FormElements.FileInput> */}
+              <Dragdrop className="w-64 h-64" />
             </div>
-            <TextArea />
             <div className="flex gap-5 items-center mt-10 ">
               <Button>SAVE</Button>
               <Button variant="denger">CANCEL</Button>

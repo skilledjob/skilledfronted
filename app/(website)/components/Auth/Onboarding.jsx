@@ -87,7 +87,7 @@ export default function Onboarding() {
           <button onClick={goBack} className="text-white">
             <BsArrowLeft size={20} />
           </button>
-          <Button variant="text" onClick={toggoleModal}>
+          <Button variant="ghost" size="" onClick={toggoleModal}>
             <IoMdClose />
           </Button>
         </div>
