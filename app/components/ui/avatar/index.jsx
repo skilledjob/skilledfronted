@@ -33,10 +33,10 @@ export const Avatar = ({ size = "large", image, name, rounded = true }) => {
   }[size];
 
   const roundedClass = rounded ? "rounded-full" : "";
-
+  //
   return (
     <div
-      className={`bg-[#222B40] dark:bg-[#171718] flex items-center justify-center ${sizeClass} ${roundedClass}`}
+      className={`bg-[#222B40] border border-slate-600 flex items-center justify-center ${sizeClass} ${roundedClass}`}
     >
       {image ? (
         <Image

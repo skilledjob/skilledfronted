@@ -57,7 +57,9 @@ export const Dropdown = ({ children, actionElement, width }) => {
                 ? "w-60"
                 : width === "xl"
                   ? "w-72"
-                  : "w-48"
+                  : width === "full"
+                    ? "w-full"
+                    : "w-48"
         }
         `}
       >

@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/app/components/ui/button";
 import { useIsAuthenticated } from "@/app/hooks/useIsAuthenticated";
 import { logout } from "@/app/lib/auth";
 import logo from "@/public/assets/logo.jpeg";
@@ -7,15 +6,18 @@ import toast from "cogo-toast";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { CgProfile } from "react-icons/cg";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import Sidebar from "../Sidebar/Sidebar";
 import Onboarding from "../auth/Onboarding";
+import NavAction from "./NavAction";
 
 const Navbar = () => {
+  // Local State
+  const [loading, setLoading] = useState(true);
+
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,6 +33,12 @@ const Navbar = () => {
       toast.success("Logout successful");
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setLoading(false);
+    }
+  }, []);
 
   return (
     <div className="">
@@ -85,14 +93,15 @@ const Navbar = () => {
             <CiSearch className="" />
           </div>
 
-          <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
-            {!isAuthenticated && <Onboarding />}
-            {isAuthenticated && (
-              <Button variant="btnColor" onClick={logoutHandler}>
-                Logout
-              </Button>
+          <div className="w-full flex items-center lg:ml-24 md:ml-10 gap-5">
+            {loading ? (
+              <div className="w-full h-10 bg-slate-800 rounded animate-pulse"></div>
+            ) : (
+              <>
+                {!isAuthenticated && <Onboarding />}
+                {isAuthenticated && <NavAction onLogout={logoutHandler} />}
+              </>
             )}
-            <CgProfile className="text-[#7B91AD] text-3xl" />
           </div>
         </div>
       </nav>
