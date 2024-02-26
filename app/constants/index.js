@@ -18,3 +18,11 @@ export const TOKENTYPES = {
   RESET_PASSWORD: "resetPassword",
   VERIFY_EMAIL: "verifyEmail",
 };
+
+export const METHODS = {
+  GET: "GET",
+  POST: "POST",
+  PUT: "PUT",
+  DELETE: "DELETE",
+  PATCH: "PATCH",
+};

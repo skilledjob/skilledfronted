@@ -1,10 +1,9 @@
-import Image from "next/image";
+import { Avatar } from "@/app/components/ui/avatar";
 import plumber from "@/public/assets/plumber.jpg";
 import Link from "next/link";
-import { Avatar } from "@/app/components/ui/avatar";
 
 export default function SidebarDashBoard() {
-  const url = [
+  const navItem = [
     {
       name: "Dashboard",
       path: "/dashboard",
@@ -18,8 +17,20 @@ export default function SidebarDashBoard() {
       path: "/dashboard/resume",
     },
     {
-      name: "Task-List",
+      name: "User Profile",
       path: "/dashboard/task-list",
+    },
+    {
+      name: "Home Slider",
+      path: "/dashboard/homeSlider",
+    },
+    {
+      name: "Job Post",
+      path: "/dashboard/jobPost",
+    },
+    {
+      name: "Job Category",
+      path: "/dashboard/jobCategory",
     },
   ];
   return (
@@ -34,7 +45,7 @@ export default function SidebarDashBoard() {
       </div>
       <div className="flex flex-col justify-between flex-1 mt-6 text-white">
         <nav>
-          {url.map(namePath => (
+          {navItem.map(namePath => (
             <Link
               className="flex items-center px-4 py-2 rounded-lg"
               href={namePath.path}
