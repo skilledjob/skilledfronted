@@ -165,7 +165,7 @@ export default function VideoResume({ videos }) {
             <div className="flex items-center gap-3 mt-8">
               <Button
                 variant="btnColor"
-                customClass="bg-red-500 px-2 py-2 border border-red-500 text-white"
+                customclassName="bg-red-500 px-2 py-2 border border-red-500 text-white"
                 loading={deleteLoading}
                 onClick={deleteVideoResumeHandler}
               >

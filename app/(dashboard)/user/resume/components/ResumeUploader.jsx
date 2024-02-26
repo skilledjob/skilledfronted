@@ -88,21 +88,21 @@ export default function ResumeUploader({ resume = null }) {
             <div className="flex items-center gap-3 mt-2">
               <Button
                 variant="outline"
-                customClass="text-blue-500 text-sm border-blue-500"
+                customclassName="text-blue-500 text-sm border-blue-500"
                 onClick={downloadResumeHandler}
               >
                 View
               </Button>
               <Button
                 variant="outline"
-                customClass="text-green-500 text-sm border-green-500"
+                customclassName="text-green-500 text-sm border-green-500"
                 onClick={downloadResumeHandler}
               >
                 Download
               </Button>
               <Button
                 variant="outline"
-                customClass="text-yellow-500 text-sm border-yellow-500"
+                customclassName="text-yellow-500 text-sm border-yellow-500"
                 onClick={() => setShowUpload(!showUpload)}
               >
                 Update

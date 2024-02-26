@@ -217,7 +217,7 @@ export default function Info({ profile }) {
                     }}
                     type="button"
                     variant="none"
-                    customClass="text-red-500"
+                    customclassName="text-red-500"
                     disabled={skills.length === 1 ? true : false}
                   >
                     Remove
