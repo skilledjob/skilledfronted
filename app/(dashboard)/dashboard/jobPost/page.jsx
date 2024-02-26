@@ -13,9 +13,7 @@ export default function Job_Category() {
           <div className="mt-10">
             <form className="space-y-3">
               <div>
-                <FormElements.Label withAsterisk>
-                  Job Name
-                </FormElements.Label>
+                <FormElements.Label withAsterisk>Job Name</FormElements.Label>
                 <FormElements.Input />
               </div>
               <div>

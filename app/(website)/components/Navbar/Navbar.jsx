@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/app/components/ui/button";
 import { useIsAuthenticated } from "@/app/hooks/useIsAuthenticated";
 import { logout } from "@/app/lib/auth";
 import logo from "@/public/assets/logo.jpeg";
@@ -7,15 +6,18 @@ import toast from "cogo-toast";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { CgProfile } from "react-icons/cg";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import Sidebar from "../Sidebar/Sidebar";
 import Onboarding from "../auth/Onboarding";
+import NavAction from "./NavAction";
 
 const Navbar = () => {
+  // Local State
+  const [loading, setLoading] = useState(true);
+
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,6 +33,12 @@ const Navbar = () => {
       toast.success("Logout successful");
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setLoading(false);
+    }
+  }, []);
 
   return (
     <div className="">
@@ -81,17 +89,27 @@ const Navbar = () => {
             />
           )}
         </div>
-        <div className="flex items-center gap-3 md:gap-0 justify-end md:w-1/2 w-2/3">
-          <div className="flex items-center lg:ml-24 md:ml-10 gap-5">
-            {!isAuthenticated && <Onboarding />}
-            {isAuthenticated && (
-              <Button variant="btnColor" onClick={logoutHandler}>
-                Logout
-              </Button>
+        <div className="flex items-center gap-3 md:gap-0 justify-between md:w-1/2 w-2/3">
+          <div className="flex items-center justify-between bg-[#1B2E46] text-[#6A7482] w-full text-lg h-10 px-3 rounded-2xl">
+            <input
+              type="text"
+              name=""
+              id=""
+              className="border-none outline-none bg-transparent placeholder:text-[#6A7482] w-full"
+              placeholder="Search"
+            />
+            <CiSearch className="" />
+          </div>
+
+          <div className="w-full flex items-center lg:ml-24 md:ml-10 gap-5">
+            {loading ? (
+              <div className="w-full h-10 bg-slate-800 rounded animate-pulse"></div>
+            ) : (
+              <>
+                {!isAuthenticated && <Onboarding />}
+                {isAuthenticated && <NavAction onLogout={logoutHandler} />}
+              </>
             )}
-            <Link href="/dashboard">
-              <CgProfile className="text-[#7B91AD] text-3xl" />
-            </Link>
           </div>
         </div>
       </nav>

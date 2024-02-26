@@ -1,7 +1,6 @@
-import Image from "next/image";
+import { Avatar } from "@/app/components/ui/avatar";
 import plumber from "@/public/assets/plumber.jpg";
 import Link from "next/link";
-import { Avatar } from "@/app/components/ui/avatar";
 
 export default function SidebarDashBoard() {
   const navItem = [
@@ -33,7 +32,6 @@ export default function SidebarDashBoard() {
       name: "Job Category",
       path: "/dashboard/jobCategory",
     },
-
   ];
   return (
     <aside className="flex sticky top-0 flex-col min-w-64 h-screen px-4 py-8 overflow-y-auto bg-secondary border-r rtl:border-r-0 rtl:border-l">

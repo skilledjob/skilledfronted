@@ -9,7 +9,6 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 export default function ResetPasswordForm({ token }) {
-  console.log("Token -->", token);
   // Local State
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
