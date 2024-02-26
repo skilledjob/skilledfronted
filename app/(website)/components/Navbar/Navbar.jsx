@@ -68,6 +68,14 @@ const Navbar = () => {
                 Job Post
               </Link>
             </li>
+            <li className="hover:text-white cursor-pointer">
+              <Link
+                className={`link ${pathname === "/job-search" ? "text-[#ffffff]" : ""}`}
+                href="/job-search"
+              >
+                Candidate Profile
+              </Link>
+            </li>
           </ul>
           {isOpen ? (
             <RxCross2
