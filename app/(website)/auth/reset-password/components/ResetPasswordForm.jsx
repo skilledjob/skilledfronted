@@ -2,8 +2,9 @@
 
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
+import useToast from "@/app/components/ui/toast";
 import { resetPassword } from "@/app/lib/auth";
-import toast from "cogo-toast";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -12,7 +13,8 @@ export default function ResetPasswordForm({ token }) {
   // Local State
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+   //toast state 
+   const { Toast, showToast } = useToast();
   // hooks
   const router = useRouter();
 
@@ -40,7 +42,8 @@ export default function ResetPasswordForm({ token }) {
     if (response?.success) {
       setLoading(false);
       setError(null);
-      toast.success("Password reset successfully");
+ 
+      showToast("Password reset successfully", "success");
       router.push("/home");
     }
     if (!response?.success) {
@@ -50,6 +53,8 @@ export default function ResetPasswordForm({ token }) {
   };
 
   return (
+    <>
+    <Toast/>
     <div className="bg-[rgb(3 7 18)] shadow border border-slate-800 rounded p-8">
       <div className="mb-4">
         <h2 className="text-[20px] text-slate-200 font-semibold">
@@ -96,5 +101,6 @@ export default function ResetPasswordForm({ token }) {
         </Button>
       </form>
     </div>
+    </>
   );
 }

@@ -3,9 +3,9 @@
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
 import TextEditor from "@/app/components/ui/text-editor";
+import useToast from "@/app/components/ui/toast";
 import { getAllCategories } from "@/app/lib/jobCategories";
 import { updateProfile } from "@/app/lib/jobSeeker";
-import toast from "cogo-toast";
 import { useEffect, useState } from "react";
 
 export default function Info({ profile }) {
@@ -27,7 +27,8 @@ export default function Info({ profile }) {
   });
   const [intro, setIntro] = useState("");
   const [loading, setLoading] = useState(false);
-
+  //toast state 
+  const { Toast, showToast } = useToast();
   /**
    * EFFECTS
    */
@@ -89,15 +90,18 @@ export default function Info({ profile }) {
       const res = await updateProfile(null, payload);
       if (res?.success) {
         setLoading(false);
-        toast.success("Profile updated successfully");
+        showToast("Profile updated successfully", "success");
       }
       if (!res?.success) {
         setLoading(false);
-        toast.error("Profile update failed");
+     
+        showToast("Profile update failed", "error")
       }
     } catch (error) {
       setLoading(false);
-      toast.error("Something went wrong!");
+ 
+      showToast("Something went wrong!", "error")
+     
     }
   };
 
@@ -126,6 +130,7 @@ export default function Info({ profile }) {
 
   return (
     <div>
+          <Toast />
       {/* Oerview */}
       <div>
         <h1 className="text-lg font-semibold">Your personal information</h1>

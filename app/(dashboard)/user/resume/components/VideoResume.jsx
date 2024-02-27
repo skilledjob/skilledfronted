@@ -3,13 +3,14 @@ import { endpoints } from "@/app/common";
 import { Button } from "@/app/components/ui/button";
 import { Loader } from "@/app/components/ui/loader/Loader";
 import Modal from "@/app/components/ui/modal";
+import useToast from "@/app/components/ui/toast";
 import { METHODS } from "@/app/constants";
 import { fileUpload } from "@/app/lib/fileUpload";
 import {
   deleteVideoResume,
   revalidateJobSeekerProfile,
 } from "@/app/lib/jobSeeker";
-import toast from "cogo-toast";
+
 import { useRef, useState } from "react";
 import { CiCircleInfo } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -20,6 +21,9 @@ export default function VideoResume({ videos }) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteVideoResumeId, setDeleteVideoResumeId] = useState(null);
   const [showDelete, setShowDelete] = useState(false);
+     //toast state 
+     const { Toast, showToast } = useToast();
+
   const videoRef = useRef(null);
 
   /**
@@ -40,17 +44,19 @@ export default function VideoResume({ videos }) {
         );
         if (res?.data?.success) {
           revalidateJobSeekerProfile();
-          toast.success("Video uploaded successfully");
+         
+          showToast("Video uploaded successfully", "success");
           setUploadLoading(false);
         }
 
         if (!res?.data?.success) {
-          toast.error("Error while uploading video");
+          showToast("Error while uploading video","error");
+ 
           setUploadLoading(false);
         }
       } catch (error) {
         console.error("Error while uploading video: ", error);
-        toast.error("Error while uploading video");
+        showToast("Error while uploading video","error");
         setUploadLoading(false);
       }
     }
@@ -74,17 +80,17 @@ export default function VideoResume({ videos }) {
     try {
       const response = await deleteVideoResume(deleteVideoResumeId);
       if (response?.success) {
-        toast.success("Video resume deleted successfully");
+        showToast("Video resume deleted successfully","success");
         setDeleteLoading(false);
         hideDeleteModalHandler();
       }
 
       if (!response?.success) {
-        toast.error("Error while deleting video resume");
+        showToast("Error while deleting video resume","error");
         setDeleteLoading(false);
       }
     } catch (error) {
-      toast.error("Error while deleting video resume");
+      showToast("Error while deleting video resume","error");
       setDeleteLoading(false);
       hideDeleteModalHandler();
     }
@@ -92,6 +98,7 @@ export default function VideoResume({ videos }) {
 
   return (
     <>
+    <Toast/>
       <div>
         <h2 className="text-1xl my-5 font-semibold">Video resume</h2>
         <div className="w-full flex flex-wrap">
