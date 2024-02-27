@@ -2,8 +2,9 @@
 
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
+import useToast from "@/app/components/ui/toast";
 import { login } from "@/app/lib/auth";
-import toast from "cogo-toast";
+
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -11,6 +12,7 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
   // Local State
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { Toast, showToast } = useToast();
 
   const {
     control,
@@ -55,13 +57,16 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
     }
     if (response?.success) {
       setLoading(false);
-      toast.success("Login successful", { position: "top-right" });
+    
+      showToast("Login successful", "success");
+    
       toggoleModal();
     }
   };
 
   return (
     <div>
+      <Toast/>
       <form onSubmit={handleSubmit(loginHandler)} className="space-y-4 p-8">
         <h2 className="text-slate-200 text-xl">Welcome back!</h2>
 

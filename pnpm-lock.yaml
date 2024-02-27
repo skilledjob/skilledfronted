@@ -8,7 +8,7 @@ dependencies:
   axios:
     specifier: ^1.6.7
     version: 1.6.7
-  cogo-toast:
+  
     specifier: ^4.2.3
     version: 4.2.3(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
   jwt-decode:
@@ -1139,7 +1139,7 @@ packages:
     engines: {node: '>=0.8'}
     dev: false
 
-  /cogo-toast@4.2.3(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
+  
     resolution: {integrity: sha512-Lp/lPk493MLtkgqHboVJXb5frvLJqUDpIqLh6uCMcNecw0/shikDG+DGsjvmPe5qmorRwxe+6JgfKobRrcvhZQ==}
     peerDependencies:
       prop-types: ^15.6.2

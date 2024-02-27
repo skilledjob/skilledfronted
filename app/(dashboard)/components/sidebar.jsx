@@ -32,6 +32,10 @@ export default function SidebarDashBoard() {
       name: "Job Category",
       path: "/dashboard/jobCategory",
     },
+    {
+      name: "Blog1",
+      path: "/dashboard/blog",
+    },
   ];
   return (
     <aside className="flex sticky top-0 flex-col min-w-64 h-screen px-4 py-8 overflow-y-auto bg-secondary border-r rtl:border-r-0 rtl:border-l">
