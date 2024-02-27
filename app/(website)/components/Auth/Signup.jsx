@@ -2,8 +2,9 @@
 
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
+import useToast from "@/app/components/ui/toast";
 import { register } from "@/app/lib/auth";
-import toast from "cogo-toast";
+
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -15,6 +16,7 @@ export default function Signup({
   // LocalState
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { Toast, showToast } = useToast();
 
   const {
     control,
@@ -66,7 +68,8 @@ export default function Signup({
     if (response?.success) {
       setLoading(false);
       setError("");
-      toast.success(response?.message);
+     
+      showToast(response?.message, "success");;
       reset();
       goEmailVerificationRequested();
     } else {
@@ -77,6 +80,7 @@ export default function Signup({
 
   return (
     <div>
+      <Toast/>
       <form onSubmit={handleSubmit(signupHandler)} className="space-y-4 p-8">
         <h2 className="text-slate-200 text-xl">Signup</h2>
         {error && <FormElements.Error>{error}</FormElements.Error>}

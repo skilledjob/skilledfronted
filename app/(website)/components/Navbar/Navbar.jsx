@@ -2,7 +2,7 @@
 import { useIsAuthenticated } from "@/app/hooks/useIsAuthenticated";
 import { logout } from "@/app/lib/auth";
 import logo from "@/public/assets/logo.jpeg";
-import toast from "cogo-toast";
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
