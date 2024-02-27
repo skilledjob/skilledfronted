@@ -1,3 +1,4 @@
+import CustomSelect from "./CustomSelect";
 import FileInput from "./FileInput";
 import { Input } from "./Input";
 import { SelectInput } from "./Select";
@@ -10,6 +11,7 @@ export const FormElements = {
   Error: props => <FormError {...props} />,
   Select: props => <SelectInput {...props} />,
   FileInput: props => <FileInput {...props} />,
+  SelectV2: props => <CustomSelect {...props} />,
 };
 
 export default FormElements;

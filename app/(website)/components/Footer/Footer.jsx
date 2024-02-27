@@ -1,25 +1,24 @@
-import Image from "next/image";
 import logo from "@/public/assets/logo.jpeg";
-import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/app/components/ui/button";
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <div className="bg-secondary">
       <div className="container">
-        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-4 py-16 border-b border-white/40 lg:grid-cols-6">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-4 py-16 border-b border-white/40 lg:grid-cols-6">
           <Link href="/home">
-            <Image src={logo} alt="logo" width={80}  />
+            <Image src={logo} alt="logo" width={80} />
           </Link>
 
-          <div class="text-center sm:text-left">
-            <p class="text-lg font-medium text-white">Services</p>
+          <div className="text-center sm:text-left">
+            <p className="text-lg font-medium text-white">Services</p>
 
-            <ul class="mt-8 space-y-4 text-sm">
+            <ul className="mt-8 space-y-4 text-sm">
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Browse Jobs
@@ -28,7 +27,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Companies
@@ -37,7 +36,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Candidates
@@ -46,7 +45,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Pricing
@@ -55,13 +54,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div class="text-center sm:text-left">
-            <p class="text-lg font-medium text-white">Company</p>
+          <div className="text-center sm:text-left">
+            <p className="text-lg font-medium text-white">Company</p>
 
-            <ul class="mt-8 space-y-4 text-sm">
+            <ul className="mt-8 space-y-4 text-sm">
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   About us
@@ -70,7 +69,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Blogs
@@ -79,7 +78,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   FAQ’s
@@ -88,7 +87,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Contact
@@ -97,13 +96,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div class="text-center sm:text-left">
-            <p class="text-lg font-medium text-white">Support</p>
+          <div className="text-center sm:text-left">
+            <p className="text-lg font-medium text-white">Support</p>
 
-            <ul class="mt-8 space-y-4 text-sm">
+            <ul className="mt-8 space-y-4 text-sm">
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Terms of use
@@ -112,7 +111,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Terms & conditions
@@ -121,7 +120,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Privacy
@@ -130,7 +129,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  class="text-white/70 transition hover:text-white"
+                  className="text-white/70 transition hover:text-white"
                   href="/home"
                 >
                   Cookie policy
@@ -139,22 +138,22 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div class="text-center sm:text-left md:col-span-4 lg:col-span-2">
-            <p class="text-lg font-medium text-white">Stay in Touch</p>
+          <div className="text-center sm:text-left md:col-span-4 lg:col-span-2">
+            <p className="text-lg font-medium text-white">Stay in Touch</p>
 
-            <div class="mx-auto mt-8 max-w-md sm:ms-0">
+            <div className="mx-auto mt-8 max-w-md sm:ms-0">
               <p className="text-white/70">
                 Join & get important new regularly
               </p>
-              <form class="mt-4 flex items-center justify-center">
+              <form className="mt-4 flex items-center justify-center">
                 <input
-                  class="w-full rounded-l-xl outline-none border-gray-200 px-6 py-3 shadow-sm"
+                  className="w-full rounded-l-xl outline-none border-gray-200 px-6 py-3 shadow-sm"
                   type="email"
                   placeholder="Enter your email"
                 />
 
                 <button
-                  class="block rounded-r-xl bg-btnColor px-5 py-3 font-medium text-primary"
+                  className="block rounded-r-xl bg-btnColor px-5 py-3 font-medium text-primary"
                   type="submit"
                 >
                   Subscribe

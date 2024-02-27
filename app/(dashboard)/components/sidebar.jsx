@@ -1,7 +1,6 @@
-import Image from "next/image";
+import { Avatar } from "@/app/components/ui/avatar";
 import plumber from "@/public/assets/plumber.jpg";
 import Link from "next/link";
-import { Avatar } from "@/app/components/ui/avatar";
 
 export default function SidebarDashBoard() {
   const navItem = [
@@ -18,12 +17,20 @@ export default function SidebarDashBoard() {
       path: "/dashboard/resume",
     },
     {
-      name: "Task-List",
+      name: "User Profile",
       path: "/dashboard/task-list",
     },
     {
-      name: "Blog",
-      path: "/dashboard/blog",
+      name: "Home Slider",
+      path: "/dashboard/homeSlider",
+    },
+    {
+      name: "Job Post",
+      path: "/dashboard/jobPost",
+    },
+    {
+      name: "Job Category",
+      path: "/dashboard/jobCategory",
     },
     {
       name: "Blog1",

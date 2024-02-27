@@ -38,10 +38,24 @@ export const query = async (endpoint, cacheKey) => {
 //  * @example
 //  * const data = await mutation("/api/users", { name: "John Doe" }, METHOD.POST, "users");
 //  */
+// export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
+//   const respnse = await fetch(endpoint, {
+//     method: method,
+//     body: JSON.stringify(data),
+//     headers: {
+//       "Content-type": "application/json",
+//       authorization: `Bearer ${cookies().get("token")?.value}`,
+//     },
+//   });
+//   if (revalidateCacheKey) {
+//     revalidateTag(revalidateCacheKey);
+//   }
+//   return await respnse.json();
+// };
 export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
   const respnse = await fetch(endpoint, {
     method: method,
-    body: JSON.stringify(data),
+    body: data ? JSON.stringify(data) : null,
     headers: {
       "Content-type": "application/json",
       authorization: `Bearer ${cookies().get("token")?.value}`,

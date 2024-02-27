@@ -38,6 +38,7 @@ export const Input = ({
   width = "full",
   fontSizeVariant,
   disabled = false,
+  required = false,
 }) => {
   return (
     <input
@@ -64,6 +65,7 @@ export const Input = ({
         focus:outline-none
         `}
       disabled={disabled}
+      required={required}
     />
   );
 };

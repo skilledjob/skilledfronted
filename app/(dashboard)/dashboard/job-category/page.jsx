@@ -2,8 +2,8 @@ import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 import { Button } from "@/app/components/ui/button";
 import FormElements from "@/app/components/ui/form-elements";
 
-export default function Job_Category(){
-  return(
+export default function Job_Category() {
+  return (
     <div className="text-white p-5 w-full">
       <div className="bg-secondary w-full p-5 rounded-md">
         <SubHeader>Add Job</SubHeader>
@@ -29,5 +29,5 @@ export default function Job_Category(){
         </div>
       </div>
     </div>
-  )
+  );
 }

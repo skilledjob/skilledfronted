@@ -161,7 +161,7 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
 
         <div>
           <Button
-            variant="primary"
+            variant="btnColor"
             size="md"
             type="submit"
             loading={loading}
