@@ -1,4 +1,8 @@
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 const Sidebar = ({ isOpen }) => {
+  const pathname = usePathname();
   return (
     <div
       className={`flex z-10 md:hidden absolute h-screen ${isOpen ? "sidebar-open" : "sidebar-closed"}`}
@@ -9,8 +13,30 @@ const Sidebar = ({ isOpen }) => {
         }`}
       >
         <ul className="text-[#bed6f3] text-center space-y-5 text-lg lg:ml-32 md:ml-10">
-          <li className="hover:text-[#FF3988] cursor-pointer">Home</li>
-          <li className="hover:text-[#FF3988] cursor-pointer">Job Post</li>
+          <li className="hover:text-[#FF3988] cursor-pointer">
+            <Link
+              className={`link ${pathname === "/home" ? "text-[#ffffff]" : ""}`}
+              href="/home"
+            >
+              Home
+            </Link>
+          </li>
+          <li className="hover:text-[#FF3988] cursor-pointer">
+            <Link
+              className={`link ${pathname === "/job-post" ? "text-[#ffffff]" : ""}`}
+              href="/job-post"
+            >
+              Job Post
+            </Link>
+          </li>
+          <li className="hover:text-[#FF3988] cursor-pointer">
+            <Link
+              className={`link ${pathname === "/job-search" ? "text-[#ffffff]" : ""}`}
+              href="/job-search"
+            >
+              Candidate Profile
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

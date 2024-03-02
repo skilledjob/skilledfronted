@@ -65,8 +65,10 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
   };
 
   return (
+    <> 
+       <Toast/>
     <div>
-      <Toast/>
+  
       <form onSubmit={handleSubmit(loginHandler)} className="space-y-4 p-8">
         <h2 className="text-slate-200 text-xl">Welcome back!</h2>
 
@@ -177,5 +179,6 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
         </div>
       </form>
     </div>
+    </>
   );
 }
