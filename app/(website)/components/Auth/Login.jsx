@@ -50,23 +50,21 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
     }
 
     const response = await login(payload);
-
+    console.log(response);
     if (!response?.success) {
       setLoading(false);
       setError(response?.error);
     }
     if (response?.success) {
       setLoading(false);
-    
       showToast("Login successful", "success");
-    
       toggoleModal();
     }
   };
 
   return (
     <div>
-      <Toast/>
+      <Toast />
       <form onSubmit={handleSubmit(loginHandler)} className="space-y-4 p-8">
         <h2 className="text-slate-200 text-xl">Welcome back!</h2>
 
