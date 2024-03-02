@@ -1,8 +1,8 @@
-import { Avatar } from "@/app/components/ui/avatar";
 import plumber from "@/public/assets/plumber.jpg";
 import Link from "next/link";
+import { Avatar } from "@/app/components/ui/avatar";
 
-export default function SidebarDashBoard() {
+export default function SidebarDashBoard({ hideSide }) {
   const navItem = [
     {
       name: "Dashboard",
@@ -14,7 +14,7 @@ export default function SidebarDashBoard() {
     },
     {
       name: "Resume",
-      path: "/dashboard/resume",
+      path: "/user/resume",
     },
     {
       name: "User Profile",
@@ -32,13 +32,12 @@ export default function SidebarDashBoard() {
       name: "Job Category",
       path: "/dashboard/jobCategory",
     },
-    {
-      name: "Blog1",
-      path: "/dashboard/blog",
-    },
   ];
+
   return (
-    <aside className="flex sticky top-0 flex-col min-w-64 h-screen px-4 py-8 overflow-y-auto bg-secondary border-r rtl:border-r-0 rtl:border-l">
+    <aside
+      className={`${hideSide ? "flex" : "hidden"} sticky top-0 flex-col min-w-64 h-screen px-4 py-8 overflow-y-auto bg-secondary border-r rtl:border-r-0 rtl:border-l`}
+    >
       <h2 className="text-center text-white text-3xl font-semibold">
         Skill Frontend
       </h2>
