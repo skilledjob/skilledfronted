@@ -21,8 +21,8 @@ export default function VideoResume({ videos }) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteVideoResumeId, setDeleteVideoResumeId] = useState(null);
   const [showDelete, setShowDelete] = useState(false);
-     //toast state 
-     const { Toast, showToast } = useToast();
+  //toast state
+  const { Toast, showToast } = useToast();
 
   const videoRef = useRef(null);
 
@@ -44,19 +44,19 @@ export default function VideoResume({ videos }) {
         );
         if (res?.data?.success) {
           revalidateJobSeekerProfile();
-         
+
           showToast("Video uploaded successfully", "success");
           setUploadLoading(false);
         }
 
         if (!res?.data?.success) {
-          showToast("Error while uploading video","error");
- 
+          showToast("Error while uploading video", "error");
+
           setUploadLoading(false);
         }
       } catch (error) {
         console.error("Error while uploading video: ", error);
-        showToast("Error while uploading video","error");
+        showToast("Error while uploading video", "error");
         setUploadLoading(false);
       }
     }
@@ -80,17 +80,17 @@ export default function VideoResume({ videos }) {
     try {
       const response = await deleteVideoResume(deleteVideoResumeId);
       if (response?.success) {
-        showToast("Video resume deleted successfully","success");
+        showToast("Video resume deleted successfully", "success");
         setDeleteLoading(false);
         hideDeleteModalHandler();
       }
 
       if (!response?.success) {
-        showToast("Error while deleting video resume","error");
+        showToast("Error while deleting video resume", "error");
         setDeleteLoading(false);
       }
     } catch (error) {
-      showToast("Error while deleting video resume","error");
+      showToast("Error while deleting video resume", "error");
       setDeleteLoading(false);
       hideDeleteModalHandler();
     }
@@ -98,7 +98,7 @@ export default function VideoResume({ videos }) {
 
   return (
     <>
-    <Toast/>
+      <Toast />
       <div>
         <h2 className="text-1xl my-5 font-semibold">Video resume</h2>
         <div className="w-full flex flex-wrap">
@@ -121,8 +121,33 @@ export default function VideoResume({ videos }) {
               </div>
             </div>
           ))}
-
-          {videos?.length < 3 && (
+          {videos && videos?.length > 3 ? (
+            <div className="w-1/2 h-72 p-3 relative">
+              <div className="w-full h-full">
+                <label
+                  htmlFor="video"
+                  className="block w-full h-full border border-white/70 rounded-xl font-semibold text-xl"
+                >
+                  <div className="flex items-center justify-center h-full">
+                    <input
+                      type="file"
+                      accept="video/*"
+                      onChange={handleVideoChange}
+                      id="video"
+                      hidden
+                      multiple
+                    />
+                    + Add Intro Video
+                  </div>
+                </label>
+              </div>
+              {uploadLoading && (
+                <div className="absolute top-0 bg-slate-700 w-full h-full flex items-center justify-center opacity-70">
+                  <Loader size={40} />
+                </div>
+              )}
+            </div>
+          ) : (
             <div className="w-1/2 h-72 p-3 relative">
               <div className="w-full h-full">
                 <label

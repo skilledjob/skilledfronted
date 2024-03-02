@@ -27,7 +27,7 @@ export default function Info({ profile }) {
   });
   const [intro, setIntro] = useState("");
   const [loading, setLoading] = useState(false);
-  //toast state 
+  //toast state
   const { Toast, showToast } = useToast();
   /**
    * EFFECTS
@@ -44,7 +44,7 @@ export default function Info({ profile }) {
           profile?.skills?.map(skill => {
             return {
               category: { value: skill.id, label: skill.name },
-              yearsOfExperience: skill.yearsOfExperience,
+              yearsOfExperience: parseInt(skill.yearsOfExperience),
             };
           })
         );
@@ -94,14 +94,13 @@ export default function Info({ profile }) {
       }
       if (!res?.success) {
         setLoading(false);
-     
-        showToast("Profile update failed", "error")
+
+        showToast("Profile update failed", "error");
       }
     } catch (error) {
       setLoading(false);
- 
-      showToast("Something went wrong!", "error")
-     
+
+      showToast("Something went wrong!", "error");
     }
   };
 
@@ -109,7 +108,7 @@ export default function Info({ profile }) {
   const addSkill = () => {
     const newSkill = {
       category: { value: "", label: "" },
-      yearsOfExperience: "",
+      yearsOfExperience: null,
     };
     setSkills([...skills, newSkill]);
   };
@@ -130,7 +129,7 @@ export default function Info({ profile }) {
 
   return (
     <div>
-          <Toast />
+      <Toast />
       {/* Oerview */}
       <div>
         <h1 className="text-lg font-semibold">Your personal information</h1>
@@ -209,7 +208,9 @@ export default function Info({ profile }) {
                     value={skill?.yearsOfExperience}
                     onChange={e => {
                       const newSkills = [...skills];
-                      newSkills[index].yearsOfExperience = e.target.value;
+                      newSkills[index].yearsOfExperience = parseInt(
+                        e.target.value
+                      );
                       setSkills(newSkills);
                     }}
                     type="number"
