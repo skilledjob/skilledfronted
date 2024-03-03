@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import CrossBtn from "./components/Crossbtn";
 import SidebarDashBoard from "./components/sidebar";
 
 export default function DashboardRootLayout({ children }) {
@@ -24,9 +23,8 @@ export default function DashboardRootLayout({ children }) {
   };
   return (
     <div className="flex gap-5">
-      <SidebarDashBoard hideSide={hideSide} />
+      <SidebarDashBoard hideSide={hideSide} setHideSide={setHideSide} />
       <div className="w-full">
-        <CrossBtn handleSidebar={handleSidebar} />
         {children}
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function Blog() {
     <div className="flex flex-col w-full">
       <div className="mt-16 w-full mr-5 p-5 bg-secondary rounded-md">
         <div className="flex items-center justify-between w-full">
-          <SubHeader className="text-white">Blog</SubHeader>
+          <SubHeader className="text-white">Job Category</SubHeader>
           <Link href="add-blog">
             <Button>Add More</Button>
           </Link>
