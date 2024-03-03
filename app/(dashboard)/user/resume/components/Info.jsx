@@ -9,6 +9,7 @@ import { updateProfile } from "@/app/lib/jobSeeker";
 import { useEffect, useState } from "react";
 
 export default function Info({ profile }) {
+  
   // Local state
   const [categoryOptions, setCategoyOptions] = useState([
     { value: "", label: "" },
@@ -26,15 +27,23 @@ export default function Info({ profile }) {
     year: "",
   });
   const [intro, setIntro] = useState("");
+
   const [loading, setLoading] = useState(false);
   //toast state
   const { Toast, showToast } = useToast();
   /**
    * EFFECTS
    */
+
+  useEffect(() => {
+    setIntro(profile?.intro ? profile.intro.replace(/<\/?[^>]+>/gi, "")
+      : "<p>Reload Again!</p>");
+  }, [profile, profile?.intro]);
+
+  
   useEffect(() => {
     if (profile) {
-      setIntro(profile.intro);
+    
       setEducation({
         title: profile.education.title,
         year: profile.education.year,
@@ -140,7 +149,7 @@ export default function Info({ profile }) {
 
         <div className="mt-10">
           <FormElements.Label>Overview</FormElements.Label>
-          <TextEditor value={intro} onChange={setIntro} defaultValue={intro} />
+          <TextEditor value={intro} onChange={setIntro}  />
         </div>
 
         {/* Education */}

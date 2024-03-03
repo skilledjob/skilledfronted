@@ -51,4 +51,11 @@ export const endpoints = {
       return makeApiUrl(`job-category/${id}`);
     },
   },
+  jobPost: {
+    getAllJob: makeApiUrl("job-post"),
+
+    getJobById(id) {
+      return makeApiUrl(`job-post/${id}`);
+    },
+  },
 };
