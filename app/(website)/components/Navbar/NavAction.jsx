@@ -21,7 +21,7 @@ export default function NavAction({ onLogout }) {
   }, []);
 
   return (
-    <div className="w-full h-full cursor-pointer">
+    <div className="w-full h-full cursor-pointer flex justify-end items-center">
       <DropdownElement.DropdownWrapper
         width="full"
         actionElement={

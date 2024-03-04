@@ -36,7 +36,7 @@ const useToast = () => {
 
     const { message, type } = toast;
 
-    const toastClasses = `fixed z-50 text-xl top-[85px] right-0 m-4 px-4 py-2 rounded ${type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+    const toastClasses = `fixed z-50  left-1/2 transform -translate-x-1/2 text-xl top-[40px]  m-4 px-4 py-2 rounded ${type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
       }`;
 
     return (

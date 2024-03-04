@@ -4,7 +4,7 @@ import FormElements from "@/app/components/ui/form-elements";
 import Dragdrop from "../../components/Dragdrop";
 import Dropzone from "@/app/components/ui/dropzone";
 
-export default function Add_Blog() {
+export default function AddBlog() {
   return (
     <div className="text-white p-5 w-full">
       <div className="bg-secondary w-full p-5 rounded-md">

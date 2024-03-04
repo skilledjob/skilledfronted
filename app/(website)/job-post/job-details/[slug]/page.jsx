@@ -1,15 +1,45 @@
 import Image from "next/image";
 import logo from "@/public/assets/e1.png";
-import SubHeader from "../../components/Subheader/Subheader";
+import SubHeader from "../../../components/Subheader/Subheader";
 import { CiLocationOn, CiShare2, CiHeart } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
 import { Button } from "@/app/components/ui/button";
 import { FiSend } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
-import Overview from "./components/Overview";
-import Information from "./components/Information";
+import Overview from "../components/Overview";
+import Information from "../components/Information";
+import { getSingleJObPost } from "@/app/lib/jobPost";
+// dynamic meta data
+export async function generateMetadata({ params,  }) {
+  const{slug}=params
+  //get deta
+  const singleJob=await getSingleJObPost(slug)
+  return {
+    title: singleJob?.title,
+    description: singleJob?.description,
+  }
+}
 
-export default function JobDetails() {
+
+
+
+export default async function  JobDetails({params}) {
+  //slug
+const{slug}=params
+
+
+//get deta
+
+
+const singleJob=await getSingleJObPost(slug)
+//convert date
+
+
+let dateString = singleJob?.date;
+let date = new Date(dateString);
+let options = { year: 'numeric', month: 'long', day: 'numeric' };
+let formattedDate = date.toLocaleDateString('en-US', options);
+
   return (
     <div>
       <div className="h-80 bgImage"></div>
@@ -17,20 +47,21 @@ export default function JobDetails() {
         <div className="-mt-20 bg-secondary rounded-md p-5 lg:p-8 flex gap-3 flex-col lg:flex-row items-center justify-between">
           <div className="flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-5">
             <div>
-              <Image src={logo} alt="logo" className="rounded-lg" />
+              <Image src={singleJob?.image}   
+     alt="logo" 	 className="rounded-lg" width={200} height={100}/>
             </div>
-            <div className="space-y-1 flex flex-col lg:items-start items-center justify-center gap-3">
-              <p className="font-semibold text-white/50">Mermedia Ltd</p>
+            <div className="space-y-1">
+              <p className="font-semibold text-white/50">{singleJob?.company}</p>
               <SubHeader className="my-0 text-xl text-white">
-                Sales Specialist
+                {singleJob?.title}
               </SubHeader>
               <div className="flex items-center gap-10 text-white/60">
                 <div className="flex items-center text-xs gap-1">
-                  <CiLocationOn /> <span>433 Graham Ave</span>
+                  <CiLocationOn /> <span>{singleJob?.location}</span>
                 </div>
                 <div className="flex items-center text-xs gap-1">
                   <SlCalender />
-                  <span>June 20, 2023</span>
+                  <span> {formattedDate}</span>
                 </div>
               </div>
               <div className="flex items-center gap-5">
@@ -63,14 +94,14 @@ export default function JobDetails() {
             </div>
             <div className="flex items-center gap-1">
               <AiOutlineDollar className="text-2xl text-white/35" />
-              <p className="font-semibold text-white">$750 - $800</p>
+              <p className="font-semibold text-white">{singleJob?.salary}</p>
               <p className="text-sm text-white/35">/ month</p>
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row items-start mt-10 gap-10">
-          <Overview />
-          <Information />
+        <div className="flex items-start mt-10 gap-10">
+          <Overview singleJob={singleJob} />
+          <Information  singleJob={singleJob} />
         </div>
       </div>
     </div>

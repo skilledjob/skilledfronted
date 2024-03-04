@@ -121,12 +121,7 @@ export default function VideoResume({ videos }) {
               </div>
             </div>
           ))}
-
-
-          {videos?.length < 3 && (
-            <div className="w-full md:w-1/2 h-72 p-3 relative">
-=======
-          {videos && videos?.length > 3 ? (
+          {videos && videos?.length >3 ? (
             <div className="w-1/2 h-72 p-3 relative">
               <div className="w-full h-full">
                 <label

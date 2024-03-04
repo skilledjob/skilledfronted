@@ -12,11 +12,7 @@ const Sidebar = ({ isOpen }) => {
           isOpen ? "translate-x-0" : "-translate-x-full w-0"
         }`}
       >
-        <ul
-          className={`text-[#bed6f3] text-center space-y-5 text-lg lg:ml-32 md:ml-10 ${
-            isOpen ? "block" : "hidden"
-          }`}
-        >
+        <ul className="text-[#bed6f3] text-center space-y-5 text-lg lg:ml-32 md:ml-10">
           <li className="hover:text-[#FF3988] cursor-pointer">
             <Link
               className={`link ${pathname === "/home" ? "text-[#ffffff]" : ""}`}

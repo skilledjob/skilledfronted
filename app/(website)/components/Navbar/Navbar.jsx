@@ -93,11 +93,10 @@ const Navbar = () => {
             />
           )}
         </div>
-        <div className="flex items-center gap-3 md:gap-0 justify-between md:w-1/2 w-2/3">
-          <div className="flex items-center justify-end bg-[#1B2E46] text-[#6A7482] w-full text-lg h-10 px-3 rounded-2xl">
-          </div>
+        <div className="flex items-center gap-3 md:gap-0 justify-end md:w-1/2 w-2/3">
+        
 
-          <div className="w-full flex items-center lg:ml-24 md:ml-10 gap-5">
+          <div className="w-full flex items-center  justify-end lg:ml-24 md:ml-10 gap-5">
             {loading ? (
               <div className="w-full h-10 bg-slate-800 rounded animate-pulse"></div>
             ) : (
