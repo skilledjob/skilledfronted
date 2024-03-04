@@ -8,7 +8,7 @@ export default function AddBlog() {
   return (
     <div className="text-white p-5 w-full">
       <div className="bg-secondary w-full p-5 rounded-md">
-        <SubHeader>Add Blog</SubHeader>
+        <SubHeader>Add Category</SubHeader>
         <div className="mt-10">
           <form className="flex flex-col items-start gap-5 justify-start">
             <div className="w-full">
@@ -17,7 +17,6 @@ export default function AddBlog() {
             </div>
             <div className="w-full">
               <FormElements.Label withAsterisk>Icon</FormElements.Label>
-              {/* <FormElements.FileInput>Choose Icon</FormElements.FileInput> */}
               <Dropzone
                 acceptedFileTypes={["jpg", "jpeg", "png"]}
                 subTitle="To upload, file size must be under 2MB and allowed file types are (.jpg, .png, .jpeg)"

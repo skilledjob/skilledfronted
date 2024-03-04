@@ -41,6 +41,8 @@ export default function SearchResult() {
               className="w-full object-cover h-full rounded-lg"
               src={plumber}
               alt=""
+              width={500}
+              height={500}
             />
           </div>
           <div className="flex gap-3 items-center mt-3">
@@ -64,6 +66,8 @@ export default function SearchResult() {
               className="w-full object-cover h-full rounded-lg"
               src={plumber}
               alt=""
+              width={500}
+              height={500}
             />
           </div>
           <div className="flex gap-3 items-center mt-3">
@@ -87,6 +91,8 @@ export default function SearchResult() {
               className="w-full object-cover h-full rounded-lg"
               src={plumber}
               alt=""
+              width={500}
+              height={500}
             />
           </div>
           <div className="flex gap-3 items-center mt-3">
@@ -110,6 +116,8 @@ export default function SearchResult() {
               className="w-full object-cover h-full rounded-lg"
               src={plumber}
               alt=""
+              width={500}
+              height={500}
             />
           </div>
           <div className="flex gap-3 items-center mt-3">
@@ -133,6 +141,8 @@ export default function SearchResult() {
               className="w-full object-cover h-full rounded-lg"
               src={plumber}
               alt=""
+              width={500}
+              height={500}
             />
           </div>
           <div className="flex gap-3 items-center mt-3">

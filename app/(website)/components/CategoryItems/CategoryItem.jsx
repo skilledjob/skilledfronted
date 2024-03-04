@@ -15,6 +15,8 @@ export default function CategoryItem() {
             className="w-full object-cover h-full rounded-lg"
             src={plumber}
             alt=""
+            height={500}
+            width={500}
           />
           <div className="absolute top-0 w-full h-full left-0 px-2 py-1 font-bold bg-gradient-to-t from-black via-transparent rounded-md">
             <p className="absolute left-5 bottom-5 text-xs sm:text-sm md:text-xl text-white">
@@ -32,6 +34,8 @@ export default function CategoryItem() {
             className="w-full object-cover h-full rounded-lg"
             src={plumber}
             alt=""
+            height={500}
+            width={500}
           />
           <div className="absolute top-0 w-full h-full left-0 px-2 py-1 font-bold bg-gradient-to-t from-black via-transparent rounded-md">
             <p className="absolute left-5 bottom-5 text-xs sm:text-sm md:text-xl text-white">
@@ -49,6 +53,8 @@ export default function CategoryItem() {
             className="w-full object-cover h-full rounded-lg"
             src={plumber}
             alt=""
+            height={500}
+            width={500}
           />
           <div className="absolute top-0 w-full h-full left-0 px-2 py-1 font-bold bg-gradient-to-t from-black via-transparent rounded-md">
             <p className="absolute left-5 bottom-5 text-xs sm:text-sm md:text-xl text-white">
@@ -66,6 +72,8 @@ export default function CategoryItem() {
             className="w-full object-cover h-full rounded-lg"
             src={plumber}
             alt=""
+            height={500}
+            width={500}
           />
           <div className="absolute top-0 w-full h-full left-0 px-2 py-1 font-bold bg-gradient-to-t from-black via-transparent rounded-md">
             <p className="absolute left-5 bottom-5 text-xs sm:text-sm md:text-xl text-white">
@@ -83,6 +91,8 @@ export default function CategoryItem() {
             className="w-full object-cover h-full rounded-lg"
             src={plumber}
             alt=""
+            height={500}
+            width={500}
           />
           <div className="absolute top-0 w-full h-full left-0 px-2 py-1 font-bold bg-gradient-to-t from-black via-transparent rounded-md">
             <p className="absolute left-5 bottom-5 text-xs sm:text-sm md:text-xl text-white">
