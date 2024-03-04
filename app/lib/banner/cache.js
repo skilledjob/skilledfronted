@@ -1,6 +1,6 @@
 const { revalidateTag } = require("next/cache");
 
-export const allBannerCaceh = {
+export const allBannerCache = {
   tag: {
     all() {
       return `allBanner:all`;

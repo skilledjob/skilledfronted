@@ -6,10 +6,8 @@ import "swiper/css/pagination";
 import "swiper/css";
 import Image from "next/image";
 import "@/app/(website)/home/components/HomeSlider/homeSlider.css";
-import Slides from "./slides";
-import plumber from "@/public/assets/plumber.jpg";
-import img1 from "@/public/assets/img1.jpg";
-import img2 from "@/public/assets/img2.jpg";
+import { getAllBanner } from "@/app/lib/banner";
+
 
 // This is Home Page Slider Component. Here we use SwiperJs to make slider component
 
