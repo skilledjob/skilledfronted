@@ -101,9 +101,9 @@ export default function VideoResume({ videos }) {
       <Toast />
       <div>
         <h2 className="text-1xl my-5 font-semibold">Video resume</h2>
-        <div className="w-full flex flex-wrap">
+        <div className="w-full md:flex">
           {videos?.map(video => (
-            <div key={video?.file} className="relative w-1/2 h-72 p-3">
+            <div key={video?.file} className="relative md:w-1/2 h-72 p-3">
               <video
                 ref={videoRef}
                 controls
@@ -121,6 +121,11 @@ export default function VideoResume({ videos }) {
               </div>
             </div>
           ))}
+
+
+          {videos?.length < 3 && (
+            <div className="w-full md:w-1/2 h-72 p-3 relative">
+=======
           {videos && videos?.length > 3 ? (
             <div className="w-1/2 h-72 p-3 relative">
               <div className="w-full h-full">
@@ -149,6 +154,7 @@ export default function VideoResume({ videos }) {
             </div>
           ) : (
             <div className="w-1/2 h-72 p-3 relative">
+
               <div className="w-full h-full">
                 <label
                   htmlFor="video"

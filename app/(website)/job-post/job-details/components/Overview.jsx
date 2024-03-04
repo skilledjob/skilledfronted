@@ -2,9 +2,9 @@ import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 
 export default function Overview() {
   return (
-    <div className="w-4/6">
+    <div className="w-full px-5 lg:px-0 lg:w-4/6">
       <SubHeader className="text-white">Job Description</SubHeader>
-      <p className="text-white/70">
+      <p className="text-white/70 ">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat id
         dicta consequuntur quasi at unde possimus dolorum quod ratione placeat
         veritatis, adipisci minus, porro earum error repellendus. Qui mollitia
