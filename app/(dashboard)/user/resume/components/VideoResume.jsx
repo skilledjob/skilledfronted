@@ -122,8 +122,39 @@ export default function VideoResume({ videos }) {
             </div>
           ))}
 
+
           {videos?.length < 3 && (
             <div className="w-full md:w-1/2 h-72 p-3 relative">
+=======
+          {videos && videos?.length > 3 ? (
+            <div className="w-1/2 h-72 p-3 relative">
+              <div className="w-full h-full">
+                <label
+                  htmlFor="video"
+                  className="block w-full h-full border border-white/70 rounded-xl font-semibold text-xl"
+                >
+                  <div className="flex items-center justify-center h-full">
+                    <input
+                      type="file"
+                      accept="video/*"
+                      onChange={handleVideoChange}
+                      id="video"
+                      hidden
+                      multiple
+                    />
+                    + Add Intro Video
+                  </div>
+                </label>
+              </div>
+              {uploadLoading && (
+                <div className="absolute top-0 bg-slate-700 w-full h-full flex items-center justify-center opacity-70">
+                  <Loader size={40} />
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="w-1/2 h-72 p-3 relative">
+
               <div className="w-full h-full">
                 <label
                   htmlFor="video"
