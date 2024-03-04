@@ -15,8 +15,8 @@ export async function generateMetadata({ params,  }) {
   //get deta
   const singleJob=await getSingleJObPost(slug)
   return {
-    title: singleJob.title,
-    description: singleJob.description,
+    title: singleJob?.title,
+    description: singleJob?.description,
   }
 }
 
@@ -47,7 +47,8 @@ let formattedDate = date.toLocaleDateString('en-US', options);
         <div className="-mt-20 bg-secondary rounded-md p-8 flex items-center justify-between">
           <div className="flex gap-5">
             <div>
-              <Image src={logo} alt="logo" className="rounded-lg" />
+              <Image src={singleJob?.image}   
+     alt="logo" 	 className="rounded-lg" width={200} height={100}/>
             </div>
             <div className="space-y-1">
               <p className="font-semibold text-white/50">{singleJob?.company}</p>

@@ -64,7 +64,7 @@ export default function Signup({
     }
 
     const response = await register(payload);
-    console.log("Response --> ", response);
+   
     if (response?.success) {
       setLoading(false);
       setError("");

@@ -58,4 +58,11 @@ export const endpoints = {
       return makeApiUrl(`job-post/${id}`);
     },
   },
+  addBanner: {
+    uploadBanner: makeApiUrl("banner-config"),
+    getAllBanner: makeApiUrl("banner-config"),
+  },
+  fileUpload: {
+    upload: makeApiUrl("storage/upload"),
+  },
 };

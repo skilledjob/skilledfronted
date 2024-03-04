@@ -50,7 +50,7 @@ export default function Login({ role, goForgotPassword, toggoleModal }) {
     }
 
     const response = await login(payload);
-    console.log(response);
+    
     if (!response?.success) {
       setLoading(false);
       setError(response?.error);

@@ -21,7 +21,7 @@ let formattedDate = date.toLocaleDateString('en-US', options);
       className="p-2 rounded-md border border-white/70"
     >
       <div>
-        <Image src={img1} alt="main card Photo" className="rounded-md" width={315} height={210} />
+        <Image src={image} alt="main card Photo" className="rounded-md" width={315} height={210} />
   
       </div>
       <div className="mt-5">
@@ -37,7 +37,7 @@ let formattedDate = date.toLocaleDateString('en-US', options);
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-3">
             <div>
-              <Avatar image={img1} size="small" />
+              <Avatar image={image} size="small" />
             </div>
             <div>
               <h5 className="text-white font-semibold leading-2">
