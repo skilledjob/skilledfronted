@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import Sidebar from "../Sidebar/Sidebar";
@@ -21,7 +20,7 @@ const Navbar = () => {
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-   //toast state 
+   //toast state
    const { Toast, showToast } = useToast();
 
   const isAuthenticated = useIsAuthenticated();
@@ -33,7 +32,7 @@ const Navbar = () => {
   const logoutHandler = async () => {
     const isLoggedOut = await logout();
     if (isLoggedOut) {
-  
+
       showToast("Logout successful", "success");
     }
   };

@@ -13,7 +13,7 @@ export default async function Resume() {
         </h1>
       </div>
       {/* Resume Uploader -->   */}
-      <div>
+      <div className="flex items-center justify-center md:block">
         <ResumeUploader resume={profile?.resume || null} />
       </div>
 

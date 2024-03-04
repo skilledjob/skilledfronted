@@ -8,7 +8,7 @@ export default async function JobPost() {
 
   return (
     <div className="container">
-      <div className="h-72 flex flex-col items-start justify-center ml-36">
+      <div className="h-44 md:h-72 flex flex-col items-start justify-center ml-14 md:ml-24 lg:ml-36">
         <h1 className="text-3xl font-semibold text-white leading-relaxed tracking-wider">
           Job Post
         </h1>

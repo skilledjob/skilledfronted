@@ -24,17 +24,17 @@ export default function SearchResult() {
   ];
   return (
     <div className="w-full px-5">
-      <div className="flex justify-between items-center border-b border-b-white/75 mb-5">
+      <div className="flex flex-wrap gap-5 justify-between items-center border-b border-b-white/75 mb-5">
         <p>
           Showing <span className="text-white/80 font-bold">41-60</span> of{" "}
           <span className="text-white/80 font-bold">944</span> jobs
         </p>
-        <div className="flex items-center gap-5 mb-5">
+        <div className="flex flex-wrap items-center gap-5 mb-5">
           <SelectInput options={options} />
           <SelectInput options={options} />
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-14">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
         <Link href="/discription" className="h-full text-white">
           <div>
             <Image

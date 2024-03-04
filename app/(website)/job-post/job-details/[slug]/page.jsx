@@ -43,9 +43,9 @@ let formattedDate = date.toLocaleDateString('en-US', options);
   return (
     <div>
       <div className="h-80 bgImage"></div>
-      <div className="max-w-7xl mx-auto">
-        <div className="-mt-20 bg-secondary rounded-md p-8 flex items-center justify-between">
-          <div className="flex gap-5">
+      <div className="lg:max-w-7xl w-full mx-auto">
+        <div className="-mt-20 bg-secondary rounded-md p-5 lg:p-8 flex gap-3 flex-col lg:flex-row items-center justify-between">
+          <div className="flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-5">
             <div>
               <Image src={singleJob?.image}   
      alt="logo" 	 className="rounded-lg" width={200} height={100}/>
@@ -74,7 +74,7 @@ let formattedDate = date.toLocaleDateString('en-US', options);
               </div>
             </div>
           </div>
-          <div className="space-y-3 flex flex-col items-end">
+          <div className="space-y-3 flex flex-col items-center justify-center lg:items-end">
             <div className="flex items-center gap-3">
               <div className="text-btnColor hover:bg-btnColor hover:text-primary transition-colors duration-300 border border-white/10 p-3 rounded-full cursor-pointer">
                 <CiShare2 />

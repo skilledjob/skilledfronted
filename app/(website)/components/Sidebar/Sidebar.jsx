@@ -9,7 +9,7 @@ const Sidebar = ({ isOpen }) => {
     >
       <div
         className={`w-64 bg-black/90 p-4 transition-all duration-300 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+          isOpen ? "translate-x-0" : "-translate-x-full w-0"
         }`}
       >
         <ul className="text-[#bed6f3] text-center space-y-5 text-lg lg:ml-32 md:ml-10">

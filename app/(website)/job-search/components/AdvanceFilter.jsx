@@ -39,7 +39,7 @@ export default function AdvanceFilter() {
   ];
 
   return (
-    <div className="px-5 w-[370px]">
+    <div className="px-5 w-full lg:w-[370px]">
       <div className="flex justify-between items-center border-b border-b-white/75 mb-5">
         <SubHeader className="mb-2">Advance Filter</SubHeader>
         <div className="text-white/70 cursor-pointer -mb-3">Reset</div>

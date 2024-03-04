@@ -6,18 +6,18 @@ import { Button } from "@/app/components/ui/button";
 export default function JobSearch() {
   return (
     <div className="mt-20 text-white container">
-      <div className="text-center flex flex-col items-center justify-center h-64">
+      <div className="text-center flex flex-col items-center justify-center h-auto md:h-64">
         <h1 className="text-3xl font-semibold mb-4">Jobs Available Now</h1>
         <p className="text-white/80">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
           repellendus magni,
           <br /> atque delectus molestias quis?
         </p>
-        <div className="flex items-center justify-center bg-white rounded-md px-2 mt-10 text-black/75">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-center bg-white rounded-md px-2 mt-10 text-black/75">
           <select
             name="industry"
             id="industry"
-            className="border-none bg-transparent py-3.5 px-2 rounded focus:outline-none text-black"
+            className="border-none w-full bg-transparent py-3.5 px-2 rounded focus:outline-none text-black"
           >
             <option value="Industry">Industry</option>
             <option value="Software">Software</option>
@@ -31,7 +31,7 @@ export default function JobSearch() {
           <select
             name="industry"
             id="industry"
-            className="border-none bg-transparent py-3.5 px-2 rounded focus:outline-none text-black"
+            className="border-none w-full bg-transparent py-3.5 px-2 rounded focus:outline-none text-black"
           >
             <option value="Industry">Industry</option>
             <option value="Software">Software</option>
@@ -43,16 +43,13 @@ export default function JobSearch() {
           </select>
           <input
             type="text"
-            className="border-none bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
+            className="border-none w-full bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
             placeholder="Your Keyword..."
           />
-          {/* <button className="bg-black px-4 py-2 rounded-md text-white/75">
-            Search
-          </button> */}
-          <Button>Search</Button>
+          <Button customClass="ml-auto md:ml-0">Search</Button>
         </div>
       </div>
-      <div className="flex gap-8 items-start">
+      <div className="flex flex-col lg:flex-row gap-8 items-start">
         <AdvanceFilter />
         <SearchResult />
       </div>

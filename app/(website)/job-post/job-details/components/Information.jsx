@@ -2,7 +2,7 @@ import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 
 export default function Information({singleJob}) {
   return (
-    <div className="bg-secondary p-5 w-2/6 rounded-lg">
+    <div className="bg-secondary p-5 w-full lg:w-2/6 rounded-lg">
       <SubHeader className="text-white">Information</SubHeader>
       <ul className="space-y-4">
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">

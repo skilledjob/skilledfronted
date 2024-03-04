@@ -1,80 +1,222 @@
-import { Avatar } from "@/app/components/ui/avatar";
 import plumber from "@/public/assets/plumber.jpg";
+import { Avatar } from "@/app/components/ui/avatar";
 import Link from "next/link";
-
-export default function SidebarDashBoard() {
-  const navItem = [
-    {
-      name: "Dashboard",
-      path: "/dashboard",
-    },
-    {
-      name: "Profile",
-      path: "/dashboard/admin-profile",
-    },
-    {
-      name: "Resume",
-      path: "/dashboard/resume",
-    },
-    {
-      name: "User Profile",
-      path: "/dashboard/task-list",
-    },
-    {
-      name: "Home Slider",
-      path: "/dashboard/homeSlider",
-    },
-    {
-      name: "Job Post",
-      path: "/dashboard/jobPost",
-    },
-    {
-      name: "Job Category",
-      path: "/dashboard/jobCategory",
-    },
-    {
-      name: "Blog1",
-      path: "/dashboard/blog",
-    },
-  ];
+import { Menu, MenuItem, Sidebar, sidebarClasses } from "react-pro-sidebar";
+import { GiHamburgerMenu } from "react-icons/gi";
+export default function SidebarDashBoard({ hideSide, setHideSide }) {
+  const handleCollapse = () => {
+    setHideSide(!hideSide);
+  };
   return (
-    <aside className="flex sticky top-0 flex-col min-w-64 h-screen px-4 py-8 overflow-y-auto bg-secondary border-r rtl:border-r-0 rtl:border-l">
-      <h2 className="text-center text-white text-3xl font-semibold">
+    <Sidebar
+      rootStyles={{
+        [`.${sidebarClasses.container}`]: {
+          backgroundColor: "#191919",
+          paddingTop: "30px",
+          height: "100vh",
+        },
+      }}
+      collapsed={hideSide ? true : false}
+    >
+      <div
+        className={`text-white flex items-start pr-2 -mt-6 ${!hideSide ? "justify-end" : "justify-center"} bg-secondary w-full`}
+        onClick={handleCollapse}
+      >
+        <GiHamburgerMenu className="text-2xl" />
+      </div>
+      <h2
+        className={`${hideSide ? "hidden" : "block"} text-center text-white text-3xl font-semibold`}
+      >
         Skill Frontend
       </h2>
-      <div className="flex flex-col items-center mt-6 -mx-2 text-white">
-        <Avatar image={plumber} size="large" name={"Avatar"} />
-        <h4 className="mx-2 mt-2 font-medium">John Doe</h4>
-        <p className="mx-2 mt-1 text-sm font-medium">john@example.com</p>
+      <div className="flex flex-col items-center my-6 -mx-2 text-white">
+        <Avatar
+          image={plumber}
+          size={`${hideSide ? "medium" : "large"}`}
+          name={"Avatar"}
+        />
+        <h4
+          className={`${hideSide ? "hidden" : "block"} mx-2 mt-2 font-medium`}
+        >
+          John Doe
+        </h4>
+        <p
+          className={`${hideSide ? "hidden" : "block"} mx-2 mt-1 text-sm font-medium`}
+        >
+          john@example.com
+        </p>
       </div>
-      <div className="flex flex-col justify-between flex-1 mt-6 text-white">
-        <nav>
-          {navItem.map(namePath => (
-            <Link
-              className="flex items-center px-4 py-2 rounded-lg"
-              href={namePath.path}
-              key={namePath.path}
+      <Menu
+        menuItemStyles={{
+          button: ({ level, active, disabled }) => {
+            if (level === 0)
+              return {
+                color: disabled ? "#f5d9ff" : "#ffffff",
+                backgroundColor: active ? "#eecef9" : undefined,
+                "&:hover": {
+                  backgroundColor: "#141414",
+                  color: "#ffffff",
+                },
+              };
+          },
+        }}
+      >
+        <MenuItem component={<Link href={"/dashboard"} />}>
+          <div
+            className={`flex items-center ${hideSide ? "justify-center" : "justify-start"} gap-2`}
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-
-              <span className="mx-4 font-medium">{namePath.name}</span>
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </aside>
+              <path
+                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={`${hideSide ? "hidden" : "block"}`}>
+              Dashboard
+            </span>
+          </div>
+        </MenuItem>
+        <MenuItem component={<Link href={"/dashboard/admin-profile"} />}>
+          <div
+            className={`flex items-center ${hideSide ? "justify-center" : "justify-start"} gap-2`}
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={`${hideSide ? "hidden" : "block"}`}>Profile</span>
+          </div>
+        </MenuItem>
+        <MenuItem component={<Link href={"/user/resume"} />}>
+          <div
+            className={`flex items-center ${hideSide ? "justify-center" : "justify-start"} gap-2`}
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={`${hideSide ? "hidden" : "block"}`}>Resume</span>
+          </div>
+        </MenuItem>
+        <MenuItem component={<Link href={"/dashboard/task-list"} />}>
+          <div
+            className={`flex items-center ${hideSide ? "justify-center" : "justify-start"} gap-2`}
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={`${hideSide ? "hidden" : "block"}`}>
+              User Profile
+            </span>
+          </div>
+        </MenuItem>
+        <MenuItem component={<Link href={"/dashboard/homeSlider"} />}>
+          <div
+            className={`flex items-center ${hideSide ? "justify-center" : "justify-start"} gap-2`}
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={`${hideSide ? "hidden" : "block"}`}>
+              Home Slider
+            </span>
+          </div>
+        </MenuItem>
+        <MenuItem component={<Link href={"/dashboard/jobPost"} />}>
+          <div
+            className={`flex items-center ${hideSide ? "justify-center" : "justify-start"} gap-2`}
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={`${hideSide ? "hidden" : "block"}`}>Job Post</span>
+          </div>
+        </MenuItem>
+        <MenuItem component={<Link href={"/dashboard/jobCategory"} />}>
+          <div
+            className={`flex items-center ${hideSide ? "justify-center" : "justify-start"} gap-2`}
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={`${hideSide ? "hidden" : "block"}`}>
+              Job Category
+            </span>
+          </div>
+        </MenuItem>
+      </Menu>
+    </Sidebar>
   );
 }
