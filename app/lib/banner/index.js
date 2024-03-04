@@ -3,7 +3,7 @@
 import { endpoints } from "@/app/common";
 import api from "../api";
 import { METHODS } from "@/app/constants";
-import { allBannerCaceh } from "./caceh";
+import { allBannerCache } from "./cache";
 
 export const addBanner = async data => {
   const response = await api.mutation(
@@ -16,7 +16,7 @@ export const addBanner = async data => {
 export const getAllBanner = async () => {
   const res = await api.query(
     endpoints.addBanner.getAllBanner,
-    allBannerCaceh.tag.all()
+    allBannerCache.tag.all()
   );
   return res?.data?.results;
 };
