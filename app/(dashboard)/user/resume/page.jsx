@@ -13,7 +13,7 @@ export default async function Resume() {
         </h1>
       </div>
       {/* Resume Uploader -->   */}
-      <div>
+      <div className="flex items-center justify-center md:block">
         <ResumeUploader resume={profile?.resume || null} />
       </div>
 
@@ -28,19 +28,6 @@ export default async function Resume() {
       <div className="py-10">
         <Info profile={profile} />
       </div>
-
-      {/* <div className="w-full bg-secondary rounded p-5 mt-5">
-        <div>
-          <SubHeader className="">Intro & Overview</SubHeader>
-          <p className="text-lg font-semibold">Overview*</p>
-          <TextArea />
-        </div>
-
-        <div>
-          <Accordion title="Education" />
-          <Accordion title="Skills" />
-        </div>
-      </div> */}
     </div>
   );
 }

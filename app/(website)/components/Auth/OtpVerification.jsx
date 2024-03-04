@@ -23,7 +23,7 @@ export default function OtpVerfication() {
    * HANDLERS
    */
   const otpSubmitHandler = async data => {
-    console.log(data);
+   
   };
 
   return (

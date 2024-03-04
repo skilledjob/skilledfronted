@@ -21,7 +21,7 @@ export default function OtpVerificationResetPassword() {
    * HANDLERS
    */
   const otpSubmitHandler = async data => {
-    console.log(data);
+   
   };
 
   return (

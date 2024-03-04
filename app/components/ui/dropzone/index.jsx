@@ -25,7 +25,7 @@ import { Loader } from "../loader/Loader";
 
 export default function Dropzone({
   onUpload,
-  acceptedFileTypes = ["pdf", "docx", "doc"],
+  acceptedFileTypes = ["pdf", "docx", "doc", "png", "jpg", "jpeg"],
   title = "Drop files here to upload",
   subTitle = "To upload file size is (Max 5Mb) and allowed file types are (.doc, .docx, .pdf)",
   loading = false,
@@ -49,8 +49,9 @@ export default function Dropzone({
     setDragOver(false);
 
     const file = event.dataTransfer.files[0];
-    const fileSize = file.size / 1024 / 1024;
-    const fileType = file.type.split("/")[1];
+
+    const fileSize = file?.size / 1024 / 1024;
+    const fileType = file?.type?.split("/")[1];
     if (fileSize > 5) {
       setError("File size should be less than 5MB");
       return;
@@ -65,8 +66,8 @@ export default function Dropzone({
 
   const handleInputChange = event => {
     const file = event.target.files[0];
-    const fileSize = file.size / 1024 / 1024;
-    const fileType = file.type.split("/")[1];
+    const fileSize = file?.size / 1024 / 1024;
+    const fileType = file?.type?.split("/")[1];
     if (fileSize > 5) {
       setError("File size should be less than 5MB");
       return;

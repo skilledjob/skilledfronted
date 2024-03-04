@@ -4,7 +4,7 @@ export default function CustomSelect({
   onChange,
   defaultValue = null,
 }) {
-  console.log(options);
+ 
   return (
     <select
       className="w-full p-3 rounded bg-primary focus:outline-0"
