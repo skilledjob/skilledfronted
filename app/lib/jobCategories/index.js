@@ -20,3 +20,11 @@ export const addJobCategory = async data => {
   );
   return result;
 };
+export const deleteJobCategory = async (id, data) => {
+  const result = await api.mutation(
+    endpoints.jobCategories.deleteCategory(id),
+    data,
+    METHODS.DELETE
+  );
+  return result;
+};

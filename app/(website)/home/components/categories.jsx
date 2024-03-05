@@ -1,19 +1,30 @@
-"use client"
-
-
+"use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
-import "swiper/css"
-; // Import your getAllCategories function
+import "swiper/css";
+
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go'; // Import your icon components
 import { getAllCategories } from '@/app/lib/jobCategories';
 
-const Categories = async () => {
-  const categoriesData = await getAllCategories();
+const Categories = () => {
+  const [categoriesData, setCategoriesData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAllCategories();
+        setCategoriesData(data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="w-full mx-auto container my-6">
@@ -56,7 +67,7 @@ const Categories = async () => {
           {categoriesData?.length > 0 ? (
             categoriesData?.map((category) => (
               <SwiperSlide key={category?.id}>
-                <Link href={`/category/${category.id}`} className="flex relative h-full justify-center items-center">
+                <Link href={`/category/${category?.id}`} className="flex relative h-full justify-center items-center">
                   <Image
                     className="w-64 object-cover h-64 rounded-lg"
                     width={256}
