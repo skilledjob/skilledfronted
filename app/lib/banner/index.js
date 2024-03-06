@@ -20,3 +20,26 @@ export const getAllBanner = async () => {
   );
   return res?.data?.results;
 };
+export const updateBanner = async (id, data) => {
+  const result = await api.mutation(
+    endpoints.addBanner.updateBanner(id),
+    data,
+    METHODS.PATCH
+  );
+  return result;
+};
+export const deleteBanner = async (id, data) => {
+  const result = await api.mutation(
+    endpoints.addBanner.deleteBanner(id),
+    data,
+    METHODS.DELETE
+  );
+  return result;
+};
+export const singlebanner = async id => {
+  const result = await api.query(
+    endpoints.addBanner.singleBanner(id),
+    allBannerCache.tag.byId(id)
+  );
+  return result?.data;
+};
