@@ -3,11 +3,12 @@
 import { endpoints } from "@/app/common";
 import api from "../api";
 import { METHODS } from "@/app/constants";
+import { categorisTag } from "./cache";
 
 export const getAllCategories = async () => {
   const res = await api.query(
     endpoints.jobCategories.getAllCategories,
-    "jobCategories"
+    categorisTag.tag.all()
   );
   return res?.data;
 };

@@ -36,3 +36,10 @@ export const deleteBanner = async (id, data) => {
   );
   return result;
 };
+export const singlebanner = async id => {
+  const result = await api.query(
+    endpoints.addBanner.singleBanner(id),
+    allBannerCache.tag.byId(id)
+  );
+  return result?.data;
+};

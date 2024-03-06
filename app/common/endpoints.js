@@ -67,6 +67,9 @@ export const endpoints = {
     deleteBanner(id) {
       return makeApiUrl(`banner-config/${id}`);
     },
+    singleBanner(id) {
+      return makeApiUrl(`banner-config/${id}`);
+    },
   },
   fileUpload: {
     upload: makeApiUrl("storage/upload"),
