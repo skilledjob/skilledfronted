@@ -75,4 +75,5 @@ export const endpoints = {
   fileUpload: {
     upload: makeApiUrl("storage/upload"),
   },
+  search: makeApiUrl("search"),
 };

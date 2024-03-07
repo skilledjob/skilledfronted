@@ -17,3 +17,12 @@ export const getSingleJObPost = async id => {
   );
   return response?.data;
 };
+
+export const addJobPost = async data => {
+  const response = await api.mutation(
+    endpoints.jobPost.addJob,
+    data,
+    jobPostsCache.tag.all()
+  );
+  return response;
+};
