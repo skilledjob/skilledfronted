@@ -44,8 +44,8 @@ const HomeSlider = async() => {
     </div>
   </SwiperSlide>
 ))}
-      
-      
+
+
     </Swiper>
   );
 };

@@ -88,6 +88,7 @@ export default function EditorChoice() {
                   className="w-full object-cover h-full rounded-lg"
                   src={data.image}
                   alt=""
+
                 />
                 <div className="flex gap-3 items-center mt-4">
                   <div>
