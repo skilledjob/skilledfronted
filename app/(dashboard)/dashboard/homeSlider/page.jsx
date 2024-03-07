@@ -1,17 +1,19 @@
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
-import Dragdrop from "../../components/Dragdrop";
 import { Button } from "@/app/components/ui/button";
+import Link from "next/link";
+
+import BannerTable from "./add-homeSlider/conponents";
 
 export default function HomeSlider() {
   return (
-    <div className="text-white w-full">
-      <SubHeader>Home Slider</SubHeader>
-      <div>
-        <Dragdrop className="w-96 h-64" />
+    <div className="flex flex-col w-full gap-10">
+      <div className="flex items-center justify-between pr-6">
+        <SubHeader className="text-white">Home Banner</SubHeader>
+        <Link href="homeSlider/add-homeSlider">
+          <Button>Add Banner</Button>
+        </Link>
       </div>
-      <div className="flex items-center justify-center mt-10">
-        <Button size="xl">Add</Button>
-      </div>
+      <BannerTable />
     </div>
   );
 }

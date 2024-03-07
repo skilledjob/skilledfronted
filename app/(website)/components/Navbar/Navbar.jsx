@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import Sidebar from "../Sidebar/Sidebar";
@@ -21,8 +20,8 @@ const Navbar = () => {
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-   //toast state 
-   const { Toast, showToast } = useToast();
+  //toast state
+  const { Toast, showToast } = useToast();
 
   const isAuthenticated = useIsAuthenticated();
 
@@ -33,7 +32,6 @@ const Navbar = () => {
   const logoutHandler = async () => {
     const isLoggedOut = await logout();
     if (isLoggedOut) {
-  
       showToast("Logout successful", "success");
     }
   };
@@ -46,7 +44,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <Toast/>
+      <Toast />
       <nav className="w-full fixed top-0 right-0 z-10 min-h-20 flex justify-between bg-secondary items-center border-b border-slate-800 lg:px-10 md:px-4">
         <div className="md:w-1/2 flex items-center">
           <Image
@@ -94,19 +92,8 @@ const Navbar = () => {
             />
           )}
         </div>
-        <div className="flex items-center gap-3 md:gap-0 justify-between md:w-1/2 w-2/3">
-          <div className="flex items-center justify-end bg-[#1B2E46] text-[#6A7482] w-full text-lg h-10 px-3 rounded-2xl">
-            {/* <input
-              type="text"
-              name=""
-              id=""
-              className="border-none outline-none bg-transparent placeholder:text-[#6A7482] w-full"
-              placeholder="Search"
-            /> */}
-            {/* <CiSearch className="" /> */}
-          </div>
-
-          <div className="w-full flex items-center lg:ml-24 md:ml-10 gap-5">
+        <div className="flex items-center gap-3 md:gap-0 justify-end md:w-1/2 w-2/3">
+          <div className="w-full flex items-center  justify-end lg:ml-24 md:ml-10 gap-5">
             {loading ? (
               <div className="w-full h-10 bg-slate-800 rounded animate-pulse"></div>
             ) : (

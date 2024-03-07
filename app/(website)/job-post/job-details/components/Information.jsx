@@ -1,8 +1,8 @@
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 
-export default function Information() {
+export default function Information({ singleJob }) {
   return (
-    <div className="bg-secondary p-5 w-2/6 rounded-lg">
+    <div className="bg-secondary p-5 w-full lg:w-2/6 rounded-lg">
       <SubHeader className="text-white">Information</SubHeader>
       <ul className="space-y-4">
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">
@@ -11,15 +11,15 @@ export default function Information() {
         </li>
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">
           <p>Location</p>
-          <p>United States</p>
+          <p>{singleJob?.location}</p>
         </li>
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">
           <p>Category</p>
-          <p>IT & Networking, Sales & Marketing</p>
+          <p>{singleJob?.title}</p>
         </li>
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">
           <p>Offered Salary:</p>
-          <p>$750 - $800 / month</p>
+          <p>{singleJob?.salary}/ month</p>
         </li>
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">
           <p>Expiration date</p>
@@ -35,7 +35,7 @@ export default function Information() {
         </li>
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">
           <p>Industry</p>
-          <p>Development, Seo</p>
+          <p>{singleJob?.company}</p>
         </li>
         <li className="flex items-center justify-between text-white/70 border-b border-b-white/40">
           <p>Qualification</p>

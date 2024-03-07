@@ -20,9 +20,7 @@ export default function OtpVerificationResetPassword() {
   /**
    * HANDLERS
    */
-  const otpSubmitHandler = async data => {
-    console.log(data);
-  };
+  const otpSubmitHandler = async data => {};
 
   return (
     <div className="py-6">

@@ -13,8 +13,8 @@ const Page = () => {
           Home <FaAngleRight /> Candidate Profile
         </p>
       </div>
-      <div className="max-w-7xl mx-auto mt-28 mb-8 flex gap-20">
-        <div className="w-3/4">
+      <div className="px-5 max-w-7xl mx-auto mt-28 mb-8 flex flex-col-reverse lg:flex-row gap-20">
+        <div className="w-full lg:w-3/4">
           <div className="p-5 border border-white/30 rounded-2xl">
             <h1 className="text-2xl font-bold mb-5 text-white">Overview</h1>
             <p className="leading-[2em] text-base text-white">
@@ -44,15 +44,15 @@ const Page = () => {
               controls
             />
           </div>
-          <div className="rounded-2xl mt-20 p-10 border border-black/30 relative">
+          <div className="rounded-2xl mt-20 p-3 md:p-10 border border-black/30 relative">
             <h1 className="text-2xl font-semibold text-white absolute px-2 -top-4">
               Education
             </h1>
-            <div className="lg:py-6 lg:pr-16">
+            <div className="lg:py-6 mt-5 md:mt-0 lg:pr-16">
               <div className="flex">
                 <div className="flex flex-col items-center mr-4">
                   <div>
-                    <div className="flex items-center justify-center w-16 h-16 border border-btnColor rounded-full text-lg text-white">
+                    <div className="flex items-center justify-center w-8 h-8 md:w-16 md:h-16 border border-btnColor rounded-full text-lg text-white">
                       1
                     </div>
                   </div>
@@ -74,7 +74,7 @@ const Page = () => {
               <div className="flex">
                 <div className="flex flex-col items-center mr-4">
                   <div>
-                    <div className="flex items-center justify-center w-16 h-16 border border-btnColor text-white rounded-full text-lg">
+                    <div className="flex items-center justify-center w-8 h-8 md:w-16 md:h-16 border border-btnColor text-white rounded-full text-lg">
                       2
                     </div>
                   </div>
@@ -95,7 +95,7 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className="rounded-2xl mt-20 p-10 border border-black/30 relative">
+          <div className="rounded-2xl mt-20 p-5 md:p-10 border border-black/30 relative">
             <h1 className="text-2xl font-semibold text-white absolute px-2 -top-4">
               Skills
             </h1>
@@ -129,15 +129,15 @@ const Page = () => {
               </li>
             </ul>
           </div>
-          <div className="rounded-2xl mt-20 p-10 border border-black/30 relative">
+          <div className="rounded-2xl mt-20 p-5 md:p-10 border border-black/30 relative">
             <h1 className="text-2xl font-semibold text-white absolute px-2 -top-4">
               Work Experience
             </h1>
             <div>
-              <div className="flex">
+              <div className="flex mt-5 md:mt-0">
                 <div className="flex flex-col items-center mr-4">
                   <div>
-                    <div className="flex items-center justify-center w-16 h-16 text-white border border-btnColor rounded-full text-lg">
+                    <div className="flex items-center justify-center w-8 h-8 md:w-16 md:h-16 text-white border border-btnColor rounded-full text-lg">
                       1
                     </div>
                   </div>
@@ -160,7 +160,7 @@ const Page = () => {
               <div className="flex">
                 <div className="flex flex-col items-center mr-4">
                   <div>
-                    <div className="flex items-center justify-center w-16 h-16 text-white border border-btnColor rounded-full text-lg">
+                    <div className="flex items-center justify-center w-8 h-8 md:w-16 md:h-16 text-white border border-btnColor rounded-full text-lg">
                       2
                     </div>
                   </div>
@@ -181,7 +181,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/4">
+        <div className="w-full lg:w-1/4">
           <div className="bg-secondary flex flex-col items-center justify-center py-10 px-5 rounded-2xl">
             <Avatar image={profile} size="large" />
             <h1 className="text-xl mt-3 font-semibold text-white">
@@ -191,10 +191,6 @@ const Page = () => {
               <span className="text-white/60 font-extralight">Age:</span>
               <p className="font-semibold text-white">28</p>
             </div>
-
-            {/* <button className="py-3 bg-black text-lg text-white w-full rounded-2xl font-semibold tracking-wider mt-5">
-              Contact Us
-            </button> */}
             <Button>Contact Us</Button>
           </div>
         </div>

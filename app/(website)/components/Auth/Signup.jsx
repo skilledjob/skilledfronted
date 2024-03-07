@@ -64,12 +64,12 @@ export default function Signup({
     }
 
     const response = await register(payload);
-    console.log("Response --> ", response);
+
     if (response?.success) {
       setLoading(false);
       setError("");
-     
-      showToast(response?.message, "success");;
+
+      showToast(response?.message, "success");
       reset();
       goEmailVerificationRequested();
     } else {
@@ -80,7 +80,7 @@ export default function Signup({
 
   return (
     <div>
-      <Toast/>
+      <Toast />
       <form onSubmit={handleSubmit(signupHandler)} className="space-y-4 p-8">
         <h2 className="text-slate-200 text-xl">Signup</h2>
         {error && <FormElements.Error>{error}</FormElements.Error>}

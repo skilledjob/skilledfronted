@@ -6,7 +6,13 @@ export default function Card() {
     <div className="border border-white/70 p-5 rounded-md">
       <div className="flex items-start gap-4 justify-between">
         <div className="min-w-16 min-h-16">
-          <Image src={logo} alt="logo" className="h-16 w-16 rounded-lg" />
+          <Image
+            src={logo}
+            alt="logo"
+            height={64}
+            width={64}
+            className="h-16 w-16 rounded-lg"
+          />
         </div>
         <div>
           <h3 className="text-xl font-bold">

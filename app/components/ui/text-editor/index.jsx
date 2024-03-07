@@ -9,9 +9,8 @@ export default function TextEditor({
   placeholder = "Write something interesting about you...",
 }) {
   const [editorHtml, setEditorHtml] = useState(value);
-
   const handleChange = html => {
-    setEditorHtml(html);
+    setEditorHtml(html.replace(/<\/?[^>]+>/gi, ""));
     if (onChange) {
       onChange(html);
     }
@@ -22,7 +21,7 @@ export default function TextEditor({
       <div className="rich-text-editor">
         <ReactQuill
           theme="snow"
-          value={editorHtml}
+          value={value}
           onChange={handleChange}
           modules={TextEditor.modules}
           formats={TextEditor.formats}

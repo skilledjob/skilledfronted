@@ -21,7 +21,7 @@ export default function NavAction({ onLogout }) {
   }, []);
 
   return (
-    <div className="w-full h-full cursor-pointer">
+    <div className="w-full h-full cursor-pointer flex justify-end items-center">
       <DropdownElement.DropdownWrapper
         width="full"
         actionElement={
@@ -45,8 +45,8 @@ export default function NavAction({ onLogout }) {
           </div>
         }
       >
-        <DropdownElement.DropdownItem type="link" to="/user/resume">
-          Resume
+        <DropdownElement.DropdownItem type="link" to="/dashboard">
+          Profile
         </DropdownElement.DropdownItem>
         <DropdownElement.DropdownItem onClick={onLogout}>
           Logout

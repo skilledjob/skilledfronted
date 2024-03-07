@@ -51,4 +51,27 @@ export const endpoints = {
       return makeApiUrl(`job-category/${id}`);
     },
   },
+  jobPost: {
+    getAllJob: makeApiUrl("job-post"),
+
+    getJobById(id) {
+      return makeApiUrl(`job-post/${id}`);
+    },
+  },
+  addBanner: {
+    uploadBanner: makeApiUrl("banner-config"),
+    getAllBanner: makeApiUrl("banner-config"),
+    updateBanner(id) {
+      return makeApiUrl(`banner-config/${id}`);
+    },
+    deleteBanner(id) {
+      return makeApiUrl(`banner-config/${id}`);
+    },
+    singleBanner(id) {
+      return makeApiUrl(`banner-config/${id}`);
+    },
+  },
+  fileUpload: {
+    upload: makeApiUrl("storage/upload"),
+  },
 };

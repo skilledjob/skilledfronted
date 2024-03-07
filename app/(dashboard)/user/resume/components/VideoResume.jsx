@@ -101,9 +101,9 @@ export default function VideoResume({ videos }) {
       <Toast />
       <div>
         <h2 className="text-1xl my-5 font-semibold">Video resume</h2>
-        <div className="w-full flex flex-wrap">
+        <div className="w-full md:flex">
           {videos?.map(video => (
-            <div key={video?.file} className="relative w-1/2 h-72 p-3">
+            <div key={video?.file} className="relative md:w-1/2 h-72 p-3">
               <video
                 ref={videoRef}
                 controls
@@ -196,7 +196,7 @@ export default function VideoResume({ videos }) {
             </p>
             <div className="flex items-center gap-3 mt-8">
               <Button
-                variant="btnColor"
+                variant="denger"
                 customclassName="bg-red-500 px-2 py-2 border border-red-500 text-white"
                 loading={deleteLoading}
                 onClick={deleteVideoResumeHandler}
