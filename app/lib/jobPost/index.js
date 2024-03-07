@@ -9,6 +9,7 @@ export const getAllJob = async () => {
   );
   return jobPost?.data?.results;
 };
+
 export const getSingleJObPost = async id => {
   const response = await api.query(
     endpoints.jobPost.getJobById(id),

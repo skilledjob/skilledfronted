@@ -26,6 +26,7 @@ export const endpoints = {
     userById(id) {
       return makeApiUrl(`users/${id}`);
     },
+    uploadProfile: makeApiUrl("users/update-profile-picture"),
   },
   post: {
     getPosts: "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5",

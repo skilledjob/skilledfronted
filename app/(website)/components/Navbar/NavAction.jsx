@@ -45,9 +45,19 @@ export default function NavAction({ onLogout }) {
           </div>
         }
       >
-        <DropdownElement.DropdownItem type="link" to="/dashboard">
-          Profile
-        </DropdownElement.DropdownItem>
+        {user?.role === "admin" && (
+          <DropdownElement.DropdownItem type="link" to="/dashboard">
+            Dashboard
+          </DropdownElement.DropdownItem>
+        )}
+        {user?.role === "user" && (
+          <>
+            <DropdownElement.DropdownItem type="link" to="/user/resume">
+              Profile
+            </DropdownElement.DropdownItem>
+          </>
+        )}
+
         <DropdownElement.DropdownItem onClick={onLogout}>
           Logout
         </DropdownElement.DropdownItem>

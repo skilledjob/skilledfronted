@@ -1,8 +1,8 @@
 "use server";
 
 import { endpoints } from "@/app/common";
-import api from "../api";
 import { METHODS } from "@/app/constants";
+import api from "../api";
 import { categorisTag } from "./cache";
 
 export const getAllCategories = async () => {
@@ -17,7 +17,8 @@ export const addJobCategory = async data => {
   const result = await api.mutation(
     endpoints.jobCategories.addCategory,
     data,
-    METHODS.POST
+    METHODS.POST,
+    categorisTag.tag.all()
   );
   return result;
 };
