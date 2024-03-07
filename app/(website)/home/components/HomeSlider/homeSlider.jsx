@@ -13,7 +13,7 @@ import { getAllBanner } from "@/app/lib/banner";
 
 const HomeSlider = async() => {
   const bannerData=await getAllBanner()
-  console.log("response",bannerData)
+  
   return (
     <Swiper
       pagination={{
