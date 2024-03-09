@@ -1,9 +1,93 @@
-import FormElements from "@/app/components/ui/form-elements";
+"use client";
+
+import { Button } from "@/app/components/ui/button";
+import { getAllCategories } from "@/app/lib/jobCategories";
+import { getSearchedJobSeekers } from "@/app/lib/search";
+import { useEffect, useState } from "react";
 import AdvanceFilter from "./components/AdvanceFilter";
 import SearchResult from "./components/SearchResult";
-import { Button } from "@/app/components/ui/button";
 
 export default function JobSearch() {
+  // Local State
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [keyword, setKeyword] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [jobSeekers, setJobSeekers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [meta, setMeta] = useState({
+    totalResults: 0,
+    page: 1,
+    limit: 10,
+    totalPages: 1,
+    currentItems: 0,
+  });
+
+  /**
+   * HANDLERS
+   */
+  const getAllJobCategories = async () => {
+    setIsLoading(true);
+    const res = await getAllCategories();
+    let categoryOptions = res?.map(category => ({
+      value: category.id,
+      label: category.name,
+    }));
+
+    categoryOptions = [{ value: null, label: "All" }, ...categoryOptions];
+    setCategories(categoryOptions);
+    setIsLoading(false);
+  };
+
+  const handleSelectCategory = category => {
+    setSelectedCategory(category);
+    // handleGetAllJobSeekers(category, keyword);
+  };
+
+  const resetFilters = () => {
+    setSelectedOption(null);
+    setKeyword("");
+    setStatus("all");
+  };
+
+  const handleGetAllJobSeekers = async (category, keyword, page, limit) => {
+    setIsLoading(true);
+    const res = await getSearchedJobSeekers(
+      category,
+      keyword,
+      null,
+      page,
+      limit
+    );
+    setJobSeekers(res?.searchResult?.results);
+    setMeta({
+      totalResults: res?.searchResult?.totalResults,
+      page: res?.searchResult?.page,
+      limit: res?.searchResult?.limit,
+      totalPages: res?.searchResult?.totalPages,
+      currentItems: res?.searchResult?.currentItemsCount,
+    });
+    setIsLoading(false);
+  };
+
+  /**
+   * EFFECTS
+   */
+  useEffect(() => {
+    setIsLoading(true);
+    getAllJobCategories();
+    handleGetAllJobSeekers();
+  }, []);
+
+  useEffect(() => {
+    handleGetAllJobSeekers(selectedCategory, keyword, page, limit);
+  }, [keyword, selectedCategory, page, limit]);
+
+  useEffect(() => {
+    handleGetAllJobSeekers(selectedCategory, keyword);
+  }, [selectedCategory, keyword]);
+
   return (
     <div className="mt-20 text-white container">
       <div className="text-center flex flex-col items-center justify-center h-auto md:h-64">
@@ -14,33 +98,6 @@ export default function JobSearch() {
           <br /> atque delectus molestias quis?
         </p>
         <div className="flex flex-col md:flex-row items-start md:items-center justify-center bg-white rounded-md px-2 mt-10 text-black/75">
-          <select
-            name="industry"
-            id="industry"
-            className="border-none w-full bg-transparent py-3.5 px-2 rounded focus:outline-none text-black"
-          >
-            <option value="Industry">Industry</option>
-            <option value="Software">Software</option>
-            <option value="Finance">Finance</option>
-            <option value="Recruting">Recruting</option>
-            <option value="Management">Management</option>
-            <option value="Advertising">Advertising</option>
-            <option value="Development">Development</option>
-          </select>
-
-          <select
-            name="industry"
-            id="industry"
-            className="border-none w-full bg-transparent py-3.5 px-2 rounded focus:outline-none text-black"
-          >
-            <option value="Industry">Industry</option>
-            <option value="Software">Software</option>
-            <option value="Finance">Finance</option>
-            <option value="Recruting">Recruting</option>
-            <option value="Management">Management</option>
-            <option value="Advertising">Advertising</option>
-            <option value="Development">Development</option>
-          </select>
           <input
             type="text"
             className="border-none w-full bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
@@ -50,8 +107,16 @@ export default function JobSearch() {
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-8 items-start">
-        <AdvanceFilter />
-        <SearchResult />
+        <AdvanceFilter
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleSelectCategory}
+        />
+        <SearchResult
+          jobSeekers={jobSeekers}
+          metaData={meta}
+          setPage={setPage}
+        />
       </div>
     </div>
   );

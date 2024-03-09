@@ -61,8 +61,8 @@ export default function Task() {
   const handleGetAllJobSeekers = async (category, keyword) => {
     setIsLoading(true);
     const res = await getSearchedJobSeekers(category, keyword);
-    console.log(res?.searchResult);
-    setJobSeekers(res?.searchResult);
+
+    setJobSeekers(res?.searchResult?.results);
     setIsLoading(false);
   };
 
