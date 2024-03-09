@@ -74,4 +74,11 @@ export const endpoints = {
   fileUpload: {
     upload: makeApiUrl("storage/upload"),
   },
+  search: {
+    searchJobSeekers(keyword, category, userId) {
+      return makeApiUrl(
+        `search?keyword=${keyword}&jobCategory=${category}&userId=${userId}`
+      );
+    },
+  },
 };

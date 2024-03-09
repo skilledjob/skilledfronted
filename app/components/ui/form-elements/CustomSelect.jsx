@@ -10,7 +10,6 @@ export default function CustomSelect({
       value={value}
       onChange={onChange}
     >
-      <option className="bg-primary">Select a category</option>
       {options &&
         options?.length > 0 &&
         options?.map((option, index) => (
