@@ -1,10 +1,8 @@
-
-
 import { getAllJob } from "@/app/lib/jobPost";
 import Card from "./components/Card";
 
 export default async function JobPost() {
-  const allJobPost =await getAllJob()
+  const allJobPost = await getAllJob();
 
   return (
     <div className="container">
@@ -15,15 +13,11 @@ export default async function JobPost() {
         <p className="text-white/80">Get The Leatest Job Here.</p>
       </div>
       <div className="grid grid-cols-3 gap-10 px-5">
-      {
-  Array.isArray(allJobPost) && allJobPost.length > 0 ? (
-    allJobPost.map((jobPost) => <Card key={jobPost.id} jobPost={jobPost} />)
-  ) : (
-    <div>No job posts available</div>
-  )
-}
-       
-        
+        {Array.isArray(allJobPost) && allJobPost.length > 0 ? (
+          allJobPost.map(jobPost => <Card key={jobPost.id} jobPost={jobPost} />)
+        ) : (
+          <div>No job posts available</div>
+        )}
       </div>
     </div>
   );

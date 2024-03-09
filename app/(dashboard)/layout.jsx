@@ -24,9 +24,7 @@ export default function DashboardRootLayout({ children }) {
   return (
     <div className="flex gap-5">
       <SidebarDashBoard hideSide={hideSide} setHideSide={setHideSide} />
-      <div className="w-full">
-        {children}
-      </div>
+      <div className="w-full">{children}</div>
     </div>
   );
 }

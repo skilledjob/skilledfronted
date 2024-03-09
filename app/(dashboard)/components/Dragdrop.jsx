@@ -15,7 +15,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function Dragdrop({ className,setImage }) {
+export default function Dragdrop({ className, setImage }) {
   const [dragging, setDragging] = useState(false);
   const [preview, setPreview] = useState("");
 
@@ -38,8 +38,8 @@ export default function Dragdrop({ className,setImage }) {
 
     if (files.length > 0) {
       const file = files[0];
-     
-      setImage(file)
+
+      setImage(file);
       setPreview(URL.createObjectURL(file));
     }
   };

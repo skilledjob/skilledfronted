@@ -10,35 +10,29 @@ import Overview from "../components/Overview";
 import Information from "../components/Information";
 import { getSingleJObPost } from "@/app/lib/jobPost";
 // dynamic meta data
-export async function generateMetadata({ params,  }) {
-  const{slug}=params
+export async function generateMetadata({ params }) {
+  const { slug } = params;
   //get deta
-  const singleJob=await getSingleJObPost(slug)
+  const singleJob = await getSingleJObPost(slug);
   return {
     title: singleJob?.title,
     description: singleJob?.description,
-  }
+  };
 }
 
-
-
-
-export default async function  JobDetails({params}) {
+export default async function JobDetails({ params }) {
   //slug
-const{slug}=params
+  const { slug } = params;
 
+  //get deta
 
-//get deta
+  const singleJob = await getSingleJObPost(slug);
+  //convert date
 
-
-const singleJob=await getSingleJObPost(slug)
-//convert date
-
-
-let dateString = singleJob?.date;
-let date = new Date(dateString);
-let options = { year: 'numeric', month: 'long', day: 'numeric' };
-let formattedDate = date.toLocaleDateString('en-US', options);
+  let dateString = singleJob?.date;
+  let date = new Date(dateString);
+  let options = { year: "numeric", month: "long", day: "numeric" };
+  let formattedDate = date.toLocaleDateString("en-US", options);
 
   return (
     <div>
@@ -47,11 +41,18 @@ let formattedDate = date.toLocaleDateString('en-US', options);
         <div className="-mt-20 bg-secondary rounded-md p-5 lg:p-8 flex gap-3 flex-col lg:flex-row items-center justify-between">
           <div className="flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-5">
             <div>
-              <Image src={singleJob?.image}   
-     alt="logo" 	 className="rounded-lg" width={200} height={100}/>
+              <Image
+                src={singleJob?.image}
+                alt="logo"
+                className="rounded-lg"
+                width={200}
+                height={100}
+              />
             </div>
             <div className="space-y-1">
-              <p className="font-semibold text-white/50">{singleJob?.company}</p>
+              <p className="font-semibold text-white/50">
+                {singleJob?.company}
+              </p>
               <SubHeader className="my-0 text-xl text-white">
                 {singleJob?.title}
               </SubHeader>
@@ -101,7 +102,7 @@ let formattedDate = date.toLocaleDateString('en-US', options);
         </div>
         <div className="flex items-start mt-10 gap-10">
           <Overview singleJob={singleJob} />
-          <Information  singleJob={singleJob} />
+          <Information singleJob={singleJob} />
         </div>
       </div>
     </div>

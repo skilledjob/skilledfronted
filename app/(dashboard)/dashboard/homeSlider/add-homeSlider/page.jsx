@@ -43,10 +43,10 @@ export default function AddHomeSlider() {
         }
       } else {
         showToast(res.data.error, "error");
-        setLoading(false)
+        setLoading(false);
       }
     } catch (error) {
-      showToast(error.message, "error")
+      showToast(error.message, "error");
       setLoading(false);
     }
   };
