@@ -7,7 +7,14 @@ import Link from "next/link";
 
 export default function Card({ jobPost }) {
   const { title, description, image, createdAt, slug } = jobPost;
+export default function Card({ jobPost }) {
+  const { title, description, image, createdAt, slug } = jobPost;
 
+  // time convert
+  let dateString = createdAt;
+  let date = new Date(dateString);
+  let options = { year: "numeric", month: "long", day: "numeric" };
+  let formattedDate = date.toLocaleDateString("en-US", options);
   // time convert
   let dateString = createdAt;
   let date = new Date(dateString);

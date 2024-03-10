@@ -22,9 +22,7 @@ export default function OtpVerfication() {
   /**
    * HANDLERS
    */
-  const otpSubmitHandler = async data => {
-   
-  };
+  const otpSubmitHandler = async data => {};
 
   return (
     <div className="py-6">

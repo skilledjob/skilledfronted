@@ -13,3 +13,4 @@ const SingleBanner = async ({ params }) => {
   return <UpdateBanner singleData={singleData} />;
 };
 export default SingleBanner;
+

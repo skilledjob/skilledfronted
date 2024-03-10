@@ -1,6 +1,6 @@
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 
-export default function Information({singleJob}) {
+export default function Information({ singleJob }) {
   return (
     <div className="bg-secondary p-5 w-full lg:w-2/6 rounded-lg">
       <SubHeader className="text-white">Information</SubHeader>

@@ -8,12 +8,11 @@ import Image from "next/image";
 import "@/app/(website)/home/components/HomeSlider/homeSlider.css";
 import { getAllBanner } from "@/app/lib/banner";
 
-
 // This is Home Page Slider Component. Here we use SwiperJs to make slider component
 
-const HomeSlider = async() => {
-  const bannerData=await getAllBanner()
-  
+const HomeSlider = async () => {
+  const bannerData = await getAllBanner();
+
   return (
     <Swiper
       pagination={{

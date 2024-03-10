@@ -23,7 +23,18 @@ export default function AddCategory() {
   const { Toast, showToast } = useToast();
 
   const router = useRouter();
+  const router = useRouter();
 
+  const handleBannerUpload = async file => {
+    try {
+      setImage(URL.createObjectURL(file)); // Set image state with object URL
+      // Add your file upload logic here
+      setFile(file);
+    } catch (error) {
+      showToast(error.message, "Error:");
+      // Handle other types of errors, such as network issues or unexpected responses
+    }
+  };
   const handleBannerUpload = async file => {
     try {
       setImage(URL.createObjectURL(file)); // Set image state with object URL
@@ -41,7 +52,15 @@ export default function AddCategory() {
     formState: { errors },
     handleSubmit,
   } = useForm({});
+  // react-hook-form
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({});
 
+  const upload = async data => {
+    event.preventDefault();
   const upload = async data => {
     event.preventDefault();
 

@@ -14,7 +14,7 @@ export default function TextEditor({
     if (onChange) {
       onChange(html);
     }
-};
+  };
 
   if (typeof window !== "undefined") {
     return (

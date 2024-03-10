@@ -1,14 +1,14 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css";
 
-import { GoChevronLeft, GoChevronRight } from 'react-icons/go'; // Import your icon components
-import { getAllCategories } from '@/app/lib/jobCategories';
+import { GoChevronLeft, GoChevronRight } from "react-icons/go"; // Import your icon components
+import { getAllCategories } from "@/app/lib/jobCategories";
 
 const Categories = () => {
   const [categoriesData, setCategoriesData] = useState([]);
@@ -65,9 +65,12 @@ const Categories = () => {
           className="mySwiper"
         >
           {categoriesData?.length > 0 ? (
-            categoriesData?.map((category) => (
+            categoriesData?.map(category => (
               <SwiperSlide key={category?.id}>
-                <Link href={`/category/${category?.id}`} className="flex relative h-full justify-center items-center">
+                <Link
+                  href={`/category/${category?.id}`}
+                  className="flex relative h-full justify-center items-center"
+                >
                   <Image
                     className="w-64 object-cover h-64 rounded-lg"
                     width={256}
@@ -77,7 +80,8 @@ const Categories = () => {
                   />
                   <div className="absolute top-0 w-full h-full left-0 px-2 py-1 font-bold bg-gradient-to-t from-black via-transparent rounded-md">
                     <p className="absolute left-5 bottom-5 text-xs sm:text-sm md:text-xl text-white">
-                      {category?.name} {/* Assuming your category object has a 'name' property */}
+                      {category?.name}{" "}
+                      {/* Assuming your category object has a 'name' property */}
                     </p>
                   </div>
                 </Link>
