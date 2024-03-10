@@ -36,7 +36,6 @@ export const Input = ({
   value,
   onChange,
   width = "full",
-  fontSizeVariant,
   disabled = false,
   required = false,
 }) => {

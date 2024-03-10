@@ -34,11 +34,7 @@ export default function Card({ jobPost }) {
         </span>
         <SubHeader className="text-2xl text-white">{title}</SubHeader>
         <p className="text-white/70">{description}</p>
-        <div class="">
-          {/* <div class="font-bold text-xl mb-2">Software Engineer</div>
-          <p class="text-gray-700 text-base">
-            We are seeking a skilled software engineer to join our dynamic team.
-          </p> */}
+        {/* <div class="">
           <p class="text-white/70 text-base mt-2">
             <span class="font-semibold text-white">Location:</span> New York City
           </p>
@@ -57,7 +53,7 @@ export default function Card({ jobPost }) {
           <p class="text-white/70 text-base">
             <span class="font-semibold text-white">Career Level:</span> Diploma
           </p>
-        </div>
+        </div> */}
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-3">
             <div>
