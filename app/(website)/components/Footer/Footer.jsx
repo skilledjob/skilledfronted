@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container">
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-4 py-16 border-b border-white/40 lg:grid-cols-6">
           <Link href="/home">
-            <Image src={logo} alt="logo" width={80} />
+            <Image src={logo} alt="logo" height={80} width={80} />
           </Link>
 
           <div className="text-center sm:text-left">

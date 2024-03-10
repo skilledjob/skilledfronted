@@ -13,6 +13,7 @@ import { endpoints } from "@/app/common";
 import { METHODS } from "@/app/constants";
 import { addJobCategory } from "@/app/lib/jobCategories";
 import { useRouter } from "next/navigation";
+import { FaRegTrashAlt } from "react-icons/fa";
 export default function AddCategory() {
   //loading state
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,18 @@ export default function AddCategory() {
   const { Toast, showToast } = useToast();
 
   const router = useRouter();
+  const router = useRouter();
 
+  const handleBannerUpload = async file => {
+    try {
+      setImage(URL.createObjectURL(file)); // Set image state with object URL
+      // Add your file upload logic here
+      setFile(file);
+    } catch (error) {
+      showToast(error.message, "Error:");
+      // Handle other types of errors, such as network issues or unexpected responses
+    }
+  };
   const handleBannerUpload = async file => {
     try {
       setImage(URL.createObjectURL(file)); // Set image state with object URL
@@ -40,7 +52,15 @@ export default function AddCategory() {
     formState: { errors },
     handleSubmit,
   } = useForm({});
+  // react-hook-form
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({});
 
+  const upload = async data => {
+    event.preventDefault();
   const upload = async data => {
     event.preventDefault();
 
@@ -156,7 +176,7 @@ export default function AddCategory() {
                 </div>
               </div>
               {image && (
-                <div className="mb-20 border rounded-md p-5 border-white flex items-center justify-center">
+                <div className="relative mb-20 border rounded-md p-5 border-white flex items-center justify-center">
                   <Image
                     src={image}
                     width={300}
@@ -164,16 +184,23 @@ export default function AddCategory() {
                     className="w-[300px] h-[300px] object-contain"
                     alt="Dropped Image"
                   />
+                  <div className="absolute top-5 right-5 bg-white rounded-md">
+                    <Button variant="text" onClick={() => setImage("")}>
+                      <FaRegTrashAlt />
+                    </Button>
+                  </div>
                 </div>
               )}
-              <div className="w-full">
-                <FormElements.Label withAsterisk>Icon</FormElements.Label>
-                <Dropzone
-                  acceptedFileTypes={["png", "jpg", "jpeg"]}
-                  subTitle="To upload, file size must be under 2MB and allowed file types are (.jpg, .png, .jpeg)"
-                  onUpload={handleBannerUpload}
-                />
-              </div>
+              {!image && (
+                <div className="w-full">
+                  <FormElements.Label withAsterisk>Icon</FormElements.Label>
+                  <Dropzone
+                    acceptedFileTypes={["png", "jpg", "jpeg"]}
+                    subTitle="To upload, file size must be under 2MB and allowed file types are (.jpg, .png, .jpeg)"
+                    onUpload={handleBannerUpload}
+                  />
+                </div>
+              )}
               <div className="flex gap-5 items-center mt-10 justify-center">
                 <Button
                   variant="btnColor"
@@ -184,8 +211,6 @@ export default function AddCategory() {
                 >
                   SAVE
                 </Button>
-                <Button variant="danger">CANCEL</Button>{" "}
-                {/* Corrected 'denger' to 'danger' */}
               </div>
             </form>
           </div>

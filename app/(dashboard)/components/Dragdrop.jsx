@@ -54,34 +54,34 @@ export default function Dragdrop({ className, setImage }) {
 
   return (
     <div className="flex items-center justify-center w-full flex-col">
-      {preview && (
+      {!preview ? (
+        <div
+          className={` bg-secondary flex items-center justify-center border rounded-lg ${className} ${
+            dragging ? "border-blue-500" : "border-gray-400"
+          }`}
+          draggable
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+        >
+          {dragging ? (
+            <span className="text-blue-500">Drop here</span>
+          ) : (
+            <p className="flex items-center flex-col">
+              Drag me <span className="font-semibold">or</span>
+              <label htmlFor="photo" className="cursor-pointer">
+                Click Here
+              </label>
+              <input type="file" id="photo" hidden onChange={handleClick} />
+            </p>
+          )}
+        </div>
+      ) : (
         <div className="mb-20 border rounded-md p-5 border-white">
           <Image src={preview} width={300} height={300} alt="Droped Image" />
         </div>
       )}
-
-      <div
-        className={` bg-secondary flex items-center justify-center border rounded-lg ${className} ${
-          dragging ? "border-blue-500" : "border-gray-400"
-        }`}
-        draggable
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-      >
-        {dragging ? (
-          <span className="text-blue-500">Drop here</span>
-        ) : (
-          <p className="flex items-center flex-col">
-            Drag me <span className="font-semibold">or</span>
-            <label htmlFor="photo" className="cursor-pointer">
-              Click Here
-            </label>
-            <input type="file" id="photo" hidden onChange={handleClick} />
-          </p>
-        )}
-      </div>
     </div>
   );
 }
