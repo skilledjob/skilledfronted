@@ -29,6 +29,7 @@ export default function Dropzone({
   title = "Drop files here to upload",
   subTitle = "To upload file size is (Max 5Mb) and allowed file types are (.doc, .docx, .pdf)",
   loading = false,
+  maxSize = 5,
 }) {
   const [file, setFile] = useState(null);
   const [dragOver, setDragOver] = useState(false);
@@ -52,7 +53,7 @@ export default function Dropzone({
 
     const fileSize = file?.size / 1024 / 1024;
     const fileType = file?.type?.split("/")[1];
-    if (fileSize > 5) {
+    if (fileSize > maxSize) {
       setError("File size should be less than 5MB");
       return;
     } else if (!acceptedFileTypes.includes(fileType)) {
@@ -68,7 +69,7 @@ export default function Dropzone({
     const file = event.target.files[0];
     const fileSize = file?.size / 1024 / 1024;
     const fileType = file?.type?.split("/")[1];
-    if (fileSize > 5) {
+    if (fileSize > maxSize) {
       setError("File size should be less than 5MB");
       return;
     } else if (!acceptedFileTypes.includes(fileType)) {
