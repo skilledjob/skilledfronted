@@ -4,10 +4,12 @@ import { endpoints } from "@/app/common";
 import { Button } from "@/app/components/ui/button";
 import Dropzone from "@/app/components/ui/dropzone";
 import FormElements from "@/app/components/ui/form-elements";
+import useToast from "@/app/components/ui/toast";
 import { METHODS } from "@/app/constants";
 import { fileUpload } from "@/app/lib/fileUpload";
 import { getAllCategories } from "@/app/lib/jobCategories";
 import { createJobSeekerProfile } from "@/app/lib/jobSeeker";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 
@@ -48,6 +50,10 @@ export default function CreateJobSeeker() {
     },
   ]);
 
+  // hooks
+  const { Toast, showToast } = useToast();
+  const router = useRouter();
+
   /**
    * HANDLERS
    */
@@ -85,7 +91,6 @@ export default function CreateJobSeeker() {
 
   const handleAddJobSeeker = async e => {
     e.preventDefault();
-
     setLoading(true);
 
     try {
@@ -130,12 +135,24 @@ export default function CreateJobSeeker() {
         videoResume: videoResumeLinks.map(file => ({ file })),
       };
 
-      console.log("Updated Payload --> ", updatedPayload);
+      const skills = updatedPayload.skills.map(skill => ({
+        jobCategory: skill.category.value,
+        yearsOfExperience: skill.yearsOfExperience,
+      }));
+
+      updatedPayload.skills = skills;
 
       // add job seeker
       const createJobSeekerRes = await createJobSeekerProfile(updatedPayload);
       if (createJobSeekerRes?.success) {
-        console.log("Job Seeker Created");
+        console.log(createJobSeekerRes);
+        setLoading(false);
+        showToast("Job Seeker Created", "success");
+        router.push("/dashboard/task-list");
+      }
+
+      if (!createJobSeekerRes?.success) {
+        showToast(createJobSeekerRes?.message, "success");
       }
     } catch (error) {
       console.error("Error occurred:", error);
@@ -188,7 +205,6 @@ export default function CreateJobSeeker() {
 
   // upload video resume to the server
   const uploadVideoResume = async file => {
-    console.log("Uploading video resume --> ", file);
     const formData = new FormData();
 
     formData.append("file", file);
@@ -385,7 +401,12 @@ export default function CreateJobSeeker() {
                     controls
                     className="w-full h-56 border border-white/70 rounded-xl font-semibold text-xl"
                   >
-                    <source src={video?.file} type="video/mp4" />
+                    <source
+                      src={
+                        video?.file ? URL.createObjectURL(video?.file) : null
+                      }
+                      type="video/mp4"
+                    />
                   </video>
                   <button
                     className="bg-white text-gray-800 w-8 h-8 flex items-center justify-center rounded-full absolute top-2 right-2"
