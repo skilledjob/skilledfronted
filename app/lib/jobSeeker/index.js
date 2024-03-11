@@ -56,3 +56,12 @@ export const revalidateJobSeekerProfile = async (id = null) => {
   const userId = id || (await getCurrentUserId());
   jobSeekerCache.revalidate.byId(userId);
 };
+
+export const createJobSeekerProfile = async data => {
+  const response = await api.mutation(
+    endpoints.jobSeeker.createJobSeekerProfile,
+    data,
+    METHODS.POST
+  );
+  return response;
+};

@@ -40,6 +40,7 @@ export const endpoints = {
     deleteVideoResume(id) {
       return makeApiUrl(`applicant/delete-video-resume/${id}`);
     },
+    createJobSeekerProfile: makeApiUrl("applicant/create-user-applicant"),
   },
   jobCategories: {
     getAllCategories: makeApiUrl("job-category"),
@@ -52,13 +53,9 @@ export const endpoints = {
     },
   },
   jobPost: {
-    uploadJob: makeApiUrl("job-post"),
     getAllJob: makeApiUrl("job-post"),
 
     getJobById(id) {
-      return makeApiUrl(`job-post/${id}`);
-    },
-    updateJob(id) {
       return makeApiUrl(`job-post/${id}`);
     },
   },
@@ -77,17 +74,5 @@ export const endpoints = {
   },
   fileUpload: {
     upload: makeApiUrl("storage/upload"),
-  },
-  search: {
-    searchJobSeekers(keyword, category, userId, page, limit) {
-      let endpoint = `search?keyword=${keyword}&jobCategory=${category}&userId=${userId}`;
-      if (page) {
-        endpoint += `&page=${page}`;
-      }
-      if (limit) {
-        endpoint += `&limit=${limit}`;
-      }
-      return makeApiUrl(endpoint);
-    },
   },
 };

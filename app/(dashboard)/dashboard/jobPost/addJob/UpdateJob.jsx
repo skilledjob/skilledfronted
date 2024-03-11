@@ -13,7 +13,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-export default function UpdateJob({ singleData,slug }) {
+export default function UpdateJob({ singleData, slug }) {
   // const {
   //   title,
   //   company,

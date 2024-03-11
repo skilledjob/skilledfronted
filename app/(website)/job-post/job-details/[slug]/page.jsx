@@ -1,13 +1,14 @@
 import Image from "next/image";
+import logo from "@/public/assets/e1.png";
 import SubHeader from "../../../components/Subheader/Subheader";
 import { CiLocationOn, CiShare2, CiHeart } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
+import { Button } from "@/app/components/ui/button";
 import { FiSend } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
 import Overview from "../components/Overview";
 import Information from "../components/Information";
 import { getSingleJObPost } from "@/app/lib/jobPost";
-import WhatsApp from "@/app/components/ui/whatsApp";
 // dynamic meta data
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -35,7 +36,7 @@ export default async function JobDetails({ params }) {
 
   return (
     <div>
-      <div className="h-80"></div>
+      <div className="h-80 bgImage"></div>
       <div className="lg:max-w-7xl w-full mx-auto">
         <div className="-mt-20 bg-secondary rounded-md p-5 lg:p-8 flex gap-3 flex-col lg:flex-row items-center justify-between">
           <div className="flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-5">
@@ -82,13 +83,9 @@ export default async function JobDetails({ params }) {
               <div className="text-btnColor hover:bg-btnColor hover:text-primary transition-colors duration-300 border border-white/10 p-3 rounded-full cursor-pointer">
                 <CiHeart />
               </div>
-
-              <WhatsApp
-                phoneNumber={"+8801400145618"}
-                message={"This is a message"}
-              >
+              <Button>
                 <FiSend /> Apply Now
-              </WhatsApp>
+              </Button>
             </div>
             <div className="flex items-center gap-1">
               <p className="text-sm font-light text-white/35">Deadline date:</p>

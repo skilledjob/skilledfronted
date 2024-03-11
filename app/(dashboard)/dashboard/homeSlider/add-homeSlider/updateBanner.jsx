@@ -10,7 +10,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { useRouter } from "next/navigation";
-import { FaRegTrashAlt } from "react-icons/fa";
 
 const UpdateBanner = ({ singleData }) => {
   const { image, id } = singleData;
@@ -71,8 +70,8 @@ const UpdateBanner = ({ singleData }) => {
       <Toast />
       <div className="text-white w-full">
         {/* <SubHeader>Home Slider</SubHeader> */}
-        {image && (
-          <div className="relative mb-20 border rounded-md p-5 border-white flex items-center justify-center">
+        {images && (
+          <div className="mb-20 border rounded-md p-5 border-white flex items-center justify-center">
             <Image
               src={image}
               width={300}
@@ -80,21 +79,13 @@ const UpdateBanner = ({ singleData }) => {
               className="w-[300px] h-[300px] object-contain"
               alt="Droped Image"
             />
-            <div className="absolute top-5 right-5 bg-white rounded-md">
-              <Button variant="text" onClick={() => setImage("")}>
-                <FaRegTrashAlt />
-              </Button>
-            </div>
           </div>
         )}
         <div>
-          {!image && (
-            <Dropzone
-              acceptedFileTypes={["jpg", "jpeg", "png"]}
-              subTitle="To upload, file size must be under 2MB and allowed file types are (.jpg, .png, .jpeg)"
-              onUpload={handleImageUpload}
-            />
-          )}
+          <Dropzone
+            acceptedFileTypes={["png", "jpg", "jpeg"]}
+            onUpload={handleBannerUpload}
+          />
         </div>
         <div className="flex items-center justify-center mt-10">
           <Button

@@ -27,7 +27,9 @@ export const SelectInput = ({ defaultValue, options, onChange }) => {
       border: `1px solid #4b5563`,
       borderRadius: "5px",
       backgroundColor: "#242424",
+      // height: "40px",
       padding: "7px 0px",
+      // maxWidth: "500px",
       color: "white!!",
     }),
     menu: provided => ({
