@@ -1,9 +1,26 @@
 "use client";
+import { getCurrentUser } from "@/app/lib/user";
 import { useEffect, useState } from "react";
 import SidebarDashBoard from "./components/sidebar";
 
 export default function DashboardRootLayout({ children }) {
-  const [hideSide, setHideSide] = useState(true);
+  const [hideSide, setHideSide] = useState(false);
+  const [user, setUser] = useState(null);
+
+  /**
+   * HANDLERS
+   */
+  const getCurrentUserDetails = async () => {
+    const user = await getCurrentUser();
+    setUser(user);
+  };
+
+  /**
+   * EFFECTS
+   */
+  useEffect(() => {
+    getCurrentUserDetails();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -18,12 +35,13 @@ export default function DashboardRootLayout({ children }) {
     };
   }, []);
 
-  const handleSidebar = () => {
-    setHideSide(!hideSide);
-  };
   return (
     <div className="flex gap-5">
-      <SidebarDashBoard hideSide={hideSide} setHideSide={setHideSide} />
+      <SidebarDashBoard
+        user={user}
+        hideSide={hideSide}
+        setHideSide={setHideSide}
+      />
       <div className="w-full">{children}</div>
     </div>
   );

@@ -5,7 +5,7 @@ import { Button } from "@/app/components/ui/button";
 import Dropzone from "@/app/components/ui/dropzone";
 import FormElements from "@/app/components/ui/form-elements";
 import useToast from "@/app/components/ui/toast";
-import { METHOD } from "@/app/constants";
+import { METHODS } from "@/app/constants";
 import { fileUpload } from "@/app/lib/fileUpload";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -13,32 +13,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-export default function UpdateJob({ singleData,slug }) {
-  // const {
-  //   title,
-  //   company,
-  //   education,
-  //   careerLevel,
-  //   experience,
-  //   gender,
-  //   salary,
-  //   date,
-  //   location,
-  //   description,
-  //   image,
-  //   id,
-  //   slug,
-  // } = singleData;
-
-  const router = useRouter();
-
-  // All States
-  const { Toast, showToast } = useToast();
-  const [loading, setLoading] = useState(false);
-  const [images, setImage] = useState(singleData?.image);
-  const [file, setFile] = useState(null);
-
-  // React-hook-form
+export default function UpdateJob({ singleData, slug }) {
   const {
     control,
     formState: { errors },
@@ -46,12 +21,21 @@ export default function UpdateJob({ singleData,slug }) {
     reset,
   } = useForm({});
 
+  // All States
+  const { Toast, showToast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [images, setImage] = useState(singleData?.image);
+  const [file, setFile] = useState(null);
+
+  const router = useRouter();
+
   const updateJobDetails = async data => {
     event.preventDefault();
-    console.log(data);
-
+    // console.log(data);
+    setLoading(true);
     if (!data || typeof data !== "object") {
       showToast("Invalid form data", "error");
+      setLoading(false);
       return;
     }
 
@@ -83,17 +67,18 @@ export default function UpdateJob({ singleData,slug }) {
       !description
     ) {
       showToast("Please fill in all required fields", "error");
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
+    // setLoading(true);
     try {
       const formData = new FormData();
       formData.append("file", file);
       const res = await fileUpload(
         endpoints.fileUpload.upload,
         formData,
-        METHOD.POST
+        METHODS.POST
       );
       if (res.data.success) {
         const newJobDetails = {
@@ -115,15 +100,17 @@ export default function UpdateJob({ singleData,slug }) {
         // console.log(result);
         if (result.success) {
           showToast("Job updated successfully", "success");
-          router.push("/dashboard/jopPost");
+          // router.push("/dashboard/jopPost");
         } else {
           showToast("Error updating Job. Please try again", "error");
+          setLoading(false);
         }
       } else {
         showToast(res.data.error, "error");
         setLoading(false);
       }
     } catch (error) {
+      console.log(error);
       showToast(error.message, "error");
       setLoading(false);
     }
@@ -389,7 +376,9 @@ export default function UpdateJob({ singleData,slug }) {
                 </div>
               )}
               <div className="flex gap-5 items-center">
-                <Button type="submit">SAVE</Button>
+                <Button type="submit" loading={loading} disabled={loading}>
+                  SAVE
+                </Button>
               </div>
             </form>
           </div>

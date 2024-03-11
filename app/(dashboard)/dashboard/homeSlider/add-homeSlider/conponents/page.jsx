@@ -31,7 +31,7 @@ export default function SubTable({ bannerData }) {
     setDeleteLoading(true);
     try {
       const response = await deleteBanner(deleteBannerId);
-      console.log(response, "response ");
+      // console.log(response, "response ");
       if (response?.success) {
         showToast("Banner deleted successfully", "success");
         setDeleteLoading(false);

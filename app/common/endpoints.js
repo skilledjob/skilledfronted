@@ -15,6 +15,7 @@ export const endpoints = {
     register: makeApiUrl("auth/register"),
     forgotPassword: makeApiUrl("auth/forgot-password"),
     // verifyEmail: makeApiUrl("auth/verify-email"),
+    changePassword: makeApiUrl("auth/change-password"),
     resetPassword(token) {
       return makeApiUrl(`auth/reset-password?token=${token}`);
     },
@@ -22,6 +23,7 @@ export const endpoints = {
       return makeApiUrl(`auth/verify-email?token=${token}`);
     },
   },
+
   user: {
     userById(id) {
       return makeApiUrl(`users/${id}`);

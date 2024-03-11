@@ -32,11 +32,6 @@ export default async function addJob() {
   const upload = async data => {
     event.preventDefault();
 
-    if (!data || typeof data !== "object") {
-      showToast("Invalid form data", "error");
-      return;
-    }
-
     const {
       title,
       company,
@@ -67,6 +62,11 @@ export default async function addJob() {
       return;
     }
 
+    if (!data || typeof data !== "object") {
+      showToast("Invalid form data", "error");
+      return;
+    }
+
     setLoading(true);
     try {
       const formData = new FormData();
@@ -94,7 +94,7 @@ export default async function addJob() {
         };
 
         const result = await postJob(jobDetails);
-        console.log(result);
+        // console.log(result);
         if (result.success) {
           showToast("Job added successfully", "success");
           setLoading(false);
@@ -147,7 +147,6 @@ export default async function addJob() {
                       required: "Enter Job Name",
                     }}
                   />
-                  {/* <FormElements.Input /> */}
                 </div>
                 <div className="flex flex-col w-full">
                   <FormElements.Label withAsterisk>Company</FormElements.Label>
