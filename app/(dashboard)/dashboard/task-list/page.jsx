@@ -112,11 +112,13 @@ export default function Task() {
             value={selectedOption}
             onChange={handleSelectCategory}
             placeholder="Select category"
+            hideLabel={true}
           />
           <FormElements.SelectV2
             options={statusOptions}
             value={status}
             onChange={handleChangeStatus}
+            hideLabel={true}
           />
           <Button
             variant="denger"

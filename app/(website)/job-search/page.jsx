@@ -45,6 +45,11 @@ export default function JobSearch() {
     // handleGetAllJobSeekers(category, keyword);
   };
 
+  const handleKeywordSearchSubmit = e => {
+    e.preventDefault();
+    handleGetAllJobSeekers(selectedCategory, keyword);
+  };
+
   const resetFilters = () => {
     setSelectedOption(null);
     setKeyword("");
@@ -97,13 +102,22 @@ export default function JobSearch() {
           repellendus magni,
           <br /> atque delectus molestias quis?
         </p>
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-center bg-white rounded-md px-2 mt-10 text-black/75">
-          <input
-            type="text"
-            className="border-none w-full bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
-            placeholder="Your Keyword..."
-          />
-          <Button customClass="ml-auto md:ml-0">Search</Button>
+        <div>
+          <form
+            onSubmit={handleKeywordSearchSubmit}
+            className="flex flex-col md:flex-row items-start md:items-center justify-center bg-white rounded-md px-2 mt-10 text-black/75"
+          >
+            <input
+              type="text"
+              className="border-none w-full bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
+              placeholder="Your Keyword..."
+              value={keyword}
+              onChange={e => setKeyword(e.target.value)}
+            />
+            <Button type="submit" customClass="ml-auto md:ml-0">
+              Search
+            </Button>
+          </form>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -116,6 +130,7 @@ export default function JobSearch() {
           jobSeekers={jobSeekers}
           metaData={meta}
           setPage={setPage}
+          loading={isLoading}
         />
       </div>
     </div>

@@ -34,7 +34,7 @@ const Categories = () => {
           <GoChevronLeft className="text-5xl cursor-pointer" />
         </div>
         <Swiper
-          slidesPerView={1}
+          slidesPerView={Math.min(4, categoriesData?.length)}
           spaceBetween={10}
           navigation={{
             prevEl: ".swiper-Prev-Btn",
@@ -53,11 +53,11 @@ const Categories = () => {
               spaceBetween: 10,
             },
             768: {
-              slidesPerView: 2,
+              slidesPerView: Math.min(2, categoriesData?.length),
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: Math.min(4, categoriesData?.length),
               spaceBetween: 50,
             },
           }}
@@ -69,20 +69,22 @@ const Categories = () => {
               <SwiperSlide key={category?.id}>
                 <Link
                   href={`/category/${category?.id}`}
-                  className="flex relative h-full justify-center items-center"
+                  className="flex flex-col h-full justify-center items-center"
                 >
-                  <Image
-                    className="w-64 object-cover h-64 rounded-lg"
-                    width={256}
-                    height={256}
-                    src={category?.image} // Assuming your category object has an 'image' property
-                    alt={category?.name} // Assuming your category object has a 'name' property
-                  />
-                  <div className="absolute top-0 w-full h-full left-0 px-2 py-1 font-bold bg-gradient-to-t from-black via-transparent rounded-md">
-                    <p className="absolute left-5 bottom-5 text-xs sm:text-sm md:text-xl text-white">
-                      {category?.name}{" "}
-                      {/* Assuming your category object has a 'name' property */}
-                    </p>
+                  <div className="w-64 md:w-auto flex-shrink-0 relative">
+                    <Image
+                      className="object-cover rounded-lg"
+                      width={256}
+                      height={256}
+                      src={category?.image} // Assuming your category object has an 'image' property
+                      alt={category?.name} // Assuming your category object has a 'name' property
+                    />
+                    <div className="absolute top-0 w-full h-full flex flex-col justify-end px-2 py-1 bg-gradient-to-t from-transparent to-black rounded-b-lg">
+                      <p className="text-white text-center text-sm md:text-lg p-1">
+                        {category?.name}{" "}
+                        {/* Assuming your category object has a 'name' property */}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               </SwiperSlide>

@@ -3,6 +3,7 @@ export default function CustomSelect({
   value,
   onChange,
   defaultValue = null,
+  hideLabel = false,
 }) {
   return (
     <select
@@ -10,6 +11,11 @@ export default function CustomSelect({
       value={value}
       onChange={onChange}
     >
+      {!hideLabel && (
+        <option value="" disabled>
+          Select an option
+        </option>
+      )}
       {options &&
         options?.length > 0 &&
         options?.map((option, index) => (

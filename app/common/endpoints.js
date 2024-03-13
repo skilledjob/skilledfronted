@@ -42,6 +42,9 @@ export const endpoints = {
     deleteVideoResume(id) {
       return makeApiUrl(`applicant/delete-video-resume/${id}`);
     },
+    jobSeekerBySlug(slug) {
+      return makeApiUrl(`/applicant/applicant/${slug}`);
+    },
   },
   jobCategories: {
     getAllCategories: makeApiUrl("job-category"),

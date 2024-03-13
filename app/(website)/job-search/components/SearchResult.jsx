@@ -3,18 +3,43 @@ import plumber from "@/public/assets/plumber.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import Loader from "./Loader";
 
-export default function SearchResult({ jobSeekers, metaData, setPage }) {
+export default function SearchResult({
+  jobSeekers,
+  metaData,
+  setPage,
+  loading,
+}) {
   const paragraph = `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
   Recusandae culpa quae non ab officiis voluptates similique ad
   obcaecati? Suscipit, libero!`;
 
   const { totalResults, currentItems, totalPages, page } = metaData || {};
 
+  // const description = jobSeekers?.intro.replace(/(<([^>]+)>)/gi, "");
+  // console.log(jobSeekers[1]?.intro.replace(/(<([^>]+)>)/gi, ""));
+
+  // const { slug } = jobSeekers;
+  console.log(jobSeekers);
+  console.log(jobSeekers?.slug);
+
   const renderJobSeekers = () => {
+    if (jobSeekers.length === 0) {
+      return (
+        <div className="w-full h-96 flex items-center justify-center">
+          <h1 className="text-2xl text-white/80">No job seekers found</h1>
+        </div>
+      );
+    }
+
     return jobSeekers.map((jobSeeker, key) => {
       return (
-        <Link key={key} href="/discription" className="h-full text-white">
+        <Link
+          key={key}
+          href={`/discription/${jobSeeker?.slug}`}
+          className="h-full text-white"
+        >
           <div>
             <Image
               className="w-full object-cover h-full rounded-lg"
@@ -42,9 +67,7 @@ export default function SearchResult({ jobSeekers, metaData, setPage }) {
                 {jobSeeker?.user?.firstName} {jobSeeker?.user?.lastName}
               </h2>
               <p className="text-xs text-white/80 text-ellipsis">
-                {paragraph.length >= 80
-                  ? paragraph.slice(0, 80) + "..."
-                  : paragraph}
+                {jobSeeker?.intro}
               </p>
             </div>
           </div>
@@ -62,9 +85,15 @@ export default function SearchResult({ jobSeekers, metaData, setPage }) {
           <span className="text-white/80 font-bold">{totalResults}</span> jobs
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
-        {renderJobSeekers()}
-      </div>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
+          {renderJobSeekers()}
+        </div>
+      )}
+
       <div className="my-10">
         <ol className="flex items-center gap-3">
           {page > 1 && (

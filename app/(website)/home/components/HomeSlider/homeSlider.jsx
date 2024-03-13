@@ -27,24 +27,22 @@ const HomeSlider = async () => {
     >
       {/* <Slides/> */}
       {bannerData?.map((banner, index) => (
-  <SwiperSlide key={index}>
-    <div className="w-full h-[470px]">
-      {banner?.image ? (
-        <Image
-          className="h-full w-full object-cover"
-          src={banner?.image}
-          alt="slider image"
-          width={500}
-          height={200}
-        />
-      ) : (
-        <p>No image available</p>
-      )}
-    </div>
-  </SwiperSlide>
-))}
-
-
+        <SwiperSlide key={index}>
+          <div className="w-full h-[470px]">
+            {banner?.image ? (
+              <Image
+                className="h-full w-full object-cover"
+                src={banner?.image}
+                alt="slider image"
+                width={500}
+                height={200}
+              />
+            ) : (
+              <p>No image available</p>
+            )}
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

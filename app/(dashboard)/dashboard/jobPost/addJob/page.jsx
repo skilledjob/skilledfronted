@@ -12,9 +12,9 @@ import { postJob } from "@/app/lib/jobPost";
 import { fileUpload } from "@/app/lib/fileUpload";
 import { Controller, useForm } from "react-hook-form";
 import { endpoints } from "@/app/common";
-import { METHOD } from "@/app/constants";
+import { METHODS } from "@/app/constants";
 
-export default async function addJob() {
+export default  function addJob() {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState("");
   const [file, setFile] = useState(null);
@@ -30,7 +30,8 @@ export default async function addJob() {
   } = useForm({});
 
   const upload = async data => {
-    event.preventDefault();
+    // event.preventDefault();
+    setLoading(true);
 
     const {
       title,
@@ -67,14 +68,14 @@ export default async function addJob() {
       return;
     }
 
-    setLoading(true);
+
     try {
       const formData = new FormData();
       formData.append("file", file);
       const res = await fileUpload(
         endpoints.fileUpload.upload,
         formData,
-        METHOD.POST
+        METHODS.POST
       );
 
       if (res.data.success) {
@@ -90,11 +91,10 @@ export default async function addJob() {
           location,
           description,
           image: res.data.data,
-          createdBy: "65dc498bff7c8aef572e0a63",
         };
 
         const result = await postJob(jobDetails);
-        // console.log(result);
+        console.log(result);
         if (result.success) {
           showToast("Job added successfully", "success");
           setLoading(false);
@@ -351,6 +351,7 @@ export default async function addJob() {
                   <Dropzone
                     acceptedFileTypes={["jpg", "jpeg", "png"]}
                     subTitle="To upload, file size must be under 2MB and allowed file types are (.jpg, .png, .jpeg)"
+                    onUpload={handleImageUpload}
                   />
                 </div>
               )}
