@@ -3,6 +3,6 @@ import SubJobTable from "./page";
 
 export default async function JobTable() {
   const jobTableData = await getAllJob();
-  console.log(jobTableData);
+  // console.log(jobTableData);
   return <SubJobTable jobTableData={jobTableData} />;
 }

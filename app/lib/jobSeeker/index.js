@@ -65,3 +65,11 @@ export const createJobSeekerProfile = async data => {
   );
   return response;
 };
+
+export const jobSeekerBySlug = async slug => {
+  const response = await api.query(
+    endpoints.jobSeeker.jobSeekerBySlug(slug),
+    jobSeekerCache.tags.jobSeekerById(slug)
+  );
+  return response;
+};

@@ -1,4 +1,14 @@
+"use client";
+
+import { endpoints } from "@/app/common";
+import { METHODS } from "@/app/constants";
+import { fileUpload } from "@/app/lib/fileUpload";
+import { revalidateCurrentUser } from "@/app/lib/user";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { MdEdit } from "react-icons/md";
+import { Loader } from "../loader/Loader";
+import useToast from "../toast";
 
 /**
  * @name Avatar
@@ -25,7 +35,22 @@ const getInitials = name => {
   return initials;
 };
 
-export const Avatar = ({ size = "large", image, name, rounded = true }) => {
+export const Avatar = ({
+  size = "large",
+  image,
+  name,
+  rounded = true,
+  isEdit = false,
+}) => {
+  // Local state
+  const [file, setFile] = useState(null);
+  const fileInputRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  // Hooks
+  const { Toast, showToast } = useToast();
+
   const sizeClass = {
     small: "w-8 h-8",
     medium: "w-12 h-12",
@@ -33,25 +58,98 @@ export const Avatar = ({ size = "large", image, name, rounded = true }) => {
   }[size];
 
   const roundedClass = rounded ? "rounded-full" : "";
-  //
+
+  /**
+   * HANDLERS
+   */
+  const handleFileChange = async e => {
+    setLoading(true);
+
+    const file = e.target.files[0];
+    // validate the size of the file. It only the images with size less than 2MB
+    if (file.size > 2097152) {
+      alert("File is too big!");
+      return;
+    } else {
+      setFile(file);
+
+      try {
+        if (file) {
+          const formData = new FormData();
+          formData.append("image", file);
+          const response = await fileUpload(
+            endpoints.user.uploadProfile,
+            formData,
+            METHODS.PATCH
+          );
+          if (response?.data?.success) {
+            setLoading(false);
+            await revalidateCurrentUser();
+            alert("Profile picture has been updated");
+            setIsSuccess(true);
+            // TODO: Update the user's profile picture in the UI
+
+            showToast("Profile picture has been updated", "success");
+          }
+        }
+      } catch (error) {
+        setLoading(false);
+        console.error(error);
+      }
+    }
+  };
+
+  /**
+   * EFFECTS
+   */
+  useEffect(() => {
+    setIsSuccess(false);
+    setLoading(false);
+  }, []);
+
   return (
     <div
-      className={`bg-[#222B40] border border-slate-600 flex items-center justify-center ${sizeClass} ${roundedClass}`}
+      className={`relative bg-[#222B40] border border-slate-600 flex items-center justify-center ${sizeClass} ${roundedClass}`}
     >
-      {image ? (
-        <Image
-          src={image}
-          alt={name}
-          className={`w-full h-full object-cover ring-2 ring-opacity-10 ${
-            rounded ? "rounded-full" : "rounded-none"
-          }`}
-          height={64}
-          width={64}
-        />
+      {loading ? (
+        <Loader />
       ) : (
-        <span className="text-white text-sm font-semibold">
-          {getInitials(name)}
-        </span>
+        <>
+          {image ? (
+            <Image
+              src={image}
+              alt={name}
+              className={`w-full h-full object-cover ring-2 ring-opacity-10 ${
+                rounded ? "rounded-full" : "rounded-none"
+              }`}
+              height={64}
+              width={64}
+            />
+          ) : (
+            <span className="text-white text-sm font-semibold">
+              {getInitials(name)}
+            </span>
+          )}
+          {isEdit && (
+            <div className="absolute w-5 h-5 bottom-0 right-0 cursor-pointer">
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                hidden
+              />
+              <button
+                onClick={() => {
+                  fileInputRef.current.click();
+                }}
+                className="bg-white text-black h-full w-full flex items-center justify-center rounded-full"
+              >
+                <MdEdit />
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

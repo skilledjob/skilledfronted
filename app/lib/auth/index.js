@@ -3,6 +3,7 @@
 import { endpoints } from "@/app/common";
 import { cookies } from "next/headers";
 import api from "../api";
+import { METHODS } from "@/app/constants";
 
 export const logout = () => {
   cookies().delete("token");
@@ -46,6 +47,15 @@ export const verifyAccount = async token => {
     endpoints.auth.verfiyAccount(token),
     {},
     "POST"
+  );
+  return response;
+};
+
+export const changePassword = async (data) => {
+  const response = await api.mutation(
+    endpoints.auth.changePassword,
+    data,
+    METHODS.PATCH
   );
   return response;
 };

@@ -68,7 +68,7 @@ export default function Task() {
 
   // Render job seeker lists
   const renderJobSeekers = () => {
-    if (jobSeekers.length > 0) {
+    if (jobSeekers?.length > 0) {
       return status === "all"
         ? jobSeekers.map((jobSeeker, index) => (
             <Card key={index} jobSeeker={jobSeeker} />

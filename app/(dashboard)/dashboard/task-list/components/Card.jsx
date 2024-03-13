@@ -1,9 +1,10 @@
 import Image from "next/image";
 import logo from "@/public/assets/e1.png";
+import Link from "next/link";
 
 export default function Card() {
   return (
-    <div className="border border-white/70 p-5 rounded-md">
+    <Link href={`/discription/abir-islam-20240311`} className="border border-white/70 p-5 rounded-md">
       <div className="flex items-start gap-4 justify-between">
         <div className="min-w-16 min-h-16">
           <Image
@@ -32,13 +33,16 @@ export default function Card() {
       ></video>
 
       <div className="space-x-2">
-        <button className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2">
+        {/* <button className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2">
           pending
         </button>
         <button className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2">
           Complete: <span className="font-semibold">80%</span>
+        </button> */}
+        <button className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2">
+          Approve
         </button>
       </div>
-    </div>
+    </Link>
   );
 }

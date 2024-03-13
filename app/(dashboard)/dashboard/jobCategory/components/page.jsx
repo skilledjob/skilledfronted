@@ -31,7 +31,7 @@ export default function Category({ categoridata }) {
     setDeleteLoading(true);
     try {
       const response = await deleteJobCategory(deleteCategoryId);
-      console.log(response, "response ");
+      // console.log(response, "response ");
       if (response?.success) {
         showToast("Category deleted successfully", "success");
         setDeleteLoading(false);

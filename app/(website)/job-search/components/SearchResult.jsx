@@ -17,6 +17,13 @@ export default function SearchResult({
 
   const { totalResults, currentItems, totalPages, page } = metaData || {};
 
+  // const description = jobSeekers?.intro.replace(/(<([^>]+)>)/gi, "");
+  // console.log(jobSeekers[1]?.intro.replace(/(<([^>]+)>)/gi, ""));
+
+  // const { slug } = jobSeekers;
+  console.log(jobSeekers);
+  console.log(jobSeekers?.slug);
+
   const renderJobSeekers = () => {
     if (jobSeekers.length === 0) {
       return (
@@ -28,7 +35,11 @@ export default function SearchResult({
 
     return jobSeekers.map((jobSeeker, key) => {
       return (
-        <Link key={key} href="/discription" className="h-full text-white">
+        <Link
+          key={key}
+          href={`/discription/${jobSeeker?.slug}`}
+          className="h-full text-white"
+        >
           <div>
             <Image
               className="w-full object-cover h-full rounded-lg"
@@ -56,9 +67,7 @@ export default function SearchResult({
                 {jobSeeker?.user?.firstName} {jobSeeker?.user?.lastName}
               </h2>
               <p className="text-xs text-white/80 text-ellipsis">
-                {paragraph.length >= 80
-                  ? paragraph.slice(0, 80) + "..."
-                  : paragraph}
+                {jobSeeker?.intro}
               </p>
             </div>
           </div>
