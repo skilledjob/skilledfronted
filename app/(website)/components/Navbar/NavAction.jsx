@@ -27,7 +27,7 @@ export default function NavAction({ onLogout }) {
         actionElement={
           <div className="flex items-center justify-end gap-3 text-white w-full h-full">
             <div className="">
-              <Avatar size="medium" name={"Abdullah"} />
+              <Avatar size="medium" name={"Abdullah"} image={user?.profilePicture} />
             </div>
             <div className="text-start">
               <p className="text-md text-slate-100">
