@@ -1,4 +1,3 @@
-"use server";
 import { endpoints } from "@/app/common";
 import api from "../api";
 import { jobPostsCache } from "./cache";
@@ -11,7 +10,6 @@ export const getAllJob = async () => {
   );
   return jobPost?.data?.results;
 };
-
 export const getSingleJObPost = async id => {
   const response = await api.query(
     endpoints.jobPost.getJobById(id),

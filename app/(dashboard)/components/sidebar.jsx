@@ -1,5 +1,4 @@
 import { Avatar } from "@/app/components/ui/avatar";
-import plumber from "@/public/assets/plumber.jpg";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { logout } from "@/app/lib/auth";

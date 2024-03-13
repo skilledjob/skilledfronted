@@ -57,13 +57,9 @@ export const endpoints = {
     },
   },
   jobPost: {
-    uploadJob: makeApiUrl("job-post"),
     getAllJob: makeApiUrl("job-post"),
 
     getJobById(id) {
-      return makeApiUrl(`job-post/${id}`);
-    },
-    updateJob(id) {
       return makeApiUrl(`job-post/${id}`);
     },
   },
