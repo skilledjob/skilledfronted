@@ -1,10 +1,34 @@
 import Image from "next/image";
 import logo from "@/public/assets/e1.png";
 import Link from "next/link";
+import { approvedResume } from "@/app/lib/jobSeeker";
 
-export default function Card() {
+export default function Card({jobSeeker}) {
+ 
+ //todo fif desinf and refetcj
+    const ApproveApplicantProfile=async(id)=>{
+     
+try{
+  if(id){
+    let data
+    const result=await approvedResume(id,data)
+    console.log(result)
+  }
+  
+
+}
+    catch(error){
+      console.log(error)
+
+    }
+  }
+    
   return (
-    <Link href={`/discription/abir-islam-20240311`} className="border border-white/70 p-5 rounded-md">
+   
+    <div className="border border-white/70 p-5 rounded-md">
+    <Link href={`/discription/${
+      jobSeeker?.slug
+      }`} >
       <div className="flex items-start gap-4 justify-between">
         <div className="min-w-16 min-h-16">
           <Image
@@ -24,6 +48,7 @@ export default function Card() {
           </p>
         </div>
       </div>
+      </Link>
 
       <video
         src=""
@@ -32,17 +57,15 @@ export default function Card() {
         poster="../../../../../public/assets/banner-detail.jpg"
       ></video>
 
-      <div className="space-x-2">
-        {/* <button className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2">
-          pending
-        </button>
-        <button className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2">
-          Complete: <span className="font-semibold">80%</span>
-        </button> */}
-        <button className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2">
-          Approve
-        </button>
+      <div className="space-x-2 flex justify-center">
+       
+      <button onClick={() => ApproveApplicantProfile(jobSeeker?.id)} className="bg-btnColor text-primary inline-block px-6 py-1 rounded-md mt-2 items-center">
+  Approved
+</button>
+
       </div>
-    </Link>
+    </div>
+    
+   
   );
 }

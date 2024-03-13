@@ -25,33 +25,6 @@ export const query = async (endpoint, cacheKey) => {
   return await response.json();
 };
 
-// /**
-//  * Performs a mutation (HTTP request that modifies data) to the specified endpoint with the provided payload.
-//  * Optionally revalidates a cache key after the mutation.
-//  *
-//  * @param {string} endpoint - The URL endpoint for the mutation.
-//  * @param {Object} payload - The payload to be sent with the mutation request.
-//  * @param {string} method - The HTTP method for the mutation (e.g., 'POST', 'PUT', 'DELETE').
-//  * @param {string|null} revalidateCacheKey - The cache key to be revalidated after the mutation (optional).
-//  * @returns {Promise<Object>} A promise that resolves to the parsed JSON response from the mutation.
-//  * @throws {Error} If there is an issue with the network request or parsing the response.
-//  * @example
-//  * const data = await mutation("/api/users", { name: "John Doe" }, METHOD.POST, "users");
-//  */
-// export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
-//   const respnse = await fetch(endpoint, {
-//     method: method,
-//     body: JSON.stringify(data),
-//     headers: {
-//       "Content-type": "application/json",
-//       authorization: `Bearer ${cookies().get("token")?.value}`,
-//     },
-//   });
-//   if (revalidateCacheKey) {
-//     revalidateTag(revalidateCacheKey);
-//   }
-//   return await respnse.json();
-// };
 export const mutation = async (endpoint, data, method, revalidateCacheKey) => {
   const respnse = await fetch(endpoint, {
     method: method,

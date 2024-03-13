@@ -73,3 +73,13 @@ export const jobSeekerBySlug = async slug => {
   );
   return response;
 };
+
+export const approvedResume = async (id, data) => {
+  const result = await api.mutation(
+    endpoints.jobSeeker.approveREsume(id),
+    data,
+    METHODS.PATCH,
+    jobSeekerCache.tags.jobSeekerById(id)
+  );
+  return result;
+};

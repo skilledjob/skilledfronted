@@ -1,4 +1,5 @@
-import Dragdrop from "@/app/(dashboard)/components/Dragdrop";
+"use client"
+
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 import { Button } from "@/app/components/ui/button";
 import Dropzone from "@/app/components/ui/dropzone";

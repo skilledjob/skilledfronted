@@ -46,6 +46,10 @@ export const endpoints = {
     jobSeekerBySlug(slug) {
       return makeApiUrl(`/applicant/applicant/${slug}`);
     },
+
+    approveREsume(id) {
+      return makeApiUrl(`applicant/approve-applicant-profile/${id}`);
+    },
   },
   jobCategories: {
     getAllCategories: makeApiUrl("job-category"),
