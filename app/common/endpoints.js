@@ -50,6 +50,7 @@ export const endpoints = {
     approveREsume(id) {
       return makeApiUrl(`applicant/approve-applicant-profile/${id}`);
     },
+    createJobSeekerProfile:makeApiUrl('applicant/create-user-applicant')
   },
   jobCategories: {
     getAllCategories: makeApiUrl("job-category"),
@@ -62,10 +63,14 @@ export const endpoints = {
     },
   },
   jobPost: {
+    uploadJob: makeApiUrl("job-post"),
     getAllJob: makeApiUrl("job-post"),
 
     getJobById(id) {
       return makeApiUrl(`job-post/${id}`);
+    },
+    updateJob(slug) {
+      return makeApiUrl(`job-post/${slug}`);
     },
   },
   addBanner: {

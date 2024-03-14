@@ -21,10 +21,6 @@ const UserProfileCard=({data})=>{
   }, []);
 
 // update resume sutus
-const ApproveApplicantProfile=()=>{
-
-
-}
 
     return(
 <div className="w-full lg:w-1/4">

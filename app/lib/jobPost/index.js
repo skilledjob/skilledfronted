@@ -1,3 +1,5 @@
+"use server";
+
 import { endpoints } from "@/app/common";
 import api from "../api";
 import { jobPostsCache } from "./cache";
@@ -27,9 +29,9 @@ export const postJob = async data => {
   return res;
 };
 
-export const updateJob = async (id, data) => {
+export const updateJob = async (slug, data) => {
   const result = await api.mutation(
-    endpoints.jobPost.updateJob(id),
+    endpoints.jobPost.updateJob(slug),
     data,
     METHODS.PATCH
   );

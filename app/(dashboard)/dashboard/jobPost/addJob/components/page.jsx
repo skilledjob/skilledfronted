@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function SubJobTable({ jobTableData }) {
-  // console.log(jobTableData);
+ 
   return (
     <div className="overflow-hidden">
       <table className="min-w-full text-left text-sm font-light">

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
@@ -5,6 +6,7 @@ import { Button } from "@/app/components/ui/button";
 import Dropzone from "@/app/components/ui/dropzone";
 import FormElements from "@/app/components/ui/form-elements";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import useToast from "@/app/components/ui/toast";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Image from "next/image";
@@ -16,10 +18,12 @@ import { METHODS } from "@/app/constants";
 
 export default  function addJob() {
   const [loading, setLoading] = useState(false);
+  
   const [image, setImage] = useState("");
   const [file, setFile] = useState(null);
   // Toast
   const { Toast, showToast } = useToast();
+  const router = useRouter();
 
   // React Hook Form
   const {
@@ -85,7 +89,7 @@ export default  function addJob() {
           education,
           careerLevel,
           experience,
-          gender: gender.label,
+          gender: gender?.label,
           salary,
           date,
           location,
@@ -94,18 +98,21 @@ export default  function addJob() {
         };
 
         const result = await postJob(jobDetails);
-        console.log(result);
+        
         if (result.success) {
           showToast("Job added successfully", "success");
+           router.push("/dashboard/jopPost");
           setLoading(false);
           reset();
         }
       } else {
         showToast(res.data.error, "error");
+ 
+        
         setLoading(false);
       }
     } catch (error) {
-      showToast(error.message, "error");
+
       setLoading(false);
     }
   };
@@ -116,7 +123,7 @@ export default  function addJob() {
       // Add your file upload logic here
       setFile(file);
     } catch (error) {
-      showToast(error.message, "Error:");
+      showToast(error.message, "Error");
       // Handle other types of errors, such as network issues or unexpected responses
     }
   };
