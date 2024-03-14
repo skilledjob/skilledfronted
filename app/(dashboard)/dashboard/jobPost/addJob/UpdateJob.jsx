@@ -33,7 +33,7 @@ export default function UpdateJob({ singleData, slug }) {
   } = useForm({});
   const updateJobDetails = async data => {
     event.preventDefault();
-    // console.log(data);
+  
     setLoading(true);
     if (!data || typeof data !== "object") {
       showToast("Invalid form data", "error");
@@ -102,7 +102,7 @@ export default function UpdateJob({ singleData, slug }) {
         
         if (result.success) {
           showToast("Job updated successfully", "success");
-          router.push("/dashboard/jopPost");
+          router.push("/dashboard/jobPost");
           setLoading(false);
         } else {
           showToast("Error updating Job. Please try again", "error");
@@ -113,7 +113,7 @@ export default function UpdateJob({ singleData, slug }) {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+   
       showToast(error.message, "error");
       setLoading(false);
     }

@@ -17,12 +17,8 @@ export default function SearchResult({
 
   const { totalResults, currentItems, totalPages, page } = metaData || {};
 
-  // const description = jobSeekers?.intro.replace(/(<([^>]+)>)/gi, "");
-  // console.log(jobSeekers[1]?.intro.replace(/(<([^>]+)>)/gi, ""));
+  
 
-  // const { slug } = jobSeekers;
-  console.log(jobSeekers);
-  console.log(jobSeekers?.slug);
 
   const renderJobSeekers = () => {
     if (jobSeekers.length === 0) {

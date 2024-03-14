@@ -145,9 +145,9 @@ export default function CreateJobSeeker() {
       // add job seeker
       const createJobSeekerRes = await createJobSeekerProfile(updatedPayload);
 
-      console.log(createJobSeekerRes)
+      
       if (createJobSeekerRes?.success) {
-        console.log(createJobSeekerRes);
+      
         setLoading(false);
         showToast("Job Seeker Created", "success");
         router.push("/dashboard/task-list");

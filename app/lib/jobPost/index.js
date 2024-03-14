@@ -37,3 +37,13 @@ export const updateJob = async (slug, data) => {
   );
   return result;
 };
+
+export const deletedeJob = async (id, data) => {
+  const result = await api.mutation(
+    endpoints.jobPost.deletedeJob(id),
+    data,
+    METHODS.DELETE,
+    jobPostsCache.tag.byId(id)
+  );
+  return result;
+};

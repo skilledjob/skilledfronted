@@ -50,7 +50,7 @@ export const endpoints = {
     approveREsume(id) {
       return makeApiUrl(`applicant/approve-applicant-profile/${id}`);
     },
-    createJobSeekerProfile:makeApiUrl('applicant/create-user-applicant')
+    createJobSeekerProfile: makeApiUrl("applicant/create-user-applicant"),
   },
   jobCategories: {
     getAllCategories: makeApiUrl("job-category"),
@@ -72,7 +72,11 @@ export const endpoints = {
     updateJob(slug) {
       return makeApiUrl(`job-post/${slug}`);
     },
+    deletedeJob(id) {
+      return makeApiUrl(`job-post/${id}`);
+    },
   },
+
   addBanner: {
     uploadBanner: makeApiUrl("banner-config"),
     getAllBanner: makeApiUrl("banner-config"),
