@@ -86,7 +86,9 @@ export default function Category({ categoridata }) {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button>Edit</Button>
+                  <Link href={`jobCategory/updateCategory/${category?.id}`}>
+                  <Button>Edit</Button>
+                </Link>
                     <Button
                       variant="denger"
                       onClick={() => showDeleteModalHandler(category?.id)}
