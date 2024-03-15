@@ -91,4 +91,7 @@ export const endpoints = {
       return makeApiUrl(endpoint);
     },
   },
+  categoryWiseApplicant: {
+    getApplicant: makeApiUrl(`/applicant/category-wise-applicants`),
+  },
 };
