@@ -17,7 +17,8 @@ export const addJobCategory = async data => {
   const result = await api.mutation(
     endpoints.jobCategories.addCategory,
     data,
-    METHODS.POST
+    METHODS.POST,
+    categorisTag.tag.all()
   );
   return result;
 };
@@ -29,3 +30,4 @@ export const deleteJobCategory = async (id, data) => {
   );
   return result;
 };
+
