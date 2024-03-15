@@ -1,17 +1,17 @@
-import Image from "next/image";
+
 import { FaAngleRight } from "react-icons/fa6";
-import profile from "@/public/assets/plumber.jpg";
-import { Avatar } from "@/app/components/ui/avatar";
-import { Button } from "@/app/components/ui/button";
+
+
 import { jobSeekerBySlug } from "@/app/lib/jobSeeker";
+
+import UserProfileCard from "./userProfileCard";
 
 const Page = async ({ params }) => {
   const { slug } = params;
 
   const result = await jobSeekerBySlug(slug);
-  console.log(result?.data?.firstName);
-
   const { data } = result;
+
 
   return (
     <div>
@@ -61,40 +61,7 @@ const Page = async ({ params }) => {
               </div>
             </div>
           </div>
-          {/* <div className="rounded-2xl mt-20 p-5 md:p-10 border border-black/30 relative">
-            <h1 className="text-2xl font-semibold text-white absolute px-2 -top-4">
-              Skills
-            </h1>
-            <ul className="flex flex-wrap">
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                Figma
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                HTML5
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                Illustrator
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                Adobe Photoshop
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                WordPress
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                jQuery
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                Web Design
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                Adobe XD
-              </li>
-              <li className="bg-btnColor text-base leading-[45px] px-[30px] rounded-[30px] mx-2 mt-[18px] text-primary">
-                CSS
-              </li>
-            </ul>
-          </div> */}
+          
           <div className="rounded-2xl mt-20 p-5 md:p-10 border border-black/30 relative">
             <h1 className="text-2xl font-semibold text-white absolute px-2 -top-4">
               Work Experience
@@ -121,24 +88,7 @@ const Page = async ({ params }) => {
             </div>
           </div>
         </div>
-        <div className="w-full lg:w-1/4">
-          <div className="bg-secondary flex flex-col items-center justify-center py-10 px-5 rounded-2xl">
-            <Avatar
-              image={
-                data?.profilePicture ? data?.profilePicture : null
-              }
-              size="large"
-            />
-            <h1 className="text-xl mt-3 font-semibold text-white">
-              {data?.firstName + " " + data?.lastName}
-            </h1>
-            <div className="border-t border-t-white/30 w-full mt-5 pt-3">
-              <span className="text-white/60 font-extralight">Age:</span>
-              <p className="font-semibold text-white">28</p>
-            </div>
-            <Button>Contact Us</Button>
-          </div>
-        </div>
+       < UserProfileCard data={data}/>
       </div>
     </div>
   );

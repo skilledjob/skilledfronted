@@ -144,8 +144,10 @@ export default function CreateJobSeeker() {
 
       // add job seeker
       const createJobSeekerRes = await createJobSeekerProfile(updatedPayload);
+
+      
       if (createJobSeekerRes?.success) {
-        console.log(createJobSeekerRes);
+      
         setLoading(false);
         showToast("Job Seeker Created", "success");
         router.push("/dashboard/task-list");
@@ -162,47 +164,7 @@ export default function CreateJobSeeker() {
     }
   };
 
-  // const handleAddJobSeeker = async e => {
-  //   e.preventDefault();
-
-  //   setLoading(true);
-
-  //   // upload resume to the server
-  //   if (resumeFile) {
-  //     const resumeFormData = new FormData();
-  //     resumeFormData.append("file", resumeFile);
-
-  //     const response = await fileUpload(
-  //       endpoints.fileUpload.upload,
-  //       resumeFormData,
-  //       METHODS.POST
-  //     );
-  //     console.log("Resume Response --> ", response.data?.data);
-  //     if (response?.data?.data) {
-  //       setPayload({ ...payload, resume: response.data.data });
-  //     } else {
-  //       setError("Failed to upload resume");
-  //       return;
-  //     }
-
-  //     // upload video resume to the server
-  //     if (videoResumeFiles.length > 0) {
-  //       videoResumeFiles.forEach(async file => {
-  //         await uploadVideoResume(file);
-  //       });
-  //     }
-
-  //     console.log("Payload --> ", payload);
-
-  //     // add job seeker
-  //     const createJobSeekerRes = await createJobSeekerProfile(payload);
-  //     if (createJobSeekerRes?.success) {
-  //       console.log("Job Seeker Created");
-  //       setLoading(false);
-  //     }
-  //   }
-  // };
-
+  
   // upload video resume to the server
   const uploadVideoResume = async file => {
     const formData = new FormData();
@@ -231,6 +193,9 @@ export default function CreateJobSeeker() {
   }, []);
 
   return (
+
+    <>
+    <Toast/>
     <div className="text-white container py-10">
       <div className="bg-[#1f2023] px-8 py-12 rounded-sm">
         <h1 className="text-2xl text-slate-100">Create Job Seeker</h1>
@@ -447,5 +412,6 @@ export default function CreateJobSeeker() {
         </div>
       </div>
     </div>
+    </>
   );
 }

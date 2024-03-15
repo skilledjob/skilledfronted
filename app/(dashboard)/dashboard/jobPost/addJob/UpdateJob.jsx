@@ -7,19 +7,16 @@ import FormElements from "@/app/components/ui/form-elements";
 import useToast from "@/app/components/ui/toast";
 import { METHODS } from "@/app/constants";
 import { fileUpload } from "@/app/lib/fileUpload";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FaRegTrashAlt } from "react-icons/fa";
+import{updateJob} from "@/app/lib/jobPost"
 
 export default function UpdateJob({ singleData, slug }) {
-  const {
-    control,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm({});
+
 
   // All States
   const { Toast, showToast } = useToast();
@@ -28,10 +25,15 @@ export default function UpdateJob({ singleData, slug }) {
   const [file, setFile] = useState(null);
 
   const router = useRouter();
-
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({});
   const updateJobDetails = async data => {
     event.preventDefault();
-    // console.log(data);
+  
     setLoading(true);
     if (!data || typeof data !== "object") {
       showToast("Invalid form data", "error");
@@ -93,14 +95,15 @@ export default function UpdateJob({ singleData, slug }) {
           location,
           description,
           image: res.data.data,
-          createdBy: "65dc498bff7c8aef572e0a63",
+          
         };
 
-        const result = await UpdateJob(slug, newJobDetails);
-        // console.log(result);
+        const result = await updateJob(slug, newJobDetails);
+        
         if (result.success) {
           showToast("Job updated successfully", "success");
-          // router.push("/dashboard/jopPost");
+          router.push("/dashboard/jobPost");
+          setLoading(false);
         } else {
           showToast("Error updating Job. Please try again", "error");
           setLoading(false);
@@ -110,7 +113,7 @@ export default function UpdateJob({ singleData, slug }) {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+   
       showToast(error.message, "error");
       setLoading(false);
     }

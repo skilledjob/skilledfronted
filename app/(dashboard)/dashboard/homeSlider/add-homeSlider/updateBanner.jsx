@@ -57,12 +57,12 @@ const UpdateBanner = ({ singleData }) => {
 
   const handleBannerUpload = async file => {
     try {
-      setImages(URL.createObjectURL(file)); // Set image state with object URL
-      // Add your file upload logic here
+      setImages(URL.createObjectURL(file)); 
+     
       setFile(file);
     } catch (error) {
       showToast(error.message, "Error:");
-      // Handle other types of errors, such as network issues or unexpected responses
+      
     }
   };
   return (

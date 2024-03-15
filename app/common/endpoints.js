@@ -28,6 +28,7 @@ export const endpoints = {
     userById(id) {
       return makeApiUrl(`users/${id}`);
     },
+    uploadProfile: makeApiUrl("users/update-profile-picture"),
   },
   post: {
     getPosts: "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5",
@@ -45,6 +46,11 @@ export const endpoints = {
     jobSeekerBySlug(slug) {
       return makeApiUrl(`/applicant/applicant/${slug}`);
     },
+
+    approveREsume(id) {
+      return makeApiUrl(`applicant/approve-applicant-profile/${id}`);
+    },
+    createJobSeekerProfile: makeApiUrl("applicant/create-user-applicant"),
   },
   jobCategories: {
     getAllCategories: makeApiUrl("job-category"),
@@ -57,12 +63,20 @@ export const endpoints = {
     },
   },
   jobPost: {
+    uploadJob: makeApiUrl("job-post"),
     getAllJob: makeApiUrl("job-post"),
 
     getJobById(id) {
       return makeApiUrl(`job-post/${id}`);
     },
+    updateJob(slug) {
+      return makeApiUrl(`job-post/${slug}`);
+    },
+    deletedeJob(id) {
+      return makeApiUrl(`job-post/${id}`);
+    },
   },
+
   addBanner: {
     uploadBanner: makeApiUrl("banner-config"),
     getAllBanner: makeApiUrl("banner-config"),

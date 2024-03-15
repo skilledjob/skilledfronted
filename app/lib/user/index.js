@@ -13,3 +13,9 @@ export const getCurrentUser = async () => {
   );
   return response;
 };
+
+export const revalidateCurrentUser = async () => {
+  console.log("Revalidating user", cookies()?.get("id")?.value);
+  const id = cookies()?.get("id")?.value;
+  revalidateTag(userCache.tag.userById(id));
+};
