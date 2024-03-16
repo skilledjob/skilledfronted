@@ -55,6 +55,9 @@ export const endpoints = {
   jobCategories: {
     getAllCategories: makeApiUrl("job-category"),
     addCategory: makeApiUrl("job-category"),
+    getSingleCategory(id) {
+      return makeApiUrl(`job-category/${id}`);
+    },
     deleteCategory(id) {
       return makeApiUrl(`job-category/${id}`);
     },

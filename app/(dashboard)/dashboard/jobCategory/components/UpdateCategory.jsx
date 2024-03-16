@@ -11,29 +11,20 @@ import { Controller, useForm } from "react-hook-form";
 import { fileUpload } from "@/app/lib/fileUpload";
 import { endpoints } from "@/app/common";
 import { METHODS } from "@/app/constants";
-import { addJobCategory } from "@/app/lib/jobCategories";
+import { addJobCategory, updateCategory } from "@/app/lib/jobCategories";
 import { useRouter } from "next/navigation";
 import { FaRegTrashAlt } from "react-icons/fa";
-export default function AddCategory() {
+
+export default function UpdateCategory({ singleData }) {
+  const { description, image, name } = singleData;
   //loading state
   const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState("");
+  const [images, setImages] = useState(image);
   const [file, setFile] = useState(null);
   //toast
   const { Toast, showToast } = useToast();
 
   const router = useRouter();
-
-  const handleImageUpload = async file => {
-    try {
-      setImage(URL.createObjectURL(file)); // Set image state with object URL
-      // Add your file upload logic here
-      setFile(file);
-    } catch (error) {
-      showToast(error.message, "Error:");
-      // Handle other types of errors, such as network issues or unexpected responses
-    }
-  };
 
   // react-hook-form
   const {
@@ -75,8 +66,8 @@ export default function AddCategory() {
           image: res.data.data,
         };
 
-        const result = await addJobCategory(category);
-
+        const result = await updateCategory(singleData?.id, category);
+        console.log(result);
         if (result.success) {
           showToast("Job Category added successfully", "success");
           setLoading(false);
@@ -92,6 +83,18 @@ export default function AddCategory() {
     } catch (error) {
       showToast(error.message, "error");
       setLoading(false);
+    }
+  };
+
+  // Image upload function
+  const handleImageUpload = async file => {
+    try {
+      setImages(URL.createObjectURL(file)); // Set image state with object URL
+      // Add your file upload logic here
+      setFile(file);
+    } catch (error) {
+      showToast(error.message, "Error:");
+      // Handle other types of errors, such as network issues or unexpected responses
     }
   };
 
@@ -114,6 +117,7 @@ export default function AddCategory() {
                   <Controller
                     name="categoryname"
                     control={control}
+                    defaultValue={name}
                     render={({ field }) => (
                       <FormElements.Input
                         type="text"
@@ -139,6 +143,7 @@ export default function AddCategory() {
                   <Controller
                     name="description"
                     control={control}
+                    defaultValue={description}
                     render={({ field }) => (
                       <FormElements.Input
                         type="text"
@@ -156,23 +161,23 @@ export default function AddCategory() {
                   </FormElements.Error>
                 </div>
               </div>
-              {image && (
-                  <div className="relative mb-20 border rounded-md p-5 border-white flex items-center justify-center">
-                    <Image
-                      src={image}
-                      width={300}
-                      height={300}
-                      className="w-[300px] h-[300px] object-contain"
-                      alt="Droped Image"
-                    />
-                    <div className="absolute top-5 right-5 bg-white rounded-md">
-                      <Button variant="text" onClick={() => setImage("")}>
-                        <FaRegTrashAlt />
-                      </Button>
-                    </div>
+              {images && (
+                <div className="relative mb-20 border rounded-md p-5 border-white flex items-center justify-center">
+                  <Image
+                    src={images}
+                    width={300}
+                    height={300}
+                    className="w-[300px] h-[300px] object-contain"
+                    alt="Droped Image"
+                  />
+                  <div className="absolute top-5 right-5 bg-white rounded-md">
+                    <Button variant="text" onClick={() => setImages("")}>
+                      <FaRegTrashAlt />
+                    </Button>
                   </div>
-                )}
-              {!image && (
+                </div>
+              )}
+              {!images && (
                 <div>
                   <FormElements.Label withAsterisk>Icon</FormElements.Label>
                   <Dropzone
@@ -192,8 +197,6 @@ export default function AddCategory() {
                 >
                   SAVE
                 </Button>
-                <Button variant="danger">CANCEL</Button>{" "}
-                {/* Corrected 'denger' to 'danger' */}
               </div>
             </form>
           </div>

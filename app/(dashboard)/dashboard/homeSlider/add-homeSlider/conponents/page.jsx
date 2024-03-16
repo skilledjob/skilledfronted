@@ -31,7 +31,7 @@ export default function SubTable({ bannerData }) {
     setDeleteLoading(true);
     try {
       const response = await deleteBanner(deleteBannerId);
-   
+
       if (response?.success) {
         showToast("Banner deleted successfully", "success");
         setDeleteLoading(false);
@@ -76,12 +76,16 @@ export default function SubTable({ bannerData }) {
                   {index + 1}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">
-                  <Image
-                    src={banner?.image}
-                    width={42}
-                    height={42}
-                    alt="Icon"
-                  />
+                  {banner?.image ? (
+                    <Image
+                      src={banner?.image}
+                      width={42}
+                      height={42}
+                      alt="Icon"
+                    />
+                  ) : (
+                    setDeleteLoading(true)
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4 flex items-center gap-2">
                   <Link href={`homeSlider/edite-banner/${banner?.id}`}>

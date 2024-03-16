@@ -27,44 +27,6 @@ export default function EditorChoice() {
     fetchData();
   }, []);
 
-  console.log(candidates);
-
-  const paragraph = `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-  Recusandae culpa quae non ab officiis voluptates similique ad
-  obcaecati? Suscipit, libero!`;
-
-  const datas = [
-    {
-      _id: 1,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 2,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 3,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 4,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 5,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-  ];
 
   return (
     <>

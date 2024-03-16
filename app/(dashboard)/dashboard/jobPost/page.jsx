@@ -1,7 +1,6 @@
 import SubHeader from "@/app/(website)/components/Subheader/Subheader";
 import { Button } from "@/app/components/ui/button";
 
-import Table from "../../components/Table";
 import Link from "next/link";
 import JobTable from "./addJob/components";
 
@@ -16,6 +15,5 @@ export default function AddJob() {
     </div>
     <JobTable />
   </div>
-
   );
 }

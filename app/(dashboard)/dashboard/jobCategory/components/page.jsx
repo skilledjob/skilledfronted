@@ -31,7 +31,7 @@ export default function Category({ categoridata }) {
     setDeleteLoading(true);
     try {
       const response = await deleteJobCategory(deleteCategoryId);
-     
+
       if (response?.success) {
         showToast("Category deleted successfully", "success");
         setDeleteLoading(false);
@@ -86,9 +86,9 @@ export default function Category({ categoridata }) {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                  <Link href={`jobCategory/updateCategory/${category?.id}`}>
-                  <Button>Edit</Button>
-                </Link>
+                    <Link href={`jobCategory/updateCategory/${category?.id}`}>
+                      <Button>Edit</Button>
+                    </Link>
                     <Button
                       variant="denger"
                       onClick={() => showDeleteModalHandler(category?.id)}
