@@ -1,18 +1,15 @@
 /* eslint-disable @next/next/no-async-client-component */
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css/pagination";
-import "swiper/css";
-import Image from "next/image";
 import "@/app/(website)/home/components/HomeSlider/homeSlider.css";
-import { getAllBanner } from "@/app/lib/banner";
+import Image from "next/image";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // This is Home Page Slider Component. Here we use SwiperJs to make slider component
 
-const HomeSlider = async () => {
-  const bannerData = await getAllBanner();
-
+const HomeSlider = async ({ bannerData }) => {
   return (
     <Swiper
       pagination={{

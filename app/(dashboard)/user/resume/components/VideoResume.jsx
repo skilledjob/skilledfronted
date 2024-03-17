@@ -1,17 +1,21 @@
 "use client";
 import { endpoints } from "@/app/common";
 import { Button } from "@/app/components/ui/button";
+import Dropzone from "@/app/components/ui/dropzone";
+import FormElements from "@/app/components/ui/form-elements";
 import { Loader } from "@/app/components/ui/loader/Loader";
 import Modal from "@/app/components/ui/modal";
 import useToast from "@/app/components/ui/toast";
+import { VideoPlayer } from "@/app/components/ui/video-player";
 import { METHODS } from "@/app/constants";
 import { fileUpload } from "@/app/lib/fileUpload";
 import {
   deleteVideoResume,
   revalidateJobSeekerProfile,
 } from "@/app/lib/jobSeeker";
+import Image from "next/image";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { CiCircleInfo } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
 
@@ -21,39 +25,96 @@ export default function VideoResume({ videos }) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteVideoResumeId, setDeleteVideoResumeId] = useState(null);
   const [showDelete, setShowDelete] = useState(false);
+  const [thumbnail, setThumbnail] = useState(null);
+  const [videoFile, setVideoFile] = useState(null);
+  const [previewVideo, setPreviewVideo] = useState(null);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+
   //toast state
   const { Toast, showToast } = useToast();
 
-  const videoRef = useRef(null);
+  console.log(videos);
 
   /**
    * HANDLERS
    */
-  const handleVideoChange = async event => {
-    setUploadLoading(true);
-    const file = event.target.files[0];
 
-    if (file) {
+  const handleUploadVideoResume = async () => {
+    setUploadLoading(true);
+
+    if (!videoFile || !thumbnail) {
+      showToast("Please select video and thumbnail", "error");
+      return;
+    }
+
+    if (videoFile && thumbnail) {
       try {
         const formData = new FormData();
-        formData.append("video", file);
-        const res = await fileUpload(
-          endpoints.jobSeeker.uploadVideoResume,
-          formData,
-          METHODS.PATCH
+        formData.append("video", videoFile);
+        const thumbmailFormData = new FormData();
+        thumbmailFormData.append("file", thumbnail);
+
+        const thumbnailRes = await fileUpload(
+          endpoints.fileUpload.upload,
+          thumbmailFormData,
+          "POST"
         );
-        if (res?.data?.success) {
-          revalidateJobSeekerProfile();
 
-          showToast("Video uploaded successfully", "success");
-          setUploadLoading(false);
+        if (thumbnailRes?.data?.success) {
+          const thumbnailUrl = thumbnailRes?.data?.data;
+          formData.append("thumbnail", thumbnailUrl);
+          const res = await fileUpload(
+            endpoints.jobSeeker.uploadVideoResume,
+            formData,
+            METHODS.PATCH
+          );
+          if (res?.data?.success) {
+            revalidateJobSeekerProfile();
+            showToast("Video uploaded successfully", "success");
+            setUploadLoading(false);
+            closeUploadModalHandler();
+          }
+          if (!res?.data?.success) {
+            showToast("Error while uploading video", "error");
+            setUploadLoading(false);
+          }
         }
 
-        if (!res?.data?.success) {
-          showToast("Error while uploading video", "error");
+        // upload the thumbnail
 
-          setUploadLoading(false);
-        }
+        // const thumbnailRes = await fetch(
+        //   `http://localhost:8000/api/v1/applicant/uplod-resume-thumbnail`,
+        //   {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //       thumbnail: thumbnail,
+        //     }),
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Authorization: `Bearer ${cookies.get("token")}`,
+        //     },
+        //   }
+        // );
+        // const thumbnailResponse = await thumbnailRes.json();
+
+        // if (thumbnailResponse?.data?.success) {
+        //   const url = thumbnailRes?.data?.data;
+        //   formData.append("thumbnail", url);
+        //   const res = await fileUpload(
+        //     endpoints.jobSeeker.uploadVideoResume,
+        //     formData,
+        //     METHODS.PATCH
+        //   );
+        //   if (res?.data?.success) {
+        //     revalidateJobSeekerProfile();
+        //     showToast("Video uploaded successfully", "success");
+        //     setUploadLoading(false);
+        //   }
+        //   if (!res?.data?.success) {
+        //     showToast("Error while uploading video", "error");
+        //     setUploadLoading(false);
+        //   }
+        // }
       } catch (error) {
         console.error("Error while uploading video: ", error);
         showToast("Error while uploading video", "error");
@@ -96,21 +157,47 @@ export default function VideoResume({ videos }) {
     }
   };
 
+  // upload video
+  const uploadVideoHandler = file => {
+    setVideoFile(file);
+    setPreviewVideo(URL.createObjectURL(file));
+  };
+
+  const deSelectVideoHandler = () => {
+    setVideoFile(null);
+    setPreviewVideo(null);
+  };
+
+  // upload thumbnail
+  const uploadThumbnailHandler = file => {
+    setThumbnail(file);
+  };
+
+  const deSelectThumbnailHandler = () => {
+    setThumbnail(null);
+  };
+
+  // close upload modal
+  const closeUploadModalHandler = () => {
+    setShowUploadModal(false);
+    setVideoFile(null);
+    setThumbnail(null);
+  };
+
   return (
     <>
       <Toast />
       <div>
         <h2 className="text-1xl my-5 font-semibold">Video resume</h2>
+
         <div className="w-full md:flex">
           {videos?.map(video => (
             <div key={video?.file} className="relative md:w-1/2 h-72 p-3">
-              <video
-                ref={videoRef}
-                controls
+              <VideoPlayer
+                src={video?.file}
+                thumbnail={video?.thumbnail}
                 className="w-full h-full border border-white/70 rounded-xl font-semibold text-xl"
-              >
-                <source src={video?.file} type="video/mp4" />
-              </video>
+              />
               <div className="absolute top-5 right-5 bg-white rounded-md">
                 <Button
                   variant="text"
@@ -148,21 +235,18 @@ export default function VideoResume({ videos }) {
               )}
             </div>
           ) : (
-            <div className="w-1/2 h-72 p-3 relative">
+            <div
+              className="w-1/2 h-72 p-3 relative"
+              onClick={() => {
+                setShowUploadModal(true);
+              }}
+            >
               <div className="w-full h-full">
                 <label
                   htmlFor="video"
                   className="block w-full h-full border border-white/70 rounded-xl font-semibold text-xl"
                 >
                   <div className="flex items-center justify-center h-full">
-                    <input
-                      type="file"
-                      accept="video/*"
-                      onChange={handleVideoChange}
-                      id="video"
-                      hidden
-                      multiple
-                    />
                     + Add Intro Video
                   </div>
                 </label>
@@ -176,6 +260,94 @@ export default function VideoResume({ videos }) {
           )}
         </div>
       </div>
+
+      {/* Upload video resume modal */}
+      <Modal
+        isOpen={showUploadModal}
+        toggoleModal={closeUploadModalHandler}
+        title="Upload Video Resume"
+        width="600px"
+      >
+        <div className="space-y-5">
+          <h2>Upload video resume</h2>
+
+          <div className="p-5 space-y-5">
+            <div>
+              <FormElements.Label>Select video</FormElements.Label>
+              {videoFile ? (
+                <div className="relative">
+                  <VideoPlayer
+                    src={previewVideo && previewVideo}
+                    className="w-full h-64 border border-white/70 rounded-xl font-semibold text-xl"
+                  />
+                  <Button
+                    onClick={deSelectVideoHandler}
+                    variant="none"
+                    customClass="bg-white w-10 h-10 rounded-full text-gray-500 absolute top-5 right-5 flex items-center justify-center hover:bg-gray-700 hover:text-white ring-1 ring-gray-500 ring-opacity-50"
+                  >
+                    x
+                  </Button>
+                </div>
+              ) : (
+                <Dropzone
+                  onUpload={uploadVideoHandler}
+                  acceptedFileTypes={[
+                    // video file types
+                    "mp4",
+                    "avi",
+                    "mov",
+                    "wmv",
+                    "flv",
+                    "3gp",
+                  ]}
+                  subTitle="Select a video file to upload"
+                  maxSize={500}
+                />
+              )}
+            </div>
+            <div>
+              <FormElements.Label>Upload thumbnail</FormElements.Label>
+              {thumbnail ? (
+                <div className="relative">
+                  <Image
+                    src={
+                      thumbnail
+                        ? URL.createObjectURL(thumbnail)
+                        : "/thumbnail.png"
+                    }
+                    alt="thumbnail"
+                    width={500}
+                    height={200}
+                    className="w-full h-64 border border-white/70 rounded-xl font-semibold text-xl"
+                  />
+                  <Button
+                    onClick={deSelectThumbnailHandler}
+                    variant="none"
+                    customClass="bg-white w-10 h-10 rounded-full text-gray-500 absolute top-5 right-5 flex items-center justify-center hover:bg-gray-700 hover:text-white ring-1 ring-gray-500 ring-opacity-50"
+                  >
+                    x
+                  </Button>
+                </div>
+              ) : (
+                <Dropzone
+                  onUpload={uploadThumbnailHandler}
+                  acceptedFileTypes={["png", "jpg", "jpeg"]}
+                  subTitle="Select a thumbnail to upload type (png, jpg, jpeg)"
+                  maxSize={5}
+                />
+              )}
+            </div>
+            <div className="flex items-center gap-4 justify-end">
+              <Button variant="outline" onClick={closeUploadModalHandler}>
+                Cancel
+              </Button>
+              <Button onClick={handleUploadVideoResume} loading={uploadLoading}>
+                Upload
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Modal>
 
       {/* Vdeo resume delete confirmation Modal */}
       <Modal
