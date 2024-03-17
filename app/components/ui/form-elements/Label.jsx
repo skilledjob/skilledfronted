@@ -32,3 +32,5 @@ export const Label = ({ children, withAsterisk = false }) => {
     </label>
   );
 };
+
+export default Label;
