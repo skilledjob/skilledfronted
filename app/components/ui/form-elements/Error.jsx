@@ -22,3 +22,4 @@ export const FormError = ({ children }) => {
     </div>
   );
 };
+export default FormError;

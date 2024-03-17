@@ -2,8 +2,8 @@ import CustomSelect from "./CustomSelect";
 import FileInput from "./FileInput";
 import { Input } from "./Input";
 import { SelectInput } from "./Select";
-import { FormError } from "./error";
-import { Label } from "./label";
+import FormError from "./error";
+import Label from "./label";
 
 export const FormElements = {
   Input: props => <Input {...props} />,
