@@ -12,8 +12,8 @@ import { fileUpload } from "@/app/lib/fileUpload";
 import { endpoints } from "@/app/common";
 import { METHODS } from "@/app/constants";
 import { addJobCategory, updateCategory } from "@/app/lib/jobCategories";
-import { useRouter } from "next/navigation";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function UpdateCategory({ singleData }) {
   const { description, image, name } = singleData;
@@ -70,8 +70,8 @@ export default function UpdateCategory({ singleData }) {
         console.log(result);
         if (result.success) {
           showToast("Job Category added successfully", "success");
+          router.push("/dashboard/jobCategory");
           setLoading(false);
-          router.push("jobCategory");
         } else {
           showToast("Failed to add Job Category", "error");
           setLoading(false);

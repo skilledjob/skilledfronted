@@ -35,7 +35,7 @@ const Categories = () => {
         </div>
         <div className="w-full">
           <Swiper
-            slidesPerView={Math.min(4, categoriesData?.length)}
+            slidesPerView={1}
             spaceBetween={10}
             navigation={{
               prevEl: ".swiper-Prev-Btn",
@@ -51,11 +51,11 @@ const Categories = () => {
                 spaceBetween: 10,
               },
               768: {
-                slidesPerView: Math.min(2, categoriesData?.length),
+                slidesPerView: 2,
                 spaceBetween: 30,
               },
               1024: {
-                slidesPerView: Math.min(4, categoriesData?.length),
+                slidesPerView: 4,
                 spaceBetween: 50,
               },
             }}
@@ -67,19 +67,21 @@ const Categories = () => {
                 <SwiperSlide key={category?.id}>
                   <Link
                     href={`/category/${category?.id}`}
-                    className="flex h-full items-center"
+                    className="flex h-52 items-center"
                   >
-                    <div className="w-64 md:w-auto flex-shrink-0 relative">
-                      <Image
-                        className="object-cover rounded-lg"
-                        width={256}
-                        height={256}
-                        src={category?.image} // Assuming your category object has an 'image' property
-                        alt={category?.name} // Assuming your category object has a 'name' property
-                      />
+                    <div className="w-full md:w-auto relative">
+                      <div className="max-w-64 max-h-52">
+                        <Image
+                          className="object-cover rounded-lg h-52 w-64"
+                          width={256}
+                          height={208}
+                          src={category?.image} // Assuming your category object has an 'image' property
+                          alt={category?.name} // Assuming your category object has a 'name' property
+                        />
+                      </div>
                       <div className="absolute top-0 w-full h-full flex flex-col justify-end px-2 py-1 bg-gradient-to-t from-transparent to-black rounded-b-lg">
                         <p className="text-white text-center text-sm md:text-lg p-1">
-                          {category?.name}{" "}
+                          {category?.name}
                           {/* Assuming your category object has a 'name' property */}
                         </p>
                       </div>
