@@ -68,7 +68,8 @@ export default function EditorChoice() {
                 {candidate?.items?.map(item => (
                   <SwiperSlide key={item.applicant.id}>
                     <Link
-                      href={`/job-post/job-details/${item?.applicant?.slug}`}
+                      // href={`/job-post/job-details/${item?.applicant?.slug}`}
+                      href={`/discription/${item?.applicant?.slug}`}
                       className="flex items-center h-full w-64 text-white"
                     >
                       <div className="w-64 md:w-auto">
