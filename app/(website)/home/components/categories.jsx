@@ -1,13 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import "swiper/css";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { GoChevronLeft, GoChevronRight } from "react-icons/go"; // Import your icon components
 import { getAllCategories } from "@/app/lib/jobCategories";
+import { GoChevronLeft, GoChevronRight } from "react-icons/go"; // Import your icon components
 import SubHeader from "../../components/Subheader/Subheader";
 
 const Categories = () => {
@@ -66,7 +66,8 @@ const Categories = () => {
               categoriesData?.map(category => (
                 <SwiperSlide key={category?.id}>
                   <Link
-                    href={`/category/${category?.id}`}
+                    // href={`/category/${category?.id}`}
+                    href={`/job-search?category=${category?.name}`}
                     className="flex h-52 items-center"
                   >
                     <div className="w-full md:w-auto relative">

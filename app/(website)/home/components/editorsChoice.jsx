@@ -1,16 +1,16 @@
 "use client";
+import { Avatar } from "@/app/components/ui/avatar";
+import { getApplicant } from "@/app/lib/applicant";
+import plumber from "@/public/assets/plumber.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import plumber from "@/public/assets/plumber.jpg";
+import { useEffect, useState } from "react";
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import "swiper/css";
 import "swiper/css/navigation";
-import { GoChevronLeft, GoChevronRight } from "react-icons/go";
-import { Avatar } from "@/app/components/ui/avatar";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import SubHeader from "../../components/Subheader/Subheader";
-import { useEffect, useState } from "react";
-import { getApplicant } from "@/app/lib/applicant";
 
 export default function EditorChoice() {
   const [candidates, setCandidates] = useState([]);
@@ -68,7 +68,7 @@ export default function EditorChoice() {
                 {candidate?.items?.map(item => (
                   <SwiperSlide key={item.applicant.id}>
                     <Link
-                      href="/discription"
+                      href={`/job-post/job-details/${item?.applicant?.slug}`}
                       className="flex items-center h-full w-64 text-white"
                     >
                       <div className="w-64 md:w-auto">
