@@ -3,16 +3,16 @@ import { useIsAuthenticated } from "@/app/hooks/useIsAuthenticated";
 import { logout } from "@/app/lib/auth";
 import logo from "@/public/assets/logo.jpeg";
 
+import useToast from "@/app/components/ui/toast";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
+import Onboarding from "../Auth";
 import Sidebar from "../Sidebar/Sidebar";
-import Onboarding from "../auth/Onboarding";
 import NavAction from "./NavAction";
-import useToast from "@/app/components/ui/toast";
 
 const Navbar = () => {
   // Local State
