@@ -83,7 +83,9 @@ export default function EditorChoice() {
                           <div>
                             <Avatar
                               name={
-                                item?.user?.firstName + " " + item?.user?.lastName
+                                item?.user?.firstName +
+                                " " +
+                                item?.user?.lastName
                               }
                               image={candidate?.user?.profilePicture}
                               size="medium"
