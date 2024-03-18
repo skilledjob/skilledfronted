@@ -70,33 +70,36 @@ export default function SubTable({ bannerData }) {
           </thead>
           {/* Table Body */}
           <tbody className="text-white/70">
-            {bannerData &&
-              bannerData?.map((banner, index) => (
-                <tr className="border-b" key={index}>
-                  <td className="whitespace-nowrap px-6 py-4 font-medium">
-                    {index + 1}
-                  </td>
-                  <td className="whitespace-nowrap px-6 py-4">
+            {bannerData.map((banner, index) => (
+              <tr className="border-b" key={index}>
+                <td className="whitespace-nowrap px-6 py-4 font-medium">
+                  {index + 1}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4">
+                  {banner?.image ? (
                     <Image
                       src={banner?.image}
                       width={42}
                       height={42}
                       alt="Icon"
                     />
-                  </td>
-                  <td className="whitespace-nowrap px-6 py-4 flex items-center gap-2">
-                    <Link href={`homeSlider/edite-banner/${banner?.id}`}>
-                      <Button>Edit</Button>
-                    </Link>
-                    <Button
-                      variant="danger"
-                      onClick={() => showDeleteModalHandler(banner?.id)}
-                    >
-                      Delete
-                    </Button>
-                  </td>
-                </tr>
-              ))}
+                  ) : (
+                    setDeleteLoading(true)
+                  )}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 flex items-center gap-2">
+                  <Link href={`homeSlider/edite-banner/${banner?.id}`}>
+                    <Button>Edit</Button>
+                  </Link>
+                  <Button
+                    variant="danger"
+                    onClick={() => showDeleteModalHandler(banner?.id)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

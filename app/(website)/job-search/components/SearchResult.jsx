@@ -17,9 +17,6 @@ export default function SearchResult({
 
   const { totalResults, currentItems, totalPages, page } = metaData || {};
 
-  
-
-
   const renderJobSeekers = () => {
     if (jobSeekers.length === 0) {
       return (
@@ -63,7 +60,9 @@ export default function SearchResult({
                 {jobSeeker?.user?.firstName} {jobSeeker?.user?.lastName}
               </h2>
               <p className="text-xs text-white/80 text-ellipsis">
-                {jobSeeker?.intro}
+                {jobSeeker?.intro?.length >= 25
+                  ? jobSeeker?.intro.slice(0, 25) + "..."
+                  : jobSeeker?.intro}
               </p>
             </div>
           </div>

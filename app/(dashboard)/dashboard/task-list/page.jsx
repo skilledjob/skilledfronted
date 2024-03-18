@@ -130,8 +130,6 @@ export default function Task() {
         </div>
       </div>
 
-      <div>{/* <Loader /> */}</div>
-
       {isLoading ? (
         <Loader />
       ) : (

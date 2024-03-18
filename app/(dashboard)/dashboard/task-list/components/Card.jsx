@@ -2,48 +2,40 @@ import Image from "next/image";
 import logo from "@/public/assets/e1.png";
 import Link from "next/link";
 import { approvedResume } from "@/app/lib/jobSeeker";
+import { Avatar } from "@/app/components/ui/avatar";
 
 export default function Card({ jobSeeker }) {
-
   //todo fif desinf and refetcj
-  const ApproveApplicantProfile = async (id) => {
-
+  const ApproveApplicantProfile = async id => {
     try {
       if (id) {
-        let data
-        const result = await approvedResume(id, data)
-
+        let data;
+        const result = await approvedResume(id, data);
       }
-
-
-    }
-    catch (error) {
-
-
-    }
-  }
+    } catch (error) {}
+  };
 
   return (
-
     <div className="border border-white/70 p-5 rounded-md">
-      <Link href={`/discription/${jobSeeker?.slug
-        }`} >
-        <div className="flex items-start gap-4 justify-between">
-          <div className="min-w-16 min-h-16">
-            <Image
-              src={logo}
-              alt="logo"
-              height={64}
-              width={64}
-              className="h-16 w-16 rounded-lg"
+      <Link href={`/discription/${jobSeeker?.slug}`}>
+        <div className="flex items-start gap-4">
+          <div>
+            <Avatar
+              image={jobSeeker?.user?.profilePicture}
+              name={
+                jobSeeker?.user?.firstName + " " + jobSeeker?.user?.lastName
+              }
+              size="medium"
             />
           </div>
           <div>
             <h3 className="text-xl font-bold">
-              Senior Full Stack Engineer, Creator Success
+              {jobSeeker?.user?.firstName + " " + jobSeeker?.user?.lastName}
             </h3>
             <p className="text-sm">
-              <span className="text-white/70">Start: </span>1 days ago
+              {jobSeeker?.intro?.length >= 20
+                ? jobSeeker?.intro.slice(0, 20) + "..."
+                : jobSeeker?.intro}
             </p>
           </div>
         </div>
@@ -57,14 +49,30 @@ export default function Card({ jobSeeker }) {
       ></video>
 
       <div className="space-x-2 flex justify-center">
-
-        <button onClick={() => ApproveApplicantProfile(jobSeeker?.id)} className="bg-btnColor text-primary inline-block px-6 py-1 rounded-md mt-2 items-center">
-          Approved
-        </button>
-
+        {jobSeeker?.status === "approved" ? (
+          <Link
+            href={`/discription/${jobSeeker?.slug}`}
+            className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2 items-center"
+          >
+            View Details
+          </Link>
+        ) : (
+          <>
+            <button
+              onClick={() => ApproveApplicantProfile(jobSeeker?.id)}
+              className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2 items-center"
+            >
+              Approve
+            </button>
+            <Link
+              href={`/discription/${jobSeeker?.slug}`}
+              className="bg-btnColor text-primary inline-block px-4 py-1 rounded-md mt-2 items-center"
+            >
+              View Details
+            </Link>
+          </>
+        )}
       </div>
     </div>
-
-
   );
 }

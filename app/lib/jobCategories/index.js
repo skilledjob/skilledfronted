@@ -13,6 +13,14 @@ export const getAllCategories = async () => {
   return res?.data;
 };
 
+export const getSingleCategory = async id => {
+  const result = await api.query(
+    endpoints.jobCategories.getSingleCategory(id),
+    categorisTag.tag.byId(id)
+  );
+  return result?.data;
+};
+
 export const addJobCategory = async data => {
   const result = await api.mutation(
     endpoints.jobCategories.addCategory,
@@ -22,6 +30,16 @@ export const addJobCategory = async data => {
   );
   return result;
 };
+
+export const updateCategory = async (id, data) => {
+  const result = await api.mutation(
+    endpoints.jobCategories.updateCategory(id),
+    data,
+    METHODS.PATCH
+  );
+  return result;
+};
+
 export const deleteJobCategory = async (id, data) => {
   const result = await api.mutation(
     endpoints.jobCategories.deleteCategory(id),
@@ -30,4 +48,3 @@ export const deleteJobCategory = async (id, data) => {
   );
   return result;
 };
-

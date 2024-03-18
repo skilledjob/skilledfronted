@@ -35,11 +35,10 @@ export default function Info({ profile }) {
    */
 
   useEffect(() => {
-    setIntro(
-      profile?.intro
-        ? profile.intro.replace(/<\/?[^>]+>/gi, "")
-        : "<p>Reload Again!</p>"
-    );
+    const cleanedIntro = profile?.intro
+      ? profile.intro.replace(/<\/?[^>]+>/gi, "")
+      : "";
+    setIntro(cleanedIntro);
   }, [profile, profile?.intro]);
 
   useEffect(() => {
