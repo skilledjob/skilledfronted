@@ -14,11 +14,11 @@ export const login = async data => {
   const response = await api.mutation(endpoints.auth.login, data, "POST");
   if (response?.success) {
     cookies().set("id", response?.data?.user?.id, {
-      secure: true,
+      secure: false,
       sameSite: "lax",
     });
     cookies().set("token", response?.data?.token, {
-      secure: true,
+      secure: false,
       sameSite: "lax",
     });
   }
