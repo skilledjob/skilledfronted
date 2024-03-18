@@ -105,11 +105,11 @@ export default function JobSearch() {
         <div>
           <form
             onSubmit={handleKeywordSearchSubmit}
-            className="flex flex-col md:flex-row items-start md:items-center justify-center bg-white rounded-md px-2 mt-10 text-black/75"
+            className="flex gap-2  flex-col md:flex-row items-center justify-center md:bg-white rounded-md px-2 mt-10 text-black/75"
           >
             <input
               type="text"
-              className="border-none w-full bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
+              className="border-none w-full bg-white md:bg-transparent py-3.5 px-5 rounded focus:outline-none text-black"
               placeholder="Your Keyword..."
               value={keyword}
               onChange={e => setKeyword(e.target.value)}

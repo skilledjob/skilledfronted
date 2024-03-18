@@ -19,11 +19,11 @@ export default function Card({ jobPost }) {
       href={`/job-post/job-details/${slug}`}
       className="p-2 rounded-md border border-white/70"
     >
-      <div>
+      <div className="w-full">
         <Image
           src={image}
           alt="main card Photo"
-          className="rounded-md"
+          className="rounded-md w-full h-[210px]"
           width={315}
           height={210}
         />

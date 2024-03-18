@@ -10,6 +10,8 @@ import { addBanner } from "@/app/lib/banner";
 import Image from "next/image";
 import useToast from "@/app/components/ui/toast";
 import Dropzone from "@/app/components/ui/dropzone";
+import FormElements from "@/app/components/ui/form-elements";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function AddHomeSlider() {
   //loading state
@@ -67,7 +69,7 @@ export default function AddHomeSlider() {
       <div className="text-white w-full">
         <SubHeader>Home Slider</SubHeader>
         {image && (
-          <div className="mb-20 border rounded-md p-5 border-white flex items-center justify-center">
+          <div className="relative mb-20 border rounded-md p-5 border-white flex items-center justify-center">
             <Image
               src={image}
               width={300}
@@ -75,14 +77,23 @@ export default function AddHomeSlider() {
               className="w-[300px] h-[300px] object-contain"
               alt="Droped Image"
             />
+            <div className="absolute top-5 right-5 bg-white rounded-md">
+              <Button variant="text" onClick={() => setImage("")}>
+                <FaRegTrashAlt />
+              </Button>
+            </div>
           </div>
         )}
-        <div>
-          <Dropzone
-            acceptedFileTypes={["png", "jpg", "jpeg"]}
-            onUpload={handleBannerUpload}
-          />
-        </div>
+        {!image && (
+          <div>
+            <FormElements.Label withAsterisk>Icon</FormElements.Label>
+            <Dropzone
+              acceptedFileTypes={["jpg", "jpeg", "png"]}
+              subTitle="To upload, file size must be under 2MB and allowed file types are (.jpg, .png, .jpeg)"
+              onUpload={handleBannerUpload}
+            />
+          </div>
+        )}
         <div className="flex items-center justify-center mt-10">
           <Button
             variant="btnColor"

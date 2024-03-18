@@ -27,45 +27,6 @@ export default function EditorChoice() {
     fetchData();
   }, []);
 
-  console.log(candidates);
-
-  const paragraph = `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-  Recusandae culpa quae non ab officiis voluptates similique ad
-  obcaecati? Suscipit, libero!`;
-
-  const datas = [
-    {
-      _id: 1,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 2,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 3,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 4,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-    {
-      _id: 5,
-      image: plumber,
-      title: "title",
-      paragraph: paragraph,
-    },
-  ];
-
   return (
     <>
       {candidates?.map(candidate => (
@@ -77,7 +38,7 @@ export default function EditorChoice() {
             </div>
             <div className="w-full">
               <Swiper
-                slidesPerView={Math.min(4, candidates?.length)}
+                slidesPerView={1}
                 spaceBetween={10}
                 navigation={{
                   prevEl: ".swiper-Prev-Btn",
@@ -93,11 +54,11 @@ export default function EditorChoice() {
                     spaceBetween: 10,
                   },
                   768: {
-                    slidesPerView: Math.min(2, candidates?.length),
+                    slidesPerView: 2,
                     spaceBetween: 30,
                   },
                   1024: {
-                    slidesPerView: Math.min(4, candidates?.length),
+                    slidesPerView: 4,
                     spaceBetween: 50,
                   },
                 }}
@@ -121,6 +82,9 @@ export default function EditorChoice() {
                         <div className="flex gap-3 items-center mt-4">
                           <div>
                             <Avatar
+                              name={
+                                item?.user?.firstName + " " + item?.user?.lastName
+                              }
                               image={candidate?.user?.profilePicture}
                               size="medium"
                             />
@@ -132,7 +96,9 @@ export default function EditorChoice() {
                                 item?.user?.lastName}
                             </h2>
                             <p className="text-xs text-white/80 text-ellipsis">
-                              {item?.applicant?.intro}
+                              {item?.applicant?.intro.length >= 25
+                                ? item?.applicant?.intro.slice(0, 25) + "..."
+                                : item?.applicant?.intro}
                             </p>
                           </div>
                         </div>

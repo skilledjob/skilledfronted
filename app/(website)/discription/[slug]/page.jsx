@@ -1,6 +1,4 @@
-
 import { FaAngleRight } from "react-icons/fa6";
-
 
 import { jobSeekerBySlug } from "@/app/lib/jobSeeker";
 
@@ -11,7 +9,6 @@ const Page = async ({ params }) => {
 
   const result = await jobSeekerBySlug(slug);
   const { data } = result;
-
 
   return (
     <div>
@@ -61,7 +58,7 @@ const Page = async ({ params }) => {
               </div>
             </div>
           </div>
-          
+
           <div className="rounded-2xl mt-20 p-5 md:p-10 border border-black/30 relative">
             <h1 className="text-2xl font-semibold text-white absolute px-2 -top-4">
               Work Experience
@@ -88,7 +85,7 @@ const Page = async ({ params }) => {
             </div>
           </div>
         </div>
-       < UserProfileCard data={data}/>
+        <UserProfileCard data={data} />
       </div>
     </div>
   );

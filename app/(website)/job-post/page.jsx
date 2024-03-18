@@ -12,7 +12,7 @@ export default async function JobPost() {
         </h1>
         <p className="text-white/80">Get The Leatest Job Here.</p>
       </div>
-      <div className="grid grid-cols-3 gap-10 px-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-5">
         {Array.isArray(allJobPost) && allJobPost.length > 0 ? (
           allJobPost.map(jobPost => <Card key={jobPost.id} jobPost={jobPost} />)
         ) : (
