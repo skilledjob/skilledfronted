@@ -1,16 +1,16 @@
 "use client";
-import { Avatar } from "@/app/components/ui/avatar";
-import { getApplicant } from "@/app/lib/applicant";
-import plumber from "@/public/assets/plumber.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { GoChevronLeft, GoChevronRight } from "react-icons/go";
-import "swiper/css";
-import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import plumber from "@/public/assets/plumber.jpg";
+import "swiper/css";
+import "swiper/css/navigation";
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import { Avatar } from "@/app/components/ui/avatar";
 import SubHeader from "../../components/Subheader/Subheader";
+import { useEffect, useState } from "react";
+import { getApplicant } from "@/app/lib/applicant";
 
 export default function EditorChoice() {
   const [candidates, setCandidates] = useState([]);
@@ -33,7 +33,7 @@ export default function EditorChoice() {
         <div key={candidate.id} className="w-full mx-auto container my-12">
           <SubHeader className="text-white">{candidate?.name}</SubHeader>
           <div className="flex items-center group">
-            <div className="text-white swiper-Prev-video-Btn opacity-0 group-hover:opacity-100 h-28 bg-white/10 rounded-lg flex items-center justify-center">
+            <div className="text-white swiper-Prev-video-Btn opacity-0 group-hover:opacity-100 h-28 bg-white/10 rounded-lg hidden md:flex items-center justify-center">
               <GoChevronLeft className="text-5xl cursor-pointer" />
             </div>
             <div className="w-full">
@@ -68,9 +68,8 @@ export default function EditorChoice() {
                 {candidate?.items?.map(item => (
                   <SwiperSlide key={item.applicant.id}>
                     <Link
-                      // href={`/job-post/job-details/${item?.applicant?.slug}`}
-                      href={`/discription/${item?.applicant?.slug}`}
-                      className="flex items-center h-full w-64 text-white"
+                      href="/discription"
+                      className="flex items-center mx-auto h-full w-64 text-white"
                     >
                       <div className="w-64 md:w-auto">
                         <Image
@@ -84,9 +83,7 @@ export default function EditorChoice() {
                           <div>
                             <Avatar
                               name={
-                                item?.user?.firstName +
-                                " " +
-                                item?.user?.lastName
+                                item?.user?.firstName + " " + item?.user?.lastName
                               }
                               image={candidate?.user?.profilePicture}
                               size="medium"
@@ -111,7 +108,7 @@ export default function EditorChoice() {
                 ))}
               </Swiper>
             </div>
-            <div className="text-white swiper-Next-video-Btn opacity-0 group-hover:opacity-100  h-28 bg-white/10 rounded-lg flex items-center justify-center">
+            <div className="text-white swiper-Next-video-Btn opacity-0 group-hover:opacity-100  h-28 bg-white/10 rounded-lg hidden md:flex items-center justify-center">
               <GoChevronRight className="text-5xl cursor-pointer font-extralight" />
             </div>
           </div>
