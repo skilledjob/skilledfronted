@@ -33,7 +33,7 @@ export default function EditorChoice() {
         <div key={candidate.id} className="w-full mx-auto container my-12">
           <SubHeader className="text-white">{candidate?.name}</SubHeader>
           <div className="flex items-center group">
-            <div className="text-white swiper-Prev-video-Btn opacity-0 group-hover:opacity-100 h-28 bg-white/10 rounded-lg flex items-center justify-center">
+            <div className="text-white swiper-Prev-video-Btn opacity-0 group-hover:opacity-100 h-28 bg-white/10 rounded-lg hidden md:flex items-center justify-center">
               <GoChevronLeft className="text-5xl cursor-pointer" />
             </div>
             <div className="w-full">
@@ -69,7 +69,7 @@ export default function EditorChoice() {
                   <SwiperSlide key={item.applicant.id}>
                     <Link
                       href="/discription"
-                      className="flex items-center h-full w-64 text-white"
+                      className="flex items-center mx-auto h-full w-64 text-white"
                     >
                       <div className="w-64 md:w-auto">
                         <Image
@@ -108,7 +108,7 @@ export default function EditorChoice() {
                 ))}
               </Swiper>
             </div>
-            <div className="text-white swiper-Next-video-Btn opacity-0 group-hover:opacity-100  h-28 bg-white/10 rounded-lg flex items-center justify-center">
+            <div className="text-white swiper-Next-video-Btn opacity-0 group-hover:opacity-100  h-28 bg-white/10 rounded-lg hidden md:flex items-center justify-center">
               <GoChevronRight className="text-5xl cursor-pointer font-extralight" />
             </div>
           </div>

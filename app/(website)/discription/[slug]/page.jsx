@@ -9,7 +9,7 @@ const Page = async ({ params }) => {
 
   const result = await jobSeekerBySlug(slug);
   const { data } = result;
-
+  console.log(data);
   return (
     <div>
       <div className="text-white h-80 mt-20 flex flex-col items-center justify-center bg-secondary">
@@ -22,7 +22,9 @@ const Page = async ({ params }) => {
         <div className="w-full lg:w-3/4">
           <div className="p-5 border border-white/30 rounded-2xl">
             <h1 className="text-2xl font-bold mb-5 text-white">Overview</h1>
-            <p className="leading-[2em] text-base text-white">{data?.intro}</p>
+            <p className="leading-[2em] text-base text-white">
+              {data?.intro ? data?.intro : "This profile has no intro"}
+            </p>
           </div>
           {data?.videoResume.map((video, index) => (
             <div className="mt-20" key={video?.id}>
