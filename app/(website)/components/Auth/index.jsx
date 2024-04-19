@@ -69,6 +69,7 @@ export default function Onboarding() {
     setCurrentStep(1);
     setIsOpen(!isOpen);
   };
+
   return (
     <div>
       <Button onClick={toggoleModal} variant="btnColor">
@@ -108,12 +109,7 @@ export default function Onboarding() {
           />
         )}
         {currentStep === 3 && (
-          <Signup
-            role={selectedRoleChoice}
-            toggoleModal={toggoleModal}
-            goOtpVerification={goOtpVerification}
-            goEmailVerificationRequested={goEmailVerificationRequested}
-          />
+          <Signup role={selectedRoleChoice} goLogin={goLogin} />
         )}
         {currentStep === 4 && (
           <ForgotPassword

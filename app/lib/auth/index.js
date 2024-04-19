@@ -25,6 +25,11 @@ export const login = async data => {
   return response;
 };
 
+export const register = async data => {
+  const response = await api.mutation(endpoints.auth.register, data, "POST");
+  return response;
+};
+
 export const forgotPassword = async data => {
   const response = await api.mutation(
     endpoints.auth.forgotPassword,

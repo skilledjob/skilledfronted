@@ -8,11 +8,7 @@ import { register } from "@/app/lib/auth";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-export default function Signup({
-  role,
-  goOtpVerification,
-  goEmailVerificationRequested,
-}) {
+export default function Signup({ role, goLogin }) {
   // LocalState
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -40,9 +36,9 @@ export default function Signup({
   const signupHandler = async data => {
     setLoading(true);
 
-    if (role === "Job Seeker") {
-      goOtpVerification();
-    }
+    // if (role === "Job Seeker") {
+    //   goOtpVerification();
+    // }
 
     let payload;
     if (role === "Hirer") {
@@ -70,8 +66,9 @@ export default function Signup({
       setError("");
 
       showToast(response?.message, "success");
+
       reset();
-      goEmailVerificationRequested();
+      goLogin();
     } else {
       setLoading(false);
       setError(response?.error);
@@ -217,7 +214,7 @@ export default function Signup({
             loading={loading}
             disabled={loading}
           >
-            signup
+            Signup
           </Button>
         </div>
       </form>
