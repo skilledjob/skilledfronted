@@ -71,7 +71,7 @@ export default function Signup({
 
       showToast(response?.message, "success");
       reset();
-      goEmailVerificationRequested();
+      goEmailVerificationRequested()
     } else {
       setLoading(false);
       setError(response?.error);

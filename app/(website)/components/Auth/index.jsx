@@ -42,7 +42,7 @@ export default function Onboarding() {
 
   // go otp verification
   const goOtpVerification = () => {
-    setCurrentStep(6);
+    setCurrentStep(2);
   };
 
   // go top verification for reset password
@@ -52,7 +52,7 @@ export default function Onboarding() {
 
   // go email verification requested
   const goEmailVerificationRequested = () => {
-    setCurrentStep(8);
+    setCurrentStep(2);
   };
 
   // go previous
