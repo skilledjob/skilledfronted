@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Card({ jobPost }) {
   const { title, description, image, createdAt, slug } = jobPost;
-  console.log(jobPost,"jobpost")
+
 
   // time convert
   let dateString = createdAt;
@@ -38,7 +38,7 @@ export default function Card({ jobPost }) {
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-3">
             <div>
-              <Avatar image={image} size="small" />
+              <Avatar image={jobPost?.createdBy?.profilePicture} size="small" />
             </div>
             <div>
               <h5 className="text-white font-semibold leading-2">

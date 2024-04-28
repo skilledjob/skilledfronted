@@ -25,7 +25,7 @@ const HomeSlider = async ({ bannerData }) => {
       {/* <Slides/> */}
       {bannerData?.map((banner, index) => (
         <SwiperSlide key={index}>
-          <div className="w-[1519px] h-[470px]">
+          <div className="">
             {banner?.image ? (
               <Image
                 className="h-full w-full object-fit"
