@@ -15,8 +15,8 @@ export default function ResumeUploader({ resume = null }) {
   const [loading, setLoading] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
   const [resumeFile, setResumeFile] = useState(null);
-     //toast state 
-     const { Toast, showToast } = useToast();
+  //toast state
+  const { Toast, showToast } = useToast();
 
   /**
    * HANDLERS
@@ -36,19 +36,19 @@ export default function ResumeUploader({ resume = null }) {
 
       if (res?.data?.success) {
         revalidateJobSeekerProfile();
-        showToast("Resume uploaded successfully","success");
+        showToast("Resume uploaded successfully", "success");
         setLoading(false);
         setShowUpload(false);
       }
 
       if (!res?.data?.success) {
-        showToast("Error while uploading resume","error");
+        showToast("Error while uploading resume", "error");
         setLoading(false);
       }
     } catch (error) {
       console.error("Error while uploading resume: ", error);
       setLoading(false);
-      showToast("Error while uploading resume","error");
+      showToast("Error while uploading resume", "error");
     }
   };
 
@@ -74,7 +74,7 @@ export default function ResumeUploader({ resume = null }) {
 
   return (
     <div>
-      <Toast/>
+      <Toast />
       <div>
         {/* Show a card for uploaded resume */}
 
