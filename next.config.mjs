@@ -5,7 +5,7 @@ const nextConfig = {
     //   "skilledupload-bucket.nyc3.digitaloceanspaces.com",
     //   "as1.ftcdn.net",
     // ],
-    domains: ["74.50.67.178"],
+    domains: ["74.50.67.178", "res.cloudinary.com"],
     // remotePatterns: [
     //   // {
     //   //   protocol: "https",
