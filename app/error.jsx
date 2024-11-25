@@ -2,7 +2,7 @@
 
 export default function Error({ error, reset }) {
   if (process.env.NODE_ENV === "development") {
-    console.error(error);
+  
   }
 
   return (

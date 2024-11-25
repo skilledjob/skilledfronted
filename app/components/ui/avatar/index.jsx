@@ -94,7 +94,7 @@ export const Avatar = ({
         }
       } catch (error) {
         setLoading(false);
-        console.error(error);
+     
       }
     }
   };

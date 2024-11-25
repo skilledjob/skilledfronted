@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Card({ jobPost }) {
   const { title, description, image, createdAt, slug } = jobPost;
-  console.log(jobPost)
+ 
 
   // time convert
   let dateString = createdAt;

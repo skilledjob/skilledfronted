@@ -46,7 +46,7 @@ export default function ResumeUploader({ resume = null }) {
         setLoading(false);
       }
     } catch (error) {
-      console.error("Error while uploading resume: ", error);
+      
       setLoading(false);
       showToast("Error while uploading resume","error");
     }

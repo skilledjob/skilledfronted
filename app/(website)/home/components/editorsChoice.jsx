@@ -20,7 +20,7 @@ export default function EditorChoice() {
         const data = await getApplicant();
         setCandidates(data);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+     
       }
     };
     fetchData();
@@ -72,7 +72,7 @@ export default function EditorChoice() {
                     >
                       <div className="w-64 md:w-auto">
                       <div className="w-64 md:w-auto">
-  {item?.applicant?.videoResume.map((video, index) => (
+  {item?.applicant?.videoResume?.map((video, index) => (
     index === 0 && (
       <Image
         className="w-full object-cover h-full rounded-lg"

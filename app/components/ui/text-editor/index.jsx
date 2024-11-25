@@ -21,7 +21,7 @@ export default function TextEditor({
       <div className="rich-text-editor">
         <ReactQuill
           theme="snow"
-          value={value}
+          value={editorHtml}
           onChange={handleChange}
           modules={TextEditor.modules}
           formats={TextEditor.formats}

@@ -191,7 +191,7 @@ export default function CreateJobSeeker() {
         showToast(createJobSeekerRes?.message, "success");
       }
     } catch (error) {
-      console.error("Error occurred:", error);
+   
       setError("Failed to create job seeker");
     } finally {
       setLoading(false); // Reset loading state regardless of success or failure

@@ -1,5 +1,5 @@
 import { Avatar } from "@/app/components/ui/avatar";
-import plumber from "@/public/assets/plumber.jpg";
+
 import Image from "next/image";
 import Link from "next/link";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
@@ -16,7 +16,7 @@ export default function SearchResult({
   obcaecati? Suscipit, libero!`;
 
   const { totalResults, currentItems, totalPages, page } = metaData || {};
-  console.log(jobSeekers,"job")
+
 
   const renderJobSeekers = () => {
     if (jobSeekers.length === 0) {
@@ -35,7 +35,7 @@ export default function SearchResult({
           className="h-full text-white"
         >
           <div>
-          {jobSeeker?.videoResume.map((video, index) => (
+          {jobSeeker?.videoResume?.map((video, index) => (
     index === 0 && (
       <Image
         className="w-full object-cover h-full rounded-lg"

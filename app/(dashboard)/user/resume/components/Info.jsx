@@ -26,7 +26,7 @@ export default function Info({ profile }) {
     year: "",
   });
   const [intro, setIntro] = useState("");
-  console.log(intro,"intro")
+
 
   const [loading, setLoading] = useState(false);
   //toast state
@@ -36,16 +36,16 @@ export default function Info({ profile }) {
    */
 
   
-  useEffect(() => {
-    const cleanedIntro = profile?.intro
-      ? profile.intro
-          .replace(/<p[^>]*>/g, "") // Remove opening <p> tags
-          .replace(/<\/p>/g, "")     // Remove closing </p> tags
-          .replace(/<div[^>]*>/g, "") // Remove opening <div> tags
-          .replace(/<\/div>/g, "")   // Remove closing </div> tags
-      : "";
-    setIntro(cleanedIntro);
-}, [profile, profile?.intro]);
+//   useEffect(() => {
+//     const cleanedIntro = profile?.intro
+//       ? profile.intro
+//           .replace(/<p[^>]*>/g, "") // Remove opening <p> tags
+//           .replace(/<\/p>/g, "")     // Remove closing </p> tags
+//           .replace(/<div[^>]*>/g, "") // Remove opening <div> tags
+//           .replace(/<\/div>/g, "")   // Remove closing </div> tags
+//       : "";
+//     setIntro(cleanedIntro);
+// }, [profile, profile?.intro]);
 
   useEffect(() => {
     const cleanedIntro = intro
@@ -56,7 +56,7 @@ export default function Info({ profile }) {
           .replace(/<\/div>/g, "")   // Remove closing </div> tags
       : "";
     setIntro(cleanedIntro);
-}, [intro]);
+}, []);
 
   useEffect(() => {
     if (profile) {
@@ -147,7 +147,7 @@ export default function Info({ profile }) {
   const fetchCategories = async () => {
     const res = await getAllCategories();
     if (res) {
-      const options = res.map(cat => ({ value: cat.id, label: cat.name }));
+      const options = res?.map(cat => ({ value: cat.id, label: cat.name }));
       setCategoyOptions(options);
     }
   };

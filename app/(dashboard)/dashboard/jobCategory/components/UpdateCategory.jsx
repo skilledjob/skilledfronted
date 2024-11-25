@@ -67,7 +67,7 @@ export default function UpdateCategory({ singleData }) {
         };
 
         const result = await updateCategory(singleData?.id, category);
-        console.log(result);
+       
         if (result.success) {
           showToast("Job Category added successfully", "success");
           router.push("/dashboard/jobCategory");

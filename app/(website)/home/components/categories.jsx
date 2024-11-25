@@ -19,7 +19,7 @@ const Categories = () => {
         const data = await getAllCategories();
         setCategoriesData(data);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+       
       }
     };
 
