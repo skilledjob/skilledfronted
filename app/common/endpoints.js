@@ -89,6 +89,9 @@ export const endpoints = {
     deleteBanner(id) {
       return makeApiUrl(`banner-config/${id}`);
     },
+    deleteuser(id) {
+      return makeApiUrl(`/applicant/${id}/delete`);
+    },
     singleBanner(id) {
       return makeApiUrl(`banner-config/${id}`);
     },

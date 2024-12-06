@@ -36,6 +36,15 @@ export const deleteBanner = async (id, data) => {
   );
   return result;
 };
+export const deleteUser = async (id, data) => {
+  const result = await api.mutation(
+    endpoints.addBanner.deleteuser(id),
+    data,
+    METHODS.DELETE
+  );
+  return result;
+};
+
 export const singlebanner = async id => {
   const result = await api.query(
     endpoints.addBanner.singleBanner(id),
